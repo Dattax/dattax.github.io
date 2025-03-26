@@ -3,54 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perplexity AI Chatbot</title>
-    <script src="https://cdn.jsdelivr.net/npm/openai@4.0.0/dist/openai.min.js"></script>
+    <title>Perplexity AI Query</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+        }
+
+        #questionInput {
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            background-color: #333;
+            border: 1px solid #444;
+            color: white;
+            font-size: 1rem;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #responseBox {
+            background-color: black;
+            color: white;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            min-height: 100px;
+            border: 1px solid #444;
+        }
+    </style>
 </head>
 <body>
-    <div id="chat-container">
-        <div id="chat-messages"></div>
-        <form id="chat-form">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button type="submit">Send</button>
-        </form>
+    <div class="container">
+        <h1>Ask Perplexity AI</h1>
+        <input type="text" id="questionInput" placeholder="Enter your question...">
+        <button onclick="askPerplexity()">Ask</button>
+        <div id="responseBox"></div>
     </div>
 
     <script>
-        const chatForm = document.getElementById('chat-form');
-        const userInput = document.getElementById('user-input');
-        const chatMessages = document.getElementById('chat-messages');
-
-        const client = new OpenAI({ apiKey: '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', baseURL: 'https://api.perplexity.ai' });
-
-        chatForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const message = userInput.value.trim();
-            if (message) {
-                addMessage('user', message);
-                userInput.value = '';
-                await getAIResponse(message);
+        async function askPerplexity() {
+            const question = document.getElementById('questionInput').value;
+            const responseBox = document.getElementById('responseBox');
+            
+            if (!question) {
+                alert('Please enter a question');
+                return;
             }
-        });
 
-        async function getAIResponse(message) {
+            responseBox.textContent = 'Loading...';
+            
             try {
-                const response = await client.chat.completions.create({
-                    model: 'sonar-pro',
-                    messages: [{ role: 'user', content: message }],
+                const response = await fetch('https://api.perplexity.ai/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': 'Bearer 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',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: 'pplx-70b-online',
+                        messages: [
+                            {
+                                role: 'user',
+                                content: question
+                            }
+                        ],
+                        temperature: 0.7,
+                        max_tokens: 1000,
+                    })
                 });
-                addMessage('ai', response.choices[0].message.content);
-            } catch (error) {
-                console.error('Error:', error);
-                addMessage('ai', 'Sorry, there was an error processing your request.');
-            }
-        }
 
-        function addMessage(role, content) {
-            const messageElement = document.createElement('div');
-            messageElement.classList.add(role);
-            messageElement.textContent = content;
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+                const data = await response.json();
+                responseBox.textContent = data.choices[0].message.content;
+            } catch (error) {
+                responseBox.textContent = 'Error fetching response: ' + error.message;
+            }
         }
     </script>
 </body>
