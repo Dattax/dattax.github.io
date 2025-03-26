@@ -3,30 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>GreenBites</title>
+    <title>Perplexity AI Chatbot</title>
+    <script src="https://cdn.jsdelivr.net/npm/openai@4.0.0/dist/openai.min.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#restaurants">Restaurants</a></li>
-            <li><a href="#map">Map</a></li>
-            <li><a href="#order">Order</a></li>
-        </ul>
-    </nav>
-    <div class="banner">
-        <img src="banner.png" alt="Banner Image">
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button type="submit">Send</button>
+        </form>
     </div>
-    <div class="center-button">
-        <a href="https://green-bites-hack.netlify.app/" style="text-decoration: none;">
-            <button class="button-31" role="button">Get Started</button>
-        </a>
-    </div>
-    <div class="content">
-        <div class="image"><img src="img2.png" alt="Image"></div>
-        <div class="image"><img src="img3.png" alt="Image"></div>
-        <div class="image"><img src="footer.png" alt="Footer Image"></div>
-    </div>
+
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const userInput = document.getElementById('user-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const client = new OpenAI({ apiKey: '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', baseURL: 'https://api.perplexity.ai' });
+
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = userInput.value.trim();
+            if (message) {
+                addMessage('user', message);
+                userInput.value = '';
+                await getAIResponse(message);
+            }
+        });
+
+        async function getAIResponse(message) {
+            try {
+                const response = await client.chat.completions.create({
+                    model: 'sonar-pro',
+                    messages: [{ role: 'user', content: message }],
+                });
+                addMessage('ai', response.choices[0].message.content);
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('ai', 'Sorry, there was an error processing your request.');
+            }
+        }
+
+        function addMessage(role, content) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add(role);
+            messageElement.textContent = content;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
 </body>
 </html>
