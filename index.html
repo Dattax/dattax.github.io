@@ -719,9 +719,238 @@
       .stats-row { grid-template-columns: repeat(2, 1fr); }
       .cards-grid { grid-template-columns: 1fr; }
     }
+  /* ─── MODAL ─────────────────────────────────────────────────────── */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.23,1,0.32,1);
+  }
+  .modal-backdrop.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .modal {
+    background: #111111;
+    border: 1px solid rgba(139,92,246,0.25);
+    max-width: 520px;
+    width: 100%;
+    padding: 3rem;
+    position: relative;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.23,1,0.32,1);
+  }
+  .modal-backdrop.open .modal {
+    transform: translateY(0) scale(1);
+  }
+  .modal-close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: none;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.4);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .modal-close:hover { border-color: rgba(139,92,246,0.5); color: #fff; }
+  .modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(139,92,246,0.12);
+    border: 1px solid rgba(139,92,246,0.25);
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  .modal-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--purple);
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  .modal-badge-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple-light);
+  }
+  .modal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+  .modal-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 1.5rem;
+  }
+  .modal-subtitle strong { color: rgba(255,255,255,0.8); font-weight: 600; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  .form-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .form-input {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ffffff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-input::placeholder { color: rgba(255,255,255,0.2); }
+  .form-input:focus {
+    border-color: rgba(139,92,246,0.5);
+    background: rgba(139,92,246,0.05);
+  }
+  .form-submit {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.95rem;
+    background: #ffffff;
+    color: #000000;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+  .form-submit:hover { background: var(--purple); color: #fff; }
+  .form-submit:active { transform: scale(0.98); }
+  .form-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.25);
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .modal-success.show { display: block; }
+  .modal-success-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--purple-light);
+  }
+  .modal-success-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+  }
+  .modal-success-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.65;
+  }
+  @media (max-width: 520px) {
+    .modal { padding: 2rem 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
   </style>
 </head>
 <body>
+
+  <!-- ── ENROLLMENT MODAL ─────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+
+      <!-- Form view -->
+      <div id="modalForm">
+        <div class="modal-badge">
+          <div class="modal-badge-dot"></div>
+          <span class="modal-badge-text">Currently in Session</span>
+        </div>
+        <h2 class="modal-title" id="modalTitle">Join the Next Cohort</h2>
+        <p class="modal-subtitle">
+          <strong>Autora Product Lab is currently in session.</strong> Fill out the form below and we'll reach out to enroll you in the <strong>next cohort starting in July.</strong>
+        </p>
+        <form id="enrollForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name</label>
+              <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Jane" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name</label>
+              <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Smith" required />
+            </div>
+            <div class="form-group full">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+          </div>
+          <button type="submit" class="form-submit">Reserve My Spot ↗</button>
+          <p class="form-note">No spam. We'll only contact you about your enrollment.</p>
+        </form>
+      </div>
+
+      <!-- Success view -->
+      <div class="modal-success" id="modalSuccess">
+        <div class="modal-success-icon">△</div>
+        <div class="modal-success-title">You're on the list.</div>
+        <p class="modal-success-body">
+          Thanks for your interest in Autora Product Lab.<br>
+          We'll be in touch shortly to get you enrolled in the <strong style="color:rgba(255,255,255,0.75)">July cohort.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
 
   <!-- ── NAV ──────────────────────────────────────────────────────── -->
   <header id="nav">
@@ -985,8 +1214,8 @@
           Every enrollment includes <span>private 1:1 coaching sessions</span> — dedicated time with an experienced PM coach on your actual product, roadmap, and strategy.
         </p>
         <div class="cta-btns">
-          <a href="mailto:hello@autoragroup.com" class="btn-primary" style="font-size:0.85rem;padding:1rem 2.5rem">Enroll Now ↗</a>
-          <a href="mailto:hello@autoragroup.com" class="btn-outline" style="font-size:0.85rem;padding:1rem 2.5rem">Contact Us</a>
+          <a href="#enroll" class="btn-primary" style="font-size:0.85rem;padding:1rem 2.5rem">Enroll Now ↗</a>
+          <a href="mailto:product@autoracrm.com" class="btn-outline" style="font-size:0.85rem;padding:1rem 2.5rem">Contact Us</a>
         </div>
       </div>
     </div>
@@ -1086,6 +1315,63 @@
           <div class="card-title">${step.title}</div>
           <p class="body-text" style="font-size:0.9rem">${step.desc}</p>
         </div>`;
+    });
+
+    // ── Modal logic ───────────────────────────────────────────────────
+    const modal = document.getElementById('enrollModal');
+    const modalClose = document.getElementById('modalClose');
+    const enrollForm = document.getElementById('enrollForm');
+    const modalFormEl = document.getElementById('modalForm');
+    const modalSuccess = document.getElementById('modalSuccess');
+
+    function openModal() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('firstName').focus(), 350);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Attach to all enroll buttons (href="#enroll" or .btn-primary)
+    document.querySelectorAll('a[href="#enroll"], a[href="mailto:hello@autoragroup.com"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    enrollForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const first = document.getElementById('firstName').value.trim();
+      const last = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!first || !last || !email) {
+        // Highlight empty fields
+        [['firstName', first], ['lastName', last], ['email', email]].forEach(([id, val]) => {
+          const el = document.getElementById(id);
+          if (!val) {
+            el.style.borderColor = 'rgba(246,92,92,0.6)';
+            el.addEventListener('input', () => el.style.borderColor = '', { once: true });
+          }
+        });
+        return;
+      }
+      // Send via mailto
+      const subject = encodeURIComponent('Autora Product Lab — Cohort Enrollment Request');
+      const body = encodeURIComponent(
+        `First Name: ${first}\nLast Name: ${last}\nEmail: ${email}\n\nThis person would like to enroll in the next Autora Product Lab cohort starting in July.`
+      );
+      window.location.href = `mailto:product@autoracrm.com?subject=${subject}&body=${body}`;
+
+      // Show success state
+      modalFormEl.style.display = 'none';
+      modalSuccess.classList.add('show');
     });
 
     // ── Nav scroll effect ─────────────────────────────────────────────
