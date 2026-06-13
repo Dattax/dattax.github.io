@@ -936,6 +936,7 @@
             </div>
           </div>
           <button type="submit" class="form-submit">Reserve My Spot ↗</button>
+          <p id="formError" style="display:none;font-family:'DM Sans',sans-serif;font-size:0.8rem;color:rgba(246,92,92,0.85);text-align:center;margin-top:0.75rem">Something went wrong. Please try again or email us directly at <a href="mailto:product@autoracrm.com" style="color:var(--purple-light)">product@autoracrm.com</a>.</p>
           <p class="form-note">No spam. We'll only contact you about your enrollment.</p>
         </form>
       </div>
@@ -1362,16 +1363,38 @@
         });
         return;
       }
-      // Send via mailto
-      const subject = encodeURIComponent('Autora Product Lab — Cohort Enrollment Request');
-      const body = encodeURIComponent(
-        `First Name: ${first}\nLast Name: ${last}\nEmail: ${email}\n\nThis person would like to enroll in the next Autora Product Lab cohort starting in July.`
-      );
-      window.location.href = `mailto:product@autoracrm.com?subject=${subject}&body=${body}`;
+      // Disable button while sending
+      const submitBtn = enrollForm.querySelector('.form-submit');
+      submitBtn.textContent = 'Sending…';
+      submitBtn.disabled = true;
 
-      // Show success state
-      modalFormEl.style.display = 'none';
-      modalSuccess.classList.add('show');
+      // Send via Formspree — replace YOUR_FORM_ID with your Formspree form ID
+      fetch('https://formspree.io/f/xkoakwaj', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: first,
+          lastName: last,
+          email: email,
+          _replyto: email,
+          _subject: 'Autora Product Lab — Cohort Enrollment Request',
+          message: `${first} ${last} (${email}) would like to enroll in the next Autora Product Lab cohort starting in July.`
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          modalFormEl.style.display = 'none';
+          modalSuccess.classList.add('show');
+        } else {
+          return res.json().then(data => { throw new Error(data.error || 'Submission failed'); });
+        }
+      })
+      .catch(err => {
+        submitBtn.textContent = 'Reserve My Spot ↗';
+        submitBtn.disabled = false;
+        const errMsg = document.getElementById('formError');
+        if (errMsg) errMsg.style.display = 'block';
+      });
     });
 
     // ── Nav scroll effect ─────────────────────────────────────────────
