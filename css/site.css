@@ -92,6 +92,12 @@ body::before {
   min-height: 44px;
   line-height: 1;
 }
+.mark img {
+  display: block;
+  width: 86px;
+  height: 64px;
+  object-fit: contain;
+}
 /* TEMPORARY wordmark: letters XI only. Swap when the favorite logo file arrives. */
 .wordmark {
   font-family: var(--serif);
