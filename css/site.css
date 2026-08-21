@@ -249,6 +249,19 @@ body::before {
 }
 .chapter-inner { position: relative; z-index: 1; width: 100%; max-width: 78rem; }
 
+
+.hero .chapter-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero-logo {
+  display: block;
+  margin: 0 auto 1.6rem;
+  width: min(32rem, 72vw);
+  height: auto;
+}
 .hero {
   background:
     linear-gradient(180deg, rgba(7,10,10,0.25) 0%, rgba(7,10,10,0.15) 40%, rgba(7,10,10,0.72) 100%),
@@ -513,6 +526,22 @@ body::before {
     url("../assets/room-hamptons.jpg") center / cover no-repeat;
 }
 .room-band .lede { margin-top: 0.6rem; }
+
+.room-band.elsewhere {
+  background:
+    linear-gradient(90deg, rgba(7,10,10,0.88) 0%, rgba(7,10,10,0.5) 48%, rgba(7,10,10,0.22)),
+    url("../assets/world/divider.jpg") center 40% / cover no-repeat;
+}
+.elsewhere-still {
+  margin-top: 2rem;
+  max-width: 52rem;
+}
+.elsewhere-still img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--hair-dim);
+}
 
 .principles {
   list-style: none;
