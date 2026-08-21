@@ -258,7 +258,7 @@ body::before {
 }
 .hero-logo {
   display: block;
-  margin: 0 auto 1.6rem;
+  margin: 2.5rem auto 2.75rem;
   width: min(32rem, 72vw);
   height: auto;
 }
@@ -295,7 +295,7 @@ body::before {
     font-size: 1.15rem;
   }
 }
-.hero .eyebrow { color: var(--sand); }
+.hero .eyebrow { color: var(--sand); margin-bottom: 0; }
 
 .belief { background: var(--ink); }
 .belief .display { max-width: 16ch; }
