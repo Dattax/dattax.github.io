@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="XI">
+  <!-- TEMPORARY wordmark: swap when the favorite logo file arrives. Plain letters, not the Cheval XI mark. -->
+  <rect width="64" height="64" fill="#070a0a"/>
+  <text x="32" y="44" text-anchor="middle"
+        font-family="Palatino, 'Palatino Linotype', Georgia, 'Times New Roman', serif"
+        font-size="30" font-weight="400" letter-spacing="2">
+    <tspan fill="#3fa8ae">X</tspan><tspan fill="#e4c489">I</tspan>
+  </text>
+</svg>
