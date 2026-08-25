@@ -683,3 +683,49 @@ body::before {
 
 /* page-specific tight pages */
 .page-about .section { padding-top: 3.5rem; }
+
+
+/* additive only — long forms, two-column pair, portrait placeholder. No restyle. */
+.form.wide {
+  max-width: 44rem;
+  margin-top: 2.4rem;
+}
+.form-pair {
+  display: grid;
+  gap: 3rem;
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .form-pair { grid-template-columns: 1fr 1fr; gap: 4rem; }
+}
+.portrait-ph {
+  margin: 0 0 1.5rem;
+  border: 1px solid var(--hair-dim);
+  background:
+    linear-gradient(180deg, rgba(25,65,65,0.18), transparent 55%),
+    var(--ink);
+  aspect-ratio: 3 / 4;
+  max-width: 16rem;
+  min-height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.portrait-ph figcaption {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0;
+}
+.bio-row {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 800px) {
+  .bio-row { grid-template-columns: 16rem minmax(0, 36rem); }
+}
+
+.bio-portrait { margin: 0 0 1.5rem; max-width: 16rem; }
+.bio-portrait img { width: 100%; height: auto; object-fit: cover; display: block; }
