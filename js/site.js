@@ -24,32 +24,31 @@
     });
   }
 
-  var form = document.getElementById("inquire-form");
-  var note = document.getElementById("form-note");
-  if (form) {
+  document.querySelectorAll("form.form").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var name = (document.getElementById("name") || {}).value || "";
-      var email = (document.getElementById("email") || {}).value || "";
-      var city = (document.getElementById("city") || {}).value || "";
-      var heard = (document.getElementById("heard") || {}).value || "";
-      var extra = (document.getElementById("note") || {}).value || "";
-      var body = [
-        "Name: " + name,
-        "Email: " + email,
-        "City: " + city,
-        "How I heard: " + heard,
-        extra ? "Note: " + extra : ""
-      ].filter(Boolean).join("\n");
+      var action = form.getAttribute("action") || "";
+      var to = action.replace(/^mailto:/i, "").split("?")[0] || "shaun@xipremierproductions.com";
+      var lines = [];
+      form.querySelectorAll("input, select, textarea").forEach(function (el) {
+        if (!el.name) return;
+        var label = "";
+        if (el.id) {
+          var lab = form.querySelector('label[for="' + el.id + '"]');
+          if (lab) label = lab.textContent.replace(/\s+/g, " ").trim();
+        }
+        lines.push((label || el.name) + ": " + (el.value || ""));
+      });
+      var subject = form.getAttribute("data-subject") || "XI";
+      var note = form.querySelector(".form-note");
       if (note) note.classList.add("is-on");
-      form.reset();
       var mailto =
-        "mailto:deepdattax@gmail.com" +
-        "?subject=" + encodeURIComponent("XI inquiry") +
-        "&body=" + encodeURIComponent(body);
+        "mailto:" + to +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(lines.join("\n"));
       window.setTimeout(function () {
         window.location.href = mailto;
       }, 400);
     });
-  }
+  });
 })();
