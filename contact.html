@@ -3,10 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=contact.html">
-  <link rel="canonical" href="contact.html">
   <title>Contact — XI</title>
-  <meta name="description" content="Inquire has moved to Contact. Write to XI.">
+  <meta name="description" content="Write to XI. Shaun Moamem, XI Premier Productions. New York and the Hamptons.">
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <meta name="theme-color" content="#070a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,9 +29,37 @@
   <main id="main">
     <header class="page-head">
       <p class="eyebrow">Correspondence</p>
-      <h1 class="display">This page<br><em>has moved.</em></h1>
-      <p class="lede">Inquire is now Contact. <a href="contact.html">Continue to Contact</a>.</p>
+      <h1 class="display">Write us.<br><em>We write back.</em></h1>
+      <p class="lede">The house is small on purpose. If you already sit in rooms like this, write.</p>
     </header>
+
+    <section class="section">
+      <div class="prose">
+        <p><a href="mailto:Shaun@xipremierproductions.com">Shaun@xipremierproductions.com</a></p>
+        <p>Cell: <a href="tel:516-647-5078">516-647-5078</a></p>
+        <p><a href="mailto:info@xipremierproductions.com">info@xipremierproductions.com</a></p>
+      </div>
+
+      <form class="form wide" id="contact-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI contact" style="margin-top:3rem">
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="c-note">Note</label>
+          <textarea id="c-note" name="note" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-solid" type="submit">Send</button>
+          <p class="form-note" role="status">We’ll write back.</p>
+        </div>
+        <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
+      </form>
+    </section>
   </main>
 
   <footer class="site-footer">
