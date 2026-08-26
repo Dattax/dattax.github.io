@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img" aria-label="XI">
+  <rect width="800" height="800" fill="#070a0a"/>
+  <circle cx="400" cy="400" r="352" fill="#0c1212"/>
+  <circle cx="400" cy="400" r="352" fill="none" stroke="#e4c489" stroke-width="10"/>
+  <circle cx="400" cy="400" r="318" fill="none" stroke="#3fa8ae" stroke-width="7"/>
+  <!-- X: thick filled slashes, sand left / teal right -->
+  <polygon fill="#e4c489" points="198,214 236,196 430,418 392,436"/>
+  <polygon fill="#e4c489" points="198,586 236,604 430,382 392,364"/>
+  <polygon fill="#3fa8ae" points="392,196 430,214 236,436 198,418"/>
+  <polygon fill="#3fa8ae" points="392,604 430,586 236,364 198,382"/>
+  <!-- I: thick teal with flat serifs -->
+  <rect x="508" y="196" width="168" height="32" fill="#3fa8ae"/>
+  <rect x="576" y="196" width="32" height="408" fill="#3fa8ae"/>
+  <rect x="508" y="572" width="168" height="32" fill="#3fa8ae"/>
+</svg>
