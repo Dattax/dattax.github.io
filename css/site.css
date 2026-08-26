@@ -555,10 +555,6 @@ body::before {
   position: relative;
   overflow: hidden;
   background: var(--ink);
-  min-height: 28rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 .room-band.elsewhere > img {
   position: absolute;
