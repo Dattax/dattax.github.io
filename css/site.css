@@ -911,3 +911,16 @@ body.modal-open { overflow: hidden; }
     padding: 1.2rem 1.1rem calc(2rem + env(safe-area-inset-bottom));
   }
 }
+
+.section-center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.event-actions {
+  width: min(28rem, 100%);
+  margin: 0 auto;
+}
+.event-actions .sponsor-open { width: 100%; }
