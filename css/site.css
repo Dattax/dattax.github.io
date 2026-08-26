@@ -786,6 +786,15 @@ body::before {
 }
 /* Bio pane: image left, text right, pair centered.
    Desktop: photo column stretches to the full text height. */
+.page-about .section.bio-band {
+  max-width: none;
+  width: 100%;
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+  background:
+    linear-gradient(180deg, rgba(7,10,10,0.58) 0%, rgba(7,10,10,0.50) 42%, rgba(7,10,10,0.74) 100%),
+    url("../assets/bio-sky.jpg") 82% 88% / cover no-repeat;
+}
 .bio-row {
   display: grid;
   grid-template-columns: 16rem minmax(0, 36rem);
