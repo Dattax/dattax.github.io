@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
+  <link rel="preload" as="image" href="assets/rooms-fade.jpg">
 </head>
 <body>
   <a class="skip" href="#main">Skip to the house</a>
@@ -145,7 +146,8 @@
       </div>
     </section>
 
-    <section class="chapter proof">
+    <section class="chapter proof" id="rooms-opened">
+      <div class="proof-bg" aria-hidden="true"></div>
       <div class="chapter-inner">
         <p class="eyebrow">What we count</p>
         <h2 class="display">Rooms opened.<br><em>Not seats sold.</em></h2>
