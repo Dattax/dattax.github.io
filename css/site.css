@@ -1284,7 +1284,16 @@ body.modal-open { overflow: hidden; }
   }
   .service-cols:hover .col,
   .service-cols:hover .col:hover { flex: 1 1 auto; }
-  .service-cols .col { min-height: 16rem; }
+  .service-cols .col {
+    min-height: 0;
+    height: 20rem;
+  }
+  .service-cols .col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
   .service-cols .col + .col { box-shadow: inset 0 1px 0 rgba(228, 196, 137, 0.14); }
   .service-cols .copy p:not(.meta) { max-height: none; opacity: 1; }
   .service-cols h3 { font-size: 1.35rem; }
