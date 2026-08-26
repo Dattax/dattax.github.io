@@ -1057,7 +1057,7 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 799px) {
   .page-sponsorship .sponsor-open {
-    min-height: 0;
+    min-height: 11rem;
     padding: 1.15rem 1.35rem 1.05rem;
   }
   .page-sponsorship .sponsor-open .display {
