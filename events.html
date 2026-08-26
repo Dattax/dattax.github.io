@@ -136,11 +136,24 @@
       </div>
     </section>
 
-    <section class="section" id="curate">
+    <section class="section section-center" id="curate">
+      <div class="event-actions">
+        <button class="sponsor-open" type="button" data-modal="event-modal">
+          <span class="eyebrow">The list</span>
+          <span class="display">Need help<br><em>curating one?</em></span>
+          <span class="hint">Open the form</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="event-modal" hidden>
+    <div class="modal-backdrop" data-close tabindex="-1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
+      <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
       <p class="eyebrow">The list</p>
-      <h2 class="display">Need help<br><em>curating one?</em></h2>
-      <p class="lede">Tell us the night. We will write back.</p>
-      <form class="form wide" id="event-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI event questionnaire">
+      <h2 id="event-modal-title" class="display">Need help<br><em>curating one?</em></h2>
+      <form class="form" id="event-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI event questionnaire">
         <div class="field">
           <label for="ev-name">Event Name</label>
           <input id="ev-name" name="event-name" type="text" required>
@@ -205,15 +218,16 @@
           <label for="ev-logos">Logo files</label>
           <textarea id="ev-logos" name="logo-files" rows="3" placeholder="List file names or a note — do not attach here"></textarea>
         </div>
-        <p class="mail-fallback">Email logos to <a href="mailto:info@xipremierproductions.com">info@xipremierproductions.com</a>. GitHub Pages cannot host guest uploads. Once sent, logos can live with us in assets/event-logos/.</p>
+        <p class="mail-fallback">Email logos to <a href="mailto:info@xipremierproductions.com">info@xipremierproductions.com</a>.</p>
         <div class="form-actions">
           <button class="btn btn-solid" type="submit">Send</button>
           <p class="form-note" role="status">We’ll write back.</p>
         </div>
         <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
       </form>
-    </section>
-  </main>
+    </div>
+  </div>
+
 
   <footer class="site-footer">
     <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
