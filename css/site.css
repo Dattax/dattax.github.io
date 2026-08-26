@@ -310,6 +310,13 @@ body::before {
     linear-gradient(180deg, rgba(7,10,10,0.52) 0%, rgba(7,10,10,0.62) 42%, rgba(7,10,10,0.84) 100%),
     url("../assets/belief.jpg") 22% 92% / 165% auto no-repeat;
 }
+@media (max-width: 799px) {
+  .belief {
+    background:
+      linear-gradient(180deg, rgba(7,10,10,0.52) 0%, rgba(7,10,10,0.62) 42%, rgba(7,10,10,0.84) 100%),
+      url("../assets/belief.jpg") 82% 78% / cover no-repeat;
+  }
+}
 .belief .display { max-width: 16ch; }
 
 /* two rooms as lookbook */
