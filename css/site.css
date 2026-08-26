@@ -303,7 +303,7 @@ body::before {
 }
 .hero .eyebrow { color: var(--sand); margin-bottom: 0; }
 .hero .hero-logo { margin-bottom: 1.65rem; }
-.hero .hero-sub { margin: 0 0 2.15rem; }
+.hero .hero-sub { margin: 2.15rem 0 2.15rem; }
 
 .belief {
   background:
