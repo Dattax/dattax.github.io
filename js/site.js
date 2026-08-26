@@ -24,6 +24,43 @@
     });
   }
 
+  var lastFocus = null;
+  function closeModal(modal) {
+    if (!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.classList.remove("modal-open");
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    lastFocus = null;
+  }
+  function openModal(id, opener) {
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    document.querySelectorAll(".modal").forEach(function (m) {
+      if (m !== modal) closeModal(m);
+    });
+    lastFocus = opener || document.activeElement;
+    modal.hidden = false;
+    document.body.classList.add("modal-open");
+    var panel = modal.querySelector(".modal-panel");
+    var first = modal.querySelector(".modal-close, input, textarea, button");
+    if (first) first.focus();
+    if (panel) panel.scrollTop = 0;
+  }
+  document.querySelectorAll("[data-modal]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openModal(btn.getAttribute("data-modal"), btn);
+    });
+  });
+  document.querySelectorAll(".modal").forEach(function (modal) {
+    modal.addEventListener("click", function (e) {
+      if (e.target.closest("[data-close]")) closeModal(modal);
+    });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    document.querySelectorAll(".modal:not([hidden])").forEach(closeModal);
+  });
+
   document.querySelectorAll("form.form").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
