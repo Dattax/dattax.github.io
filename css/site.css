@@ -552,10 +552,32 @@ body::before {
 .room-band .lede { margin-top: 0.6rem; }
 
 .room-band.elsewhere {
-  background:
-    linear-gradient(90deg, rgba(7,10,10,0.88) 0%, rgba(7,10,10,0.5) 48%, rgba(7,10,10,0.22)),
-    url("../assets/world/elsewhere.jpg") center 40% / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+.room-band.elsewhere > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  z-index: 0;
+}
+.room-band.elsewhere::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,10,10,0.88) 0%, rgba(7,10,10,0.5) 48%, rgba(7,10,10,0.22));
+  z-index: 1;
+  pointer-events: none;
+}
+.room-band.elsewhere > :not(img) { position: relative; z-index: 2; }
 
 .principles {
   list-style: none;
@@ -954,13 +976,28 @@ body.modal-open { overflow: hidden; }
 
 
 /* Retreats: three tall equal boxes, one row, 25px gutters */
+.retreats-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.retreats-section .display { text-align: center; }
 .retreat-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 25px;
   margin-top: 2.4rem;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: min(72rem, 100%);
+  justify-content: center;
+  justify-items: stretch;
 }
+.retreat-card { text-align: left; }
 .retreat-card {
   border: 1px solid var(--hair-dim);
   padding: 1.5rem 1.4rem 1.4rem;
