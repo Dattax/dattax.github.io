@@ -452,6 +452,42 @@ body::before {
   line-height: 1.15;
 }
 .named-card p { margin: 0; color: var(--mute); font-size: 0.95rem; }
+.named-card.has-photo {
+  position: relative;
+  overflow: hidden;
+  min-height: 22rem;
+  padding: 0;
+  background: var(--ink);
+  justify-content: flex-end;
+}
+.named-card.has-photo > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.named-card.has-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7,10,10,0.18), rgba(7,10,10,0.78) 78%);
+  pointer-events: none;
+}
+.named-card.has-photo .meta {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 1.5rem 1.4rem 0;
+  color: var(--sand);
+}
+.named-card.has-photo > div {
+  position: relative;
+  z-index: 1;
+  padding: 1.1rem 1.4rem 1.4rem;
+}
+.named-card.has-photo p { color: var(--paper); }
+.named-card.has-photo a { color: var(--sand); }
 
 /* proof */
 .proof { background: var(--ink); }
