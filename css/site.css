@@ -1122,3 +1122,62 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 640px) {
   .retreat-grid { grid-template-columns: 1fr; }
 }
+
+/* ----- contact seal (click to reveal) ----- */
+.seal {
+  max-width: 22rem;
+  margin: 0;
+}
+.seal > summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  width: fit-content;
+  outline: none;
+}
+.seal > summary::-webkit-details-marker { display: none; }
+.seal > summary::marker { content: ""; }
+.seal > summary img {
+  width: min(16.5rem, 68vw);
+  height: auto;
+  border-radius: 50%;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.seal > summary:hover img,
+.seal > summary:focus-visible img {
+  opacity: 0.88;
+  transform: scale(1.02);
+}
+.seal[open] > summary img {
+  opacity: 0.55;
+  transform: scale(0.92);
+}
+.seal-hint {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.68rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--teal);
+  min-height: 1em;
+}
+.seal-hint::after { content: "Open"; }
+.seal[open] .seal-hint { color: var(--mute); }
+.seal[open] .seal-hint::after { content: "Close"; }
+.seal-card {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--hair-dim);
+  max-width: 28rem;
+}
+.seal-card p {
+  margin: 0 0 0.85rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--paper);
+}
+.seal-card p:last-child { margin-bottom: 0; }
+.seal-card a { color: var(--sand); }
+.seal-card a:hover { color: var(--cream); }
