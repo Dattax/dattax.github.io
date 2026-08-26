@@ -126,31 +126,61 @@
     <section class="section retreats-section">
       <p class="eyebrow">Retreats</p>
       <h2 class="display">When the house<br><em>leaves the map.</em></h2>
-      <div class="retreat-grid">
-        <article class="retreat-card has-photo">
-          <p class="meta">Destination · Dates follow the room</p>
-          <figure class="retreat-photo"><img src="assets/retreat-room-right.jpg" alt="A night cafe behind glass, the room reflected in water." width="576" height="864"></figure>
-          <div>
-            <h3>When the room is right</h3>
-            <p>Dates follow the room.</p>
-          </div>
-        </article>
-        <article class="retreat-card has-photo">
-          <p class="meta">Destination · Dates follow the room</p>
-          <figure class="retreat-photo"><img src="assets/retreat-leaves-map.jpg" alt="A night crowd under blue stage light." width="576" height="864"></figure>
-          <div>
-            <h3>The house leaves the map</h3>
-            <p>A few nights. No public list.</p>
-          </div>
-        </article>
-        <article class="retreat-card has-photo">
-          <p class="meta">Destination · Dates follow the room</p>
-          <figure class="retreat-photo"><img src="assets/retreat-off-map.jpg" alt="A white Rolls-Royce at night, off the map." width="576" height="864"></figure>
-          <div>
-            <h3>Off the map</h3>
-            <p>When the room is right, we go.</p>
-          </div>
-        </article>
+      <div class="table">
+        <div class="envelope" aria-hidden="true">
+          <svg viewBox="0 0 400 250" fill="none" stroke="currentColor" stroke-width="1.2">
+            <rect x="18" y="78" width="364" height="154"/>
+            <path d="M18 78 L200 18 L382 78"/>
+            <path d="M18 78 L200 168 L382 78"/>
+          </svg>
+        </div>
+
+        <div class="deck" id="deck">
+          <article class="pass" tabindex="0" role="button" aria-pressed="false">
+            <div class="pass-head"><span>Invitation</span><span class="no">XI — 01</span></div>
+            <figure class="photo">
+              <img src="assets/retreat-room-right.jpg" alt="A night cafe behind glass, the room reflected in water." width="576" height="864">
+            </figure>
+            <div class="copy">
+              <h2>When the room is right</h2>
+              <p>Dates follow the room.</p>
+            </div>
+            <div class="stub">
+              <p class="meta">Destination · Dates follow the room</p>
+              <span class="stamp" aria-hidden="true">XI</span>
+            </div>
+          </article>
+
+          <article class="pass" tabindex="0" role="button" aria-pressed="false">
+            <div class="pass-head"><span>Invitation</span><span class="no">XI — 02</span></div>
+            <figure class="photo">
+              <img src="assets/retreat-leaves-map.jpg" alt="A night crowd under blue stage light." width="576" height="864">
+            </figure>
+            <div class="copy">
+              <h2>The house leaves the map</h2>
+              <p>A few nights. No public list.</p>
+            </div>
+            <div class="stub">
+              <p class="meta">Destination · Dates follow the room</p>
+              <span class="stamp" aria-hidden="true">XI</span>
+            </div>
+          </article>
+
+          <article class="pass" tabindex="0" role="button" aria-pressed="false">
+            <div class="pass-head"><span>Invitation</span><span class="no">XI — 03</span></div>
+            <figure class="photo">
+              <img src="assets/retreat-off-map.jpg" alt="A white Rolls-Royce at night, off the map." width="576" height="864">
+            </figure>
+            <div class="copy">
+              <h2>Off the map</h2>
+              <p>When the room is right, we go.</p>
+            </div>
+            <div class="stub">
+              <p class="meta">Destination · Dates follow the room</p>
+              <span class="stamp" aria-hidden="true">XI</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -158,7 +188,7 @@
       <div class="event-actions">
         <button class="sponsor-open" type="button" data-modal="event-modal">
           <span class="eyebrow">The list</span>
-          <span class="display">Book the<br><em>team.</em></span>
+          <span class="display">Need help<br><em>curating one?</em></span>
           <span class="hint">Open the form</span>
         </button>
       </div>
@@ -170,7 +200,7 @@
     <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="event-modal-title">
       <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
       <p class="eyebrow">The list</p>
-      <h2 id="event-modal-title" class="display">Book the<br><em>team.</em></h2>
+      <h2 id="event-modal-title" class="display">Need help<br><em>curating one?</em></h2>
       <form class="form" id="event-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI event questionnaire">
         <div class="field">
           <label for="ev-name">Event Name</label>
@@ -252,7 +282,7 @@
     <div class="foot-row">
       <div>
         <p class="places">New York · Hamptons</p>
-        <p>Private events. Invitation only.</p>
+        <p>Private events. Invitation, not tickets.</p>
       </div>
       <p><a href="contact.html">Contact</a></p>
     </div>
