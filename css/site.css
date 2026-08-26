@@ -1052,7 +1052,7 @@ body.modal-open { overflow: hidden; }
 .retreat-card.has-photo .retreat-photo {
   flex: 1 1 auto;
   min-height: 0;
-  margin: 0.85rem 0;
+  margin: 0.4rem -0.9rem;
   overflow: hidden;
 }
 .retreat-card.has-photo .retreat-photo img {
