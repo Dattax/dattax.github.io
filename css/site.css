@@ -930,7 +930,18 @@ body.modal-open { overflow: hidden; }
   justify-content: center;
 }
 .event-actions {
-  width: min(28rem, 100%);
+  width: min(56rem, 100%);
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
-.event-actions .sponsor-open { width: 100%; }
+.event-actions .sponsor-open {
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (min-width: 800px) {
+  .event-actions .sponsor-open {
+    width: calc((56rem - 1.5rem) / 2);
+    max-width: calc((56rem - 1.5rem) / 2);
+  }
+}
