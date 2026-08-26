@@ -34,97 +34,116 @@
     </header>
 
     <section class="section">
-      <div class="form-pair">
-        <div>
-          <p class="eyebrow">Partnerships</p>
-          <h2 class="display" style="font-size:clamp(2rem,4.5vw,3.4rem)">Looking to<br><em>sponsor?</em></h2>
-          <form class="form" id="sponsor-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking to sponsor">
-            <div class="field">
-              <label for="sp-company">Company Name</label>
-              <input id="sp-company" name="company-name" type="text" required>
-            </div>
-            <div class="field">
-              <label for="sp-contact">Contact Name</label>
-              <input id="sp-contact" name="contact-name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="sp-email">Email</label>
-              <input id="sp-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="sp-phone">Phone</label>
-              <input id="sp-phone" name="phone" type="tel" autocomplete="tel">
-            </div>
-            <div class="field">
-              <label for="sp-what">What you want to sponsor</label>
-              <textarea id="sp-what" name="what-to-sponsor" rows="3"></textarea>
-            </div>
-            <div class="field">
-              <label for="sp-amount">Contribution amount</label>
-              <input id="sp-amount" name="contribution-amount" type="text">
-            </div>
-            <div class="field">
-              <label for="sp-note">Note</label>
-              <textarea id="sp-note" name="note" rows="3"></textarea>
-            </div>
-            <div class="form-actions">
-              <button class="btn btn-solid" type="submit">Send</button>
-              <p class="form-note" role="status">We’ll write back.</p>
-            </div>
-            <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
-          </form>
-        </div>
-
-        <div>
-          <p class="eyebrow">The list</p>
-          <h2 class="display" style="font-size:clamp(2rem,4.5vw,3.4rem)">Looking for<br><em>sponsorship?</em></h2>
-          <form class="form" id="seek-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking for sponsorship">
-            <div class="field">
-              <label for="sk-event">Event Name</label>
-              <input id="sk-event" name="event-name" type="text" required>
-            </div>
-            <div class="field">
-              <label for="sk-host">Host</label>
-              <input id="sk-host" name="host" type="text" required>
-            </div>
-            <div class="field">
-              <label for="sk-date">Date</label>
-              <input id="sk-date" name="date" type="text">
-            </div>
-            <div class="field">
-              <label for="sk-what">What you need sponsored</label>
-              <textarea id="sk-what" name="what-needed" rows="3"></textarea>
-            </div>
-            <div class="field">
-              <label for="sk-amount">Estimated amount</label>
-              <input id="sk-amount" name="estimated-amount" type="text">
-            </div>
-            <div class="field">
-              <label for="sk-contact">Contact Name</label>
-              <input id="sk-contact" name="contact-name" type="text" autocomplete="name" required>
-            </div>
-            <div class="field">
-              <label for="sk-email">Email</label>
-              <input id="sk-email" name="email" type="email" autocomplete="email" required>
-            </div>
-            <div class="field">
-              <label for="sk-phone">Phone</label>
-              <input id="sk-phone" name="phone" type="tel" autocomplete="tel">
-            </div>
-            <div class="field">
-              <label for="sk-note">Note</label>
-              <textarea id="sk-note" name="note" rows="3"></textarea>
-            </div>
-            <div class="form-actions">
-              <button class="btn btn-solid" type="submit">Send</button>
-              <p class="form-note" role="status">We’ll write back.</p>
-            </div>
-            <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
-          </form>
-        </div>
+      <div class="sponsor-actions">
+        <button class="sponsor-open" type="button" data-modal="sponsor-modal">
+          <span class="eyebrow">Partnerships</span>
+          <span class="display">Looking to<br><em>sponsor?</em></span>
+          <span class="hint">Open the form</span>
+        </button>
+        <button class="sponsor-open" type="button" data-modal="seek-modal">
+          <span class="eyebrow">The list</span>
+          <span class="display">Looking for<br><em>sponsorship?</em></span>
+          <span class="hint">Open the form</span>
+        </button>
       </div>
     </section>
   </main>
+
+  <div class="modal" id="sponsor-modal" hidden>
+    <div class="modal-backdrop" data-close tabindex="-1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="sponsor-modal-title">
+      <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
+      <p class="eyebrow">Partnerships</p>
+      <h2 id="sponsor-modal-title" class="display">Looking to<br><em>sponsor?</em></h2>
+      <form class="form" id="sponsor-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking to sponsor">
+        <div class="field">
+          <label for="sp-company">Company Name</label>
+          <input id="sp-company" name="company-name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="sp-contact">Contact Name</label>
+          <input id="sp-contact" name="contact-name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="sp-email">Email</label>
+          <input id="sp-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="sp-phone">Phone</label>
+          <input id="sp-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="sp-what">What you want to sponsor</label>
+          <textarea id="sp-what" name="what-to-sponsor" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="sp-amount">Contribution amount</label>
+          <input id="sp-amount" name="contribution-amount" type="text">
+        </div>
+        <div class="field">
+          <label for="sp-note">Note</label>
+          <textarea id="sp-note" name="note" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-solid" type="submit">Send</button>
+          <p class="form-note" role="status">We’ll write back.</p>
+        </div>
+        <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="seek-modal" hidden>
+    <div class="modal-backdrop" data-close tabindex="-1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="seek-modal-title">
+      <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
+      <p class="eyebrow">The list</p>
+      <h2 id="seek-modal-title" class="display">Looking for<br><em>sponsorship?</em></h2>
+      <form class="form" id="seek-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking for sponsorship">
+        <div class="field">
+          <label for="sk-event">Event Name</label>
+          <input id="sk-event" name="event-name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="sk-host">Host</label>
+          <input id="sk-host" name="host" type="text" required>
+        </div>
+        <div class="field">
+          <label for="sk-date">Date</label>
+          <input id="sk-date" name="date" type="text">
+        </div>
+        <div class="field">
+          <label for="sk-what">What you need sponsored</label>
+          <textarea id="sk-what" name="what-needed" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="sk-amount">Estimated amount</label>
+          <input id="sk-amount" name="estimated-amount" type="text">
+        </div>
+        <div class="field">
+          <label for="sk-contact">Contact Name</label>
+          <input id="sk-contact" name="contact-name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="sk-email">Email</label>
+          <input id="sk-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="sk-phone">Phone</label>
+          <input id="sk-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="sk-note">Note</label>
+          <textarea id="sk-note" name="note" rows="3"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-solid" type="submit">Send</button>
+          <p class="form-note" role="status">We’ll write back.</p>
+        </div>
+        <p class="mail-fallback">Or write directly: <a href="mailto:shaun@xipremierproductions.com">shaun@xipremierproductions.com</a></p>
+      </form>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
