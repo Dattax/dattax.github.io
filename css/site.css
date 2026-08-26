@@ -1268,3 +1268,28 @@ body.modal-open { overflow: hidden; }
   .service-cols .col img,
   .service-cols .copy p:not(.meta) { transition: none; }
 }
+
+/* Services: center the page-head only. Columns stay full-bleed. */
+.page-services .page-head {
+  align-items: center;
+  text-align: center;
+}
+.page-services .page-head .display,
+.page-services .page-head .eyebrow {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Sponsorship page-head: center the title block */
+.page-sponsorship .page-head {
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 80%, rgba(63,168,174,0.12), transparent 50%),
+    var(--ink);
+}
+.page-sponsorship .page-head .display,
+.page-sponsorship .page-head .eyebrow,
+.page-sponsorship .page-head .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
