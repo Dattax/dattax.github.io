@@ -1044,7 +1044,7 @@ body::before {
 .modal .field textarea { max-width: 100%; }
 body.modal-open { overflow: hidden; }
 @media (max-width: 640px) {
-  .sponsor-open { min-height: 12rem; padding: 1.5rem 1.25rem; }
+  .event-actions .sponsor-open { min-height: 12rem; padding: 1.5rem 1.25rem; }
   .modal { padding: 0; }
   .modal-panel {
     width: 100%;
@@ -1052,6 +1052,17 @@ body.modal-open { overflow: hidden; }
     border-left: 0;
     border-right: 0;
     padding: 1.2rem 1.1rem calc(2rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (max-width: 799px) {
+  .page-sponsorship .sponsor-open {
+    min-height: 0;
+    padding: 1.15rem 1.35rem 1.05rem;
+  }
+  .page-sponsorship .sponsor-open .display {
+    font-size: clamp(1.65rem, 7vw, 2.35rem);
+    margin: 0 0 0.4rem;
   }
 }
 
