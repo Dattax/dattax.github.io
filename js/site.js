@@ -89,3 +89,37 @@
     });
   });
 })();
+
+
+(function () {
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".retreats-section .pass"));
+  if (!cards.length) return;
+
+  function bring(card) {
+    cards.forEach(function (c) {
+      var on = c === card && !c.classList.contains("is-forward");
+      c.classList.toggle("is-forward", on);
+      c.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  cards.forEach(function (card) {
+    card.addEventListener("click", function (e) {
+      e.stopPropagation();
+      bring(card);
+    });
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        bring(card);
+      }
+    });
+  });
+
+  document.addEventListener("click", function () {
+    cards.forEach(function (c) {
+      c.classList.remove("is-forward");
+      c.setAttribute("aria-pressed", "false");
+    });
+  });
+})();
