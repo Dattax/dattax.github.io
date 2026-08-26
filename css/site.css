@@ -743,26 +743,32 @@ body::before {
   color: var(--teal);
   margin: 0;
 }
-/* Bio pane: image left, text right, the pair centered as one unit. */
+/* Bio pane: image left, text right, pair centered.
+   Desktop: photo column stretches to the full text height. */
 .bio-row {
   display: grid;
   grid-template-columns: 16rem minmax(0, 36rem);
   gap: 2.4rem;
-  align-items: start;
+  align-items: stretch;
   width: min(56rem, 100%);
   max-width: 56rem;
   margin: 0 auto;
   text-align: left;
 }
 .bio-portrait {
+  display: block;
   margin: 0;
   width: 100%;
   max-width: 16rem;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
 }
 .bio-portrait img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  object-position: center 18%;
   display: block;
 }
 .bio-row .prose {
@@ -774,6 +780,7 @@ body::before {
   .bio-row {
     grid-template-columns: 1fr;
     justify-items: center;
+    align-items: start;
     max-width: 36rem;
     gap: 1.5rem;
   }
@@ -781,7 +788,10 @@ body::before {
     margin: 0 auto;
     width: min(16.5rem, 78vw);
     max-width: 16.5rem;
+    height: auto;
+    min-height: 0;
   }
+  .bio-portrait img { height: auto; }
   .page-about .prose,
   .bio-row .prose { max-width: 100%; }
 }
