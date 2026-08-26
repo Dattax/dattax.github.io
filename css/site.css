@@ -1355,7 +1355,7 @@ body.modal-open { overflow: hidden; }
 
 .retreats-section .deck {
   position: relative;
-  width: min(52rem, 100%);
+  width: min(58rem, 100%);
   height: min(34rem, 68dvh);
   min-height: 28rem;
 }
@@ -1387,9 +1387,10 @@ body.modal-open { overflow: hidden; }
   transition: transform 0.62s cubic-bezier(.22, .7, .2, 1), box-shadow 0.62s ease, border-color 0.4s ease;
   overflow: hidden;
 }
-.retreats-section .pass:nth-child(1) { --r: -6deg; --x: -9.6rem; --y: 0.4rem; z-index: 1; }
-.retreats-section .pass:nth-child(2) { --r: 0deg; --x: 0px; --y: -0.35rem; z-index: 2; }
-.retreats-section .pass:nth-child(3) { --r: 6deg; --x: 9.6rem; --y: 0.55rem; z-index: 1; }
+.retreats-section .pass:nth-child(1) { --r: -8deg; --x: -12.4rem; --y: 0.5rem; z-index: 1; }
+.retreats-section .pass:nth-child(2) { --r: -2.6deg; --x: -4.15rem; --y: 0.05rem; z-index: 2; }
+.retreats-section .pass:nth-child(3) { --r: 2.6deg; --x: 4.15rem; --y: 0.1rem; z-index: 2; }
+.retreats-section .pass:nth-child(4) { --r: 8deg; --x: 12.4rem; --y: 0.55rem; z-index: 1; }
 
 .retreats-section .pass.is-forward {
   z-index: 8;
@@ -1526,8 +1527,10 @@ body.modal-open { overflow: hidden; }
 @media (max-width: 760px) {
   .retreats-section .deck { height: min(32rem, 64dvh); }
   .retreats-section .pass { width: min(15.6rem, 78vw); height: min(26.8rem, 70dvh); }
-  .retreats-section .pass:nth-child(1) { --x: -4.4rem; }
-  .retreats-section .pass:nth-child(3) { --x: 4.4rem; }
+  .retreats-section .pass:nth-child(1) { --x: -6.2rem; }
+  .retreats-section .pass:nth-child(2) { --x: -2.05rem; }
+  .retreats-section .pass:nth-child(3) { --x: 2.05rem; }
+  .retreats-section .pass:nth-child(4) { --x: 6.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
