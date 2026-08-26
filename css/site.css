@@ -490,7 +490,33 @@ body::before {
 .named-card.has-photo a { color: var(--sand); }
 
 /* proof */
-.proof { background: var(--ink); }
+.proof {
+  background: var(--ink);
+  overflow: hidden;
+}
+.proof-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    linear-gradient(90deg, rgba(7,10,10,0.82) 0%, rgba(7,10,10,0.55) 50%, rgba(7,10,10,0.64) 100%),
+    url("../assets/rooms-fade.jpg") center 42% / cover no-repeat;
+}
+.proof-bg.is-revealing {
+  animation: proofReveal 8s ease-in forwards;
+}
+@keyframes proofReveal {
+  from { opacity: 0; }
+  to { opacity: 0.72; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .proof-bg.is-revealing {
+    animation: none;
+    opacity: 0.72;
+  }
+}
 .proof-list {
   list-style: none;
   padding: 0;
