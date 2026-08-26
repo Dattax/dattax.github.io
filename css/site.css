@@ -308,7 +308,7 @@ body::before {
 .belief {
   background:
     linear-gradient(180deg, rgba(7,10,10,0.52) 0%, rgba(7,10,10,0.62) 42%, rgba(7,10,10,0.84) 100%),
-    url("../assets/belief.jpg") center 38% / cover no-repeat;
+    url("../assets/belief.jpg") 70% 55% / cover no-repeat;
 }
 .belief .display { max-width: 16ch; }
 
