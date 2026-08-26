@@ -1049,6 +1049,19 @@ body.modal-open { overflow: hidden; }
   line-height: 1.15;
 }
 .retreat-card p { margin: 0; color: var(--mute); font-size: 0.95rem; }
+.retreat-card.has-photo .retreat-photo {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0.85rem 0;
+  overflow: hidden;
+}
+.retreat-card.has-photo .retreat-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
 @media (max-width: 640px) {
   .retreat-grid { grid-template-columns: 1fr; }
 }
