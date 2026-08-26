@@ -123,3 +123,32 @@
     });
   });
 })();
+
+
+(function () {
+  var section = document.getElementById("rooms-opened");
+  if (!section) return;
+  var bg = section.querySelector(".proof-bg");
+  if (!bg) return;
+  var played = false;
+  function play() {
+    if (played) return;
+    played = true;
+    bg.classList.add("is-revealing");
+  }
+  function whenReady(fn) {
+    var img = new Image();
+    img.onload = img.onerror = fn;
+    img.src = "assets/rooms-fade.jpg";
+    if (img.complete) fn();
+  }
+  whenReady(function () {
+    if (!("IntersectionObserver" in window)) { play(); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { play(); io.disconnect(); }
+      });
+    }, { threshold: 0.28 });
+    io.observe(section);
+  });
+})();
