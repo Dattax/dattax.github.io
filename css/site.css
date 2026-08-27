@@ -1604,3 +1604,18 @@ body.modal-open { overflow: hidden; }
     margin-right: auto;
   }
 }
+
+.seal-card {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.seal-card p {
+  text-align: center;
+}
+
+.seal {
+  margin-left: auto;
+  margin-right: auto;
+}
