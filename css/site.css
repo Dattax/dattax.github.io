@@ -1656,3 +1656,177 @@ body.modal-open { overflow: hidden; }
 .page-contact .site-footer {
   text-align: initial;
 }
+/* ----- Season 2026 → Snapdragon Luxury Event Venues carousel ----- */
+.chapter.season.venues-study {
+  background: #070a0a;
+  justify-content: flex-start;
+  overflow: hidden;
+  min-height: 100svh;
+  padding-top: 8.5rem;
+  padding-bottom: 4.5rem;
+}
+.venues-study .chapter-inner {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.venues-study .lede {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: var(--paper);
+}
+
+.venues-slider-wrap {
+  width: 100%;
+  max-width: 1880px;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-bottom: 3.75rem;
+  min-height: 36rem;
+}
+
+.wedding-venues-section-slider {
+  margin: 2.75rem 0 1.5rem;
+  min-height: 500px;
+}
+.wedding-venues-section-slider .slick-list {
+  overflow: visible;
+}
+.wedding-venues-section-slider .slick-slide {
+  width: 300px;
+  height: 450px !important;
+  margin: 25px 10px 0;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.wedding-venues-section-slider .slick-slide.slick-active {
+  height: 500px !important;
+  margin-top: 0;
+  overflow: visible;
+}
+.wedding-venues-section-slider .slick-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+.wedding-venues-section-slider .slick-slide img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: 200%;
+  object-fit: cover;
+  opacity: 0.3;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.wedding-venues-section-slider .slick-slide.slick-active img {
+  opacity: 1;
+}
+.wedding-venues-section-slider .slick-slide.slick-active img:hover {
+  opacity: 0.9;
+}
+.wedding-venues-section-slider .slick-slide span {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 60%;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 26px;
+  color: var(--sand);
+  font-weight: 400;
+  text-align: center;
+  pointer-events: none;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.wedding-venues-section-slider .slick-slide.slick-active span {
+  opacity: 1;
+  top: calc(100% + 10px);
+}
+
+.wedding-venues-section-slider .slick-prev,
+.wedding-venues-section-slider .slick-next {
+  position: absolute;
+  display: block;
+  width: 15%;
+  height: auto;
+  bottom: -30px;
+  text-align: center;
+  z-index: 5;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+}
+.wedding-venues-section-slider .slick-prev { left: 24%; }
+.wedding-venues-section-slider .slick-next { right: 24%; }
+.wedding-venues-section-slider .slick-prev svg,
+.wedding-venues-section-slider .slick-next svg {
+  margin-top: 245px;
+  width: 56px;
+  height: 10px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.wedding-venues-section-slider .slick-prev .st0,
+.wedding-venues-section-slider .slick-next .st0 {
+  fill: none;
+  stroke: var(--sand);
+  stroke-miterlimit: 10;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.wedding-venues-section-slider .slick-prev .st1,
+.wedding-venues-section-slider .slick-next .st1 {
+  fill: var(--sand);
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.wedding-venues-section-slider .slick-prev:hover,
+.wedding-venues-section-slider .slick-next:hover {
+  cursor: pointer;
+}
+.wedding-venues-section-slider .slick-prev:hover .st0,
+.wedding-venues-section-slider .slick-next:hover .st0 {
+  stroke: var(--teal);
+}
+.wedding-venues-section-slider .slick-prev:hover .st1,
+.wedding-venues-section-slider .slick-next:hover .st1 {
+  fill: var(--teal);
+}
+
+@media only screen and (max-width: 1024px) {
+  .wedding-venues-section-slider .slick-next { right: 5%; }
+  .wedding-venues-section-slider .slick-prev { left: 5%; }
+  .wedding-venues-section-slider .slick-prev,
+  .wedding-venues-section-slider .slick-next { width: 22.5%; }
+}
+@media only screen and (max-width: 767px) {
+  .venues-study .display { font-size: clamp(2.2rem, 10vw, 3.4rem); }
+  .wedding-venues-section-slider .slick-next { right: 2%; }
+  .wedding-venues-section-slider .slick-prev { left: 2%; }
+}
+
+/* this study must keep the Snapdragon 0.4s slide even with reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .venues-study .wedding-venues-section-slider,
+  .venues-study .wedding-venues-section-slider *,
+  .venues-study .wedding-venues-section-slider *::before,
+  .venues-study .wedding-venues-section-slider *::after {
+    animation: unset !important;
+    transition: all 0.4s ease !important;
+  }
+}
