@@ -1830,3 +1830,9 @@ body.modal-open { overflow: hidden; }
     transition: all 0.4s ease !important;
   }
 }
+
+/* Contact form: Name/Email/Note fields 40% longer (44rem → 61.6rem) */
+.page-contact .form.wide {
+  max-width: 61.6rem;
+  width: min(61.6rem, 100%);
+}
