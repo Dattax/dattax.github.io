@@ -1855,8 +1855,8 @@ body.modal-open { overflow: hidden; }
   .pillar-cols .col { height: 20rem; }
 }
 
-/* Contact form: Name/Email/Note fields 40% longer (44rem → 61.6rem) */
+/* Contact form: Name/Email/Note fields 40% longer (61.6rem → 48.05rem) */
 .page-contact .form.wide {
-  max-width: 61.6rem;
-  width: min(61.6rem, 100%);
+  max-width: 48.05rem;
+  width: min(48.05rem, 100%);
 }
