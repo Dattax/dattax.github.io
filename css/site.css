@@ -1831,6 +1831,30 @@ body.modal-open { overflow: hidden; }
   }
 }
 
+/* Homepage Four things — Services-style hover panes */
+.chapter.pillars.pillars-services {
+  padding: 7.5rem 0 0;
+  min-height: 0;
+  display: block;
+  background: var(--ink);
+}
+.pillars-services .pillars-head {
+  padding: 0 var(--pad) 1.75rem;
+  max-width: 78rem;
+}
+.pillar-cols {
+  height: min(78svh, 46rem);
+  min-height: 32rem;
+}
+.pillar-cols .col { flex: 1 1 25%; }
+.pillar-cols:hover .col { flex: 0.72 1 16%; }
+.pillar-cols:hover .col:hover { flex: 2.2 1 50%; }
+@media (max-width: 800px) {
+  .chapter.pillars.pillars-services { padding-bottom: 0; }
+  .pillar-cols { height: auto; min-height: 0; }
+  .pillar-cols .col { height: 20rem; }
+}
+
 /* Contact form: Name/Email/Note fields 40% longer (44rem → 61.6rem) */
 .page-contact .form.wide {
   max-width: 61.6rem;
