@@ -1590,3 +1590,17 @@ body.modal-open { overflow: hidden; }
   .retreats-section .photo { height: 14rem; flex: none; }
   .retreats-section .envelope { display: none; }
 }
+@media (max-width: 800px) {
+  .seal {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .seal > summary {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
