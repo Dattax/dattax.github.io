@@ -152,3 +152,33 @@
     io.observe(section);
   });
 })();
+(function () {
+  if (typeof jQuery === "undefined" || !jQuery.fn.slick) return;
+  var $slider = jQuery(".wedding-venues-section-slider");
+  if (!$slider.length) return;
+
+  $slider.slick({
+    centerMode: true,
+    centerPadding: "60px",
+    slidesToShow: 1,
+    arrows: true,
+    draggable: true,
+    dots: false,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    adaptiveHeight: false,
+    variableWidth: true,
+    nextArrow: '<span class="slick-next"><svg viewBox="0 0 56 10" aria-hidden="true"><g><line class="st0" x1="0" y1="4.3" x2="51" y2="4.3"/><polygon class="st1" points="48.3,4.3 48.3,0 52,2.1 55.7,4.3 52,6.4 48.3,8.6"/></g></svg></span>',
+    prevArrow: '<span class="slick-prev"><svg viewBox="0 0 56 10" aria-hidden="true"><g><line class="st0" x1="55.7" y1="4.3" x2="4.8" y2="4.3"/><polygon class="st1" points="7.4,4.3 7.4,8.6 3.7,6.4 0,4.3 3.7,2.1 7.4,0"/></g></svg></span>',
+    infinite: true
+  });
+
+  function lockSideClicks() {
+    jQuery(".wedding-venues-section-slider .slick-slide a").off("click.venues").on("click.venues", function (e) {
+      e.preventDefault();
+    });
+    jQuery(".wedding-venues-section-slider .slick-slide.slick-active a").off("click.venues");
+  }
+  lockSideClicks();
+  $slider.on("afterChange", lockSideClicks);
+})();
