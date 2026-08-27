@@ -645,23 +645,15 @@ body::before {
   padding: 4.5rem var(--pad);
   border-top: 1px solid var(--hair-dim);
 }
-.room-band.nyc {
-  background:
-    linear-gradient(90deg, rgba(7,10,10,0.88) 0%, rgba(7,10,10,0.55) 48%, rgba(7,10,10,0.2)),
-    url("../assets/room-nyc.jpg") center / cover no-repeat;
-}
-.room-band.hamptons {
-  background:
-    linear-gradient(90deg, rgba(7,10,10,0.88) 0%, rgba(7,10,10,0.55) 48%, rgba(7,10,10,0.25)),
-    url("../assets/room-hamptons.jpg") center / cover no-repeat;
-}
-.room-band .lede { margin-top: 0.6rem; }
-
+.room-band.nyc,
+.room-band.hamptons,
 .room-band.elsewhere {
   position: relative;
   overflow: hidden;
   background: var(--ink);
 }
+.room-band.nyc > img,
+.room-band.hamptons > img,
 .room-band.elsewhere > img {
   position: absolute;
   inset: 0;
@@ -671,6 +663,8 @@ body::before {
   object-position: 50% 50%;
   z-index: 0;
 }
+.room-band.nyc::after,
+.room-band.hamptons::after,
 .room-band.elsewhere::after {
   content: "";
   position: absolute;
@@ -679,7 +673,10 @@ body::before {
   z-index: 1;
   pointer-events: none;
 }
+.room-band.nyc > :not(img),
+.room-band.hamptons > :not(img),
 .room-band.elsewhere > :not(img) { position: relative; z-index: 2; }
+.room-band .lede { margin-top: 0.6rem; }
 
 .principles {
   list-style: none;
@@ -911,6 +908,15 @@ body::before {
   object-position: center 18%;
   display: block;
 }
+.bio-portrait figcaption {
+  margin-top: 0.55rem;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sand);
+  text-align: center;
+}
 .bio-row .prose {
   width: 100%;
   max-width: none;
@@ -954,7 +960,12 @@ body::before {
   justify-items: stretch;
 }
 @media (min-width: 800px) {
-  .sponsor-actions { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .sponsor-actions {
+    grid-template-columns: repeat(2, calc((56rem - 1.5rem) / 2));
+    gap: 1.5rem;
+    width: auto;
+    max-width: 100%;
+  }
 }
 .sponsor-open {
   appearance: none;
@@ -1064,12 +1075,8 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 799px) {
   .page-sponsorship .sponsor-open {
-    min-height: 11rem;
-    padding: 1.15rem 1.35rem 1.05rem;
-  }
-  .page-sponsorship .sponsor-open .display {
-    font-size: clamp(1.65rem, 7vw, 2.35rem);
-    margin: 0 0 0.4rem;
+    min-height: 12rem;
+    padding: 1.5rem 1.25rem;
   }
   .page-sponsorship .section {
     padding-left: 0;
