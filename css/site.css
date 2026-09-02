@@ -647,16 +647,14 @@ body::before {
 }
 .room-band.nyc,
 .room-band.hamptons,
-.room-band.miami,
-.room-band.elsewhere {
+.room-band.miami {
   position: relative;
   overflow: hidden;
   background: var(--ink);
 }
 .room-band.nyc > img,
 .room-band.hamptons > img,
-.room-band.miami > img,
-.room-band.elsewhere > img {
+.room-band.miami > img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -667,8 +665,7 @@ body::before {
 }
 .room-band.nyc::after,
 .room-band.hamptons::after,
-.room-band.miami::after,
-.room-band.elsewhere::after {
+.room-band.miami::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -678,8 +675,7 @@ body::before {
 }
 .room-band.nyc > :not(img),
 .room-band.hamptons > :not(img),
-.room-band.miami > :not(img),
-.room-band.elsewhere > :not(img) { position: relative; z-index: 2; }
+.room-band.miami > :not(img) { position: relative; z-index: 2; }
 .room-band .lede { margin-top: 0.6rem; }
 
 .principles {
@@ -821,6 +817,10 @@ body::before {
 .page-about .page-head {
   align-items: center;
   text-align: center;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 7rem;
+  padding-bottom: 1.5rem;
 }
 .page-about .page-head .display,
 .page-about .page-head .eyebrow {
@@ -1871,3 +1871,18 @@ body.modal-open { overflow: hidden; }
   max-width: 48.05rem;
   width: min(48.05rem, 100%);
 }
+
+
+.page-contact .contact-direct {
+  margin-top: 2.6rem;
+  max-width: 28rem;
+}
+.page-contact .contact-direct p {
+  margin: 0 0 0.85rem;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--paper);
+}
+.page-contact .contact-direct p:last-child { margin-bottom: 0; }
+.page-contact .contact-direct a { color: var(--sand); }
+.page-contact .contact-direct a:hover { color: var(--cream); }
