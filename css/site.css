@@ -5,15 +5,15 @@
   --field: #0c1212;
   --petrol: #194141;
   --deep: #2c666a;
-  --teal: #3fa8ae;
-  --teal-mid: #2f8a8f;
-  --sand: #e4c489;
+  --teal: #40b0c0;
+  --teal-mid: #34909d;
+  --sand: #e7c3ac;
   --gold: #d7944e;
   --cream: #e8dcc4;
   --paper: #cfc3a8;
   --mute: #8a9a96;
-  --hair: rgba(228, 196, 137, 0.32);
-  --hair-dim: rgba(228, 196, 137, 0.14);
+  --hair: rgba(231, 195, 172, 0.32);
+  --hair-dim: rgba(231, 195, 172, 0.14);
   --serif: "Cormorant Garamond", "Iowan Old Style", Palatino, "Palatino Linotype", serif;
   --sans: "Jost", "Avenir Next", "Century Gothic", Futura, sans-serif;
   --pad: clamp(1.25rem, 5vw, 5.5rem);
@@ -1256,7 +1256,7 @@ body.modal-open { overflow: hidden; }
 }
 .service-cols:hover .col { flex: 0.72 1 13%; }
 .service-cols:hover .col:hover { flex: 2.1 1 42%; }
-.service-cols .col + .col { box-shadow: inset 1px 0 0 rgba(228, 196, 137, 0.14); }
+.service-cols .col + .col { box-shadow: inset 1px 0 0 rgba(231, 195, 172, 0.14); }
 .service-cols .col img {
   width: 100%;
   height: 100%;
@@ -1326,7 +1326,7 @@ body.modal-open { overflow: hidden; }
     object-fit: cover;
     object-position: center;
   }
-  .service-cols .col + .col { box-shadow: inset 0 1px 0 rgba(228, 196, 137, 0.14); }
+  .service-cols .col + .col { box-shadow: inset 0 1px 0 rgba(231, 195, 172, 0.14); }
   .service-cols .copy p:not(.meta) { max-height: none; opacity: 1; }
   .service-cols h3 { font-size: 1.35rem; }
 }
@@ -1364,12 +1364,12 @@ body.modal-open { overflow: hidden; }
 
 /* Retreats Study A — invitation deck. Scoped to .retreats-section only.
    Does not restyle .eyebrow / .display (live heading styles stay).
-   Deck tokens: #070a0a / #6098a0 / #dac6b9 on the table only. */
+   Deck tokens: #070a0a / #40b0c0 / #e7c3ac on the table only. */
 .retreats-section .table {
   --ink: #070a0a;
   --field: #0c1212;
-  --teal: #6098a0;
-  --sand: #dac6b9;
+  --teal: #40b0c0;
+  --sand: #e7c3ac;
   --cream: #e8dcc4;
   --mute: #8a9a96;
   --hair: rgba(218, 198, 185, 0.38);
