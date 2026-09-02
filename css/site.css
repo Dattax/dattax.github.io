@@ -1350,6 +1350,10 @@ body.modal-open { overflow: hidden; }
 .page-services .page-head {
   align-items: center;
   text-align: center;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 7rem;
+  padding-bottom: 1.5rem;
 }
 .page-services .page-head .display,
 .page-services .page-head .eyebrow {
