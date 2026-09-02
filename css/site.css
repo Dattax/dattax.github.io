@@ -646,13 +646,17 @@ body::before {
   border-top: 1px solid var(--hair-dim);
 }
 .room-band.nyc,
-.room-band.hamptons {
+.room-band.hamptons,
+.room-band.miami,
+.room-band.elsewhere {
   position: relative;
   overflow: hidden;
   background: var(--ink);
 }
 .room-band.nyc > img,
-.room-band.hamptons > img {
+.room-band.hamptons > img,
+.room-band.miami > img,
+.room-band.elsewhere > img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -662,7 +666,9 @@ body::before {
   z-index: 0;
 }
 .room-band.nyc::after,
-.room-band.hamptons::after {
+.room-band.hamptons::after,
+.room-band.miami::after,
+.room-band.elsewhere::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -671,7 +677,9 @@ body::before {
   pointer-events: none;
 }
 .room-band.nyc > :not(img),
-.room-band.hamptons > :not(img) { position: relative; z-index: 2; }
+.room-band.hamptons > :not(img),
+.room-band.miami > :not(img),
+.room-band.elsewhere > :not(img) { position: relative; z-index: 2; }
 .room-band .lede { margin-top: 0.6rem; }
 
 .principles {
@@ -1863,22 +1871,3 @@ body.modal-open { overflow: hidden; }
   max-width: 48.05rem;
   width: min(48.05rem, 100%);
 }
-
-
-/* Contact: form-only page (no Correspondence head, no cheval) */
-.page-contact #main .section {
-  padding-top: 8.5rem;
-}
-.page-contact .contact-direct {
-  margin-top: 2.6rem;
-  max-width: 28rem;
-}
-.page-contact .contact-direct p {
-  margin: 0 0 0.85rem;
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  color: var(--paper);
-}
-.page-contact .contact-direct p:last-child { margin-bottom: 0; }
-.page-contact .contact-direct a { color: var(--sand); }
-.page-contact .contact-direct a:hover { color: var(--cream); }
