@@ -647,6 +647,7 @@ body::before {
 }
 .room-band.nyc,
 .room-band.hamptons,
+.room-band.miami,
 .room-band.elsewhere {
   position: relative;
   overflow: hidden;
@@ -654,6 +655,7 @@ body::before {
 }
 .room-band.nyc > img,
 .room-band.hamptons > img,
+.room-band.miami > img,
 .room-band.elsewhere > img {
   position: absolute;
   inset: 0;
@@ -665,6 +667,7 @@ body::before {
 }
 .room-band.nyc::after,
 .room-band.hamptons::after,
+.room-band.miami::after,
 .room-band.elsewhere::after {
   content: "";
   position: absolute;
@@ -675,6 +678,7 @@ body::before {
 }
 .room-band.nyc > :not(img),
 .room-band.hamptons > :not(img),
+.room-band.miami > :not(img),
 .room-band.elsewhere > :not(img) { position: relative; z-index: 2; }
 .room-band .lede { margin-top: 0.6rem; }
 
