@@ -823,7 +823,10 @@ body::before {
   padding-bottom: 1.5rem;
 }
 
-.page-events .page-head {   align-items: center;   text-align: center; } .page-events .page-head .display, .page-events .page-head .eyebrow, .page-events .page-head .lede {   margin-left: auto;   margin-right: auto; }  .page-events [hidden] {   display: none !important; }  .page-about .chapter.close {
+.page-events .page-head {   align-items: center;   text-align: center; } .page-events .page-head .display, .page-events .page-head .eyebrow, .page-events .page-head .lede {   margin-left: auto;   margin-right: auto; }  .page-events [hidden] {   display: none !important; }
+.chapter[hidden] {
+  display: none !important;
+}  .page-about .chapter.close {
   min-height: 0;
   padding-top: 2.25rem;
   padding-bottom: 2.5rem;
