@@ -1645,6 +1645,10 @@ body.modal-open { overflow: hidden; }
 .page-contact .page-head {
   align-items: center;
   text-align: center;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 7rem;
+  padding-bottom: 1.5rem;
   background:
     radial-gradient(ellipse at 50% 80%, rgba(63,168,174,0.12), transparent 50%),
     var(--ink);
