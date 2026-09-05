@@ -65,10 +65,56 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var action = form.getAttribute("action") || "";
+      var note = form.querySelector(".form-note");
+      var btn = form.querySelector('button[type="submit"]');
+
+      function showNote(text, ok) {
+        if (!note) return;
+        if (text) note.textContent = text;
+        note.classList.add("is-on");
+        note.setAttribute("data-state", ok ? "ok" : "err");
+      }
+
+      // Server endpoint (GoDaddy PHP → Follow Up Boss)
+      if (action && !/^mailto:/i.test(action)) {
+        if (btn) btn.disabled = true;
+        var fd = new FormData(form);
+        fetch(action, {
+          method: "POST",
+          body: fd,
+          headers: { Accept: "application/json" },
+          credentials: "same-origin"
+        })
+          .then(function (res) {
+            return res.json().then(function (data) {
+              return { res: res, data: data };
+            }).catch(function () {
+              return { res: res, data: null };
+            });
+          })
+          .then(function (pack) {
+            if (btn) btn.disabled = false;
+            if (pack.res.ok && pack.data && pack.data.ok) {
+              form.reset();
+              showNote("Sent. We’ll write back.", true);
+            } else {
+              var err = (pack.data && pack.data.error) || "Could not send. Email us directly.";
+              showNote(err, false);
+            }
+          })
+          .catch(function () {
+            if (btn) btn.disabled = false;
+            showNote("Could not send. Email us directly.", false);
+          });
+        return;
+      }
+
+      // Legacy mailto fallback (Events / Sponsorship modals until wired)
       var to = action.replace(/^mailto:/i, "").split("?")[0] || "shaun@xipremierproductions.com";
       var lines = [];
       form.querySelectorAll("input, select, textarea").forEach(function (el) {
         if (!el.name) return;
+        if (el.name === "company") return;
         var label = "";
         if (el.id) {
           var lab = form.querySelector('label[for="' + el.id + '"]');
@@ -77,7 +123,6 @@
         lines.push((label || el.name) + ": " + (el.value || ""));
       });
       var subject = form.getAttribute("data-subject") || "XI";
-      var note = form.querySelector(".form-note");
       if (note) note.classList.add("is-on");
       var mailto =
         "mailto:" + to +
