@@ -2072,3 +2072,11 @@ body.modal-open { overflow: hidden; }
   color: var(--paper);
   font-size: 0.95rem;
 }
+
+/* About bio: portrait removed — single centered column (additive). */
+.page-about .bio-band .prose {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
