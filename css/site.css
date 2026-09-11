@@ -1903,3 +1903,11 @@ body.modal-open { overflow: hidden; }
 .page-contact .contact-direct p:last-child { margin-bottom: 0; }
 .page-contact .contact-direct a { color: var(--sand); }
 .page-contact .contact-direct a:hover { color: var(--cream); }
+
+/* About bio: portrait removed — single centered column (additive). */
+.page-about .bio-band .prose {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
