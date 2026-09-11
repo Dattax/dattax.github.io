@@ -227,3 +227,41 @@
   lockSideClicks();
   $slider.on("afterChange", lockSideClicks);
 })();
+
+(function () {
+  var root = document.querySelector(".hero-sizzle");
+  if (!root) return;
+  var btn = root.querySelector(".sizzle-play");
+  var video = root.querySelector(".sizzle-video");
+  if (!btn || !video) return;
+
+  function revealControls() {
+    video.setAttribute("controls", "");
+  }
+
+  function start() {
+    if (root.classList.contains("is-playing")) return;
+    root.classList.add("is-playing");
+    video.hidden = false;
+    revealControls();
+    video.setAttribute("playsinline", "");
+    video.playsInline = true;
+    var attempt = video.play();
+    if (attempt && attempt.catch) {
+      attempt.catch(function () {
+        video.muted = true;
+        return video.play();
+      }).catch(function () {
+        /* native controls remain so the guest can start playback */
+      });
+    }
+    try { video.focus(); } catch (e) {}
+  }
+
+  btn.addEventListener("click", start);
+  btn.addEventListener("keydown", function (e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    start();
+  });
+})();
