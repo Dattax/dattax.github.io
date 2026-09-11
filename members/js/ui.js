@@ -63,20 +63,29 @@
     slot.innerHTML =
       '<span class="who">' + escapeHtml(user.name) + "</span>" +
       '<button type="button" class="text-btn" data-signout>Sign out</button>';
-    var btn = slot.querySelector("[data-signout]");
-    if (btn) {
+  }
+
+  function bindSignOut() {
+    document.querySelectorAll("[data-signout]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         NS.auth.logout();
         window.location.href = "./";
       });
-    }
+    });
   }
 
   function bindAuthPages() {
     var page = document.body.getAttribute("data-members");
-    if (page === "gate" && NS.auth.current()) {
-      window.location.replace("calendar.html");
-      return;
+    if (page === "gate") {
+      var user = NS.auth.current();
+      var inn = document.querySelector("[data-gate-in]");
+      var out = document.querySelector("[data-gate-out]");
+      if (user && inn && out) {
+        out.hidden = true;
+        inn.hidden = false;
+        var who = inn.querySelector("[data-gate-who]");
+        if (who) who.textContent = user.name;
+      }
     }
     if (page === "calendar" && !NS.auth.require()) return;
 
@@ -145,5 +154,6 @@
     nav();
     sessionChrome();
     bindAuthPages();
+    bindSignOut();
   });
 })(window);

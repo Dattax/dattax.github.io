@@ -35,11 +35,20 @@
     <img class="hero-logo" src="assets/logo-hero.svg" width="776" height="558" alt="XI">
     <h1 class="display">The list<br><em>is written by hand.</em></h1>
     <p class="lede">A private calendar for people already on the list. Invitation, not a door that sells seats.</p>
-    <div class="gate-actions">
-      <a class="cta" href="login.html">Sign in</a>
-      <a class="cta" href="request-access.html">Request access</a>
+    <div data-gate-out>
+      <div class="gate-actions">
+        <a class="cta" href="login.html">Sign in</a>
+        <a class="cta" href="request-access.html">Request access</a>
+      </div>
+      <p class="demo-key">Prototype key: <code>member@xi.demo</code> / <code>xi-demo-2026</code></p>
     </div>
-    <p class="demo-key">Prototype key: <code>member@xi.demo</code> / <code>xi-demo-2026</code></p>
+    <div data-gate-in hidden>
+      <p class="lede">Welcome back, <span data-gate-who>member</span>.</p>
+      <div class="gate-actions">
+        <a class="cta" href="calendar.html">Open the book</a>
+        <button type="button" class="cta" data-signout>Sign out</button>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer members-footer">
