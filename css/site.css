@@ -266,29 +266,26 @@ body::before {
   text-align: center;
 }
 
-/* Home hero: copy left, portrait sizzle right. Stacks on a phone. */
-.hero .chapter-inner.hero-split {
+/* Eleven / belief: copy left, portrait sizzle right. Stacks on a phone. */
+.belief .chapter-inner.belief-split {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 2.4rem;
-  text-align: center;
+  max-width: 88rem;
 }
-.hero-copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+.belief-copy {
   min-width: 0;
+  max-width: var(--measure);
 }
-.hero-split .lede {
-  white-space: normal;
-}
-.hero-sizzle {
+.sizzle {
   margin: 0;
   position: relative;
-  width: min(17.25rem, 72vw);
+  height: calc(100svh - 12rem);
+  width: calc((100svh - 12rem) * 9 / 16);
+  max-height: 52rem;
+  max-width: min(29.25rem, 92vw);
   aspect-ratio: 9 / 16;
   flex: 0 0 auto;
   background: var(--ink);
@@ -300,7 +297,7 @@ body::before {
     0 22px 48px rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
-.hero-sizzle.is-playing {
+.sizzle.is-playing {
   border-color: var(--sand);
   box-shadow:
     0 0 0 1px rgba(215, 148, 78, 0.4),
@@ -355,28 +352,23 @@ body::before {
   opacity: 1;
   color: var(--cream);
 }
-.hero-sizzle.is-playing .sizzle-play { display: none; }
-.hero-sizzle.is-playing .sizzle-video { z-index: 1; }
+.sizzle.is-playing .sizzle-play { display: none; }
+.sizzle.is-playing .sizzle-video { z-index: 1; }
 
 @media (min-width: 900px) {
-  .hero .chapter-inner.hero-split {
+  .belief .chapter-inner.belief-split {
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: clamp(2rem, 5vw, 4.5rem);
   }
-  .hero-copy { flex: 1 1 0; }
-  .hero-sizzle {
-    width: min(20.5rem, 28vw);
-  }
-  .hero-split .lede {
-    white-space: normal;
-    max-width: 22rem;
-  }
+  .belief-copy { flex: 1 1 0; }
 }
 @media (max-width: 899px) {
-  .hero-sizzle {
-    width: min(16.5rem, 78vw);
+  .sizzle {
+    height: auto;
+    width: min(22rem, 86vw);
+    max-height: none;
   }
 }
 .hero-logo {

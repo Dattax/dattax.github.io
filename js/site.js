@@ -229,7 +229,7 @@
 })();
 
 (function () {
-  var root = document.querySelector(".hero-sizzle");
+  var root = document.querySelector(".sizzle");
   if (!root) return;
   var btn = root.querySelector(".sizzle-play");
   var video = root.querySelector(".sizzle-video");
