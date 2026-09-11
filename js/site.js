@@ -229,33 +229,25 @@
 })();
 
 (function () {
-  var root = document.querySelector(".hero-sizzle");
+  var root = document.querySelector(".sizzle");
   if (!root) return;
   var btn = root.querySelector(".sizzle-play");
-  var video = root.querySelector(".sizzle-video");
-  if (!btn || !video) return;
-
-  function revealControls() {
-    video.setAttribute("controls", "");
-  }
+  if (!btn) return;
+  var embed = root.getAttribute("data-embed") || "https://www.youtube.com/embed/g98kO672JeM";
 
   function start() {
     if (root.classList.contains("is-playing")) return;
     root.classList.add("is-playing");
-    video.hidden = false;
-    revealControls();
-    video.setAttribute("playsinline", "");
-    video.playsInline = true;
-    var attempt = video.play();
-    if (attempt && attempt.catch) {
-      attempt.catch(function () {
-        video.muted = true;
-        return video.play();
-      }).catch(function () {
-        /* native controls remain so the guest can start playback */
-      });
-    }
-    try { video.focus(); } catch (e) {}
+    var join = embed.indexOf("?") === -1 ? "?" : "&";
+    var frame = document.createElement("iframe");
+    frame.className = "sizzle-frame";
+    frame.title = "XI sizzle reel";
+    frame.src = embed + join + "autoplay=1&rel=0&modestbranding=1&playsinline=1";
+    frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    frame.setAttribute("allowfullscreen", "");
+    frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    root.appendChild(frame);
+    try { frame.focus(); } catch (e) {}
   }
 
   btn.addEventListener("click", start);
