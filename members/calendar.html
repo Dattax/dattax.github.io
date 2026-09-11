@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Calendar — XI Members</title>
+  <meta name="description" content="The XI members calendar. Season nights, and a mock reminder by text.">
+  <link rel="canonical" href="https://dattax.github.io/members/calendar.html">
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+  <meta name="theme-color" content="#070a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="css/members.css">
+</head>
+<body data-members="calendar">
+  <a class="skip" href="#main">Skip to the calendar</a>
+  <header class="site-header">
+    <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="site-nav" id="nav">
+      <a href="../about.html">About</a>
+      <a href="../events.html">Events</a>
+      <a href="../services.html">Services</a>
+      <a href="../sponsorship.html">Sponsorship</a>
+      <a class="cta" href="../contact.html">Contact</a>
+      <a class="is-here" href="./">Members</a>
+    </nav>
+  </header>
+
+  <main id="main" class="members-shell">
+    <div class="session-bar">
+      <div>
+        <p class="eyebrow">The book</p>
+        <p data-session></p>
+      </div>
+      <a href="./">The gate</a>
+    </div>
+
+    <header style="width:min(72rem,100%);text-align:left;margin-bottom:1.6rem">
+      <h1 class="display">Nights<br><em>held for you.</em></h1>
+      <p class="lede">Season 2026. Choose a date. Ask the house to text a reminder — a mock only.</p>
+    </header>
+
+    <div class="cal-layout">
+      <div>
+        <div class="cal-board" id="cal-root"></div>
+        <div id="cal-list" style="margin-top:1.5rem"></div>
+      </div>
+      <aside>
+        <p class="eyebrow">Coming</p>
+        <div id="cal-upcoming"></div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="modal" id="sms-modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="sms-heading">
+      <button class="modal-close" type="button" data-close>Close</button>
+      <p class="eyebrow">Reminder</p>
+      <h2 class="display" id="sms-heading">Text me<br><em>a reminder.</em></h2>
+      <p class="lede" data-sms-title></p>
+      <div class="sms-phone">
+        <p class="sms-from">XI</p>
+        <p class="sms-bubble" data-sms-body></p>
+        <p class="sms-sent" data-sms-sent hidden>Would have gone to <span data-sms-to></span>.</p>
+      </div>
+      <form class="form" id="sms-form" style="margin-top:1.4rem">
+        <div class="field">
+          <label for="sms-phone">Cell Phone</label>
+          <input id="sms-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="form-actions">
+          <button class="cta" type="submit">Text me a reminder</button>
+          <p class="form-note" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
+    <div class="foot-row">
+      <div>
+        <p class="places">New York · Hamptons · Miami</p>
+        <p>Private events. Invitation, not tickets.</p>
+      </div>
+      <p><a href="../contact.html">Contact</a></p>
+    </div>
+  </footer>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/calendar.js"></script>
+</body>
+</html>
