@@ -6,7 +6,7 @@
     var el = document.createElement("div");
     el.className = "xi-proto";
     el.setAttribute("role", "status");
-    el.textContent = "PROTOTYPE — NOT LIVE";
+    el.textContent = "Members Only";
     document.body.insertBefore(el, document.body.firstChild);
     document.body.classList.add("has-proto");
   }

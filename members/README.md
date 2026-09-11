@@ -6,7 +6,7 @@ Live path: `/members/`
 
 ## Banner
 
-Every members page injects a sticky bar: **PROTOTYPE — NOT LIVE**.
+Every members page injects a sticky bar: **Members Only**.
 
 ## Pages
 
