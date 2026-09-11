@@ -308,9 +308,9 @@ body::before {
 .sizzle-play {
   appearance: none;
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: 5px;
+  width: auto;
+  height: auto;
   padding: 0;
   border: 0;
   background: transparent;
@@ -323,15 +323,16 @@ body::before {
   outline-offset: -3px;
 }
 .sizzle-poster,
-.sizzle-video {
+.sizzle-frame {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: 0;
   display: block;
 }
-.sizzle-video[hidden] { display: none !important; }
+.sizzle-poster { object-fit: cover; }
+.sizzle-frame { inset: 5px; width: auto; height: auto; }
 .sizzle-play-mark {
   position: absolute;
   inset: 0;
@@ -353,7 +354,7 @@ body::before {
   color: var(--cream);
 }
 .sizzle.is-playing .sizzle-play { display: none; }
-.sizzle.is-playing .sizzle-video { z-index: 1; }
+.sizzle.is-playing .sizzle-frame { z-index: 1; }
 
 @media (min-width: 900px) {
   .belief .chapter-inner.belief-split {
