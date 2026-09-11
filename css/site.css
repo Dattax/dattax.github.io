@@ -149,6 +149,9 @@ body::before {
   align-items: center;
   gap: 2.1rem;
 }
+@media (max-width: 1100px) and (min-width: 721px) {
+  .site-nav { gap: 1.25rem; }
+}
 .site-nav a {
   font-size: 0.72rem;
   letter-spacing: 0.28em;
