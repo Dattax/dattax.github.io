@@ -1903,3 +1903,55 @@ body.modal-open { overflow: hidden; }
 .page-contact .contact-direct p:last-child { margin-bottom: 0; }
 .page-contact .contact-direct a { color: var(--sand); }
 .page-contact .contact-direct a:hover { color: var(--cream); }
+
+/* Events: four NYC nights. Additive list only — hidden room/retreat stacks stay hidden. */
+.page-events .nights {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 3.25rem;
+  padding-bottom: 2.5rem;
+  max-width: 40rem;
+}
+.page-events .night {
+  width: 100%;
+  border-top: 1px solid var(--hair-dim);
+  padding: 2.15rem 0 2rem;
+}
+.page-events .night:last-child {
+  border-bottom: 1px solid var(--hair-dim);
+}
+.page-events .night .eyebrow {
+  margin-bottom: 0.45rem;
+}
+.page-events .night .meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin: 0 0 0.75rem;
+}
+.page-events .night h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+  color: var(--cream);
+}
+.page-events .night .place {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 0.7rem;
+}
+.page-events .night p:last-child {
+  margin: 0 auto;
+  max-width: 28rem;
+  color: var(--paper);
+  font-size: 0.95rem;
+}
