@@ -289,18 +289,20 @@ body::before {
   aspect-ratio: 9 / 16;
   flex: 0 0 auto;
   background: var(--ink);
-  border: 1px solid var(--hair);
+  border: 1px solid rgba(231, 195, 172, 0.58);
   box-shadow:
     0 0 0 1px rgba(215, 148, 78, 0.28),
-    inset 0 0 0 1px rgba(231, 195, 172, 0.16),
+    inset 0 0 0 4px var(--ink),
+    inset 0 0 0 5px rgba(231, 195, 172, 0.38),
     0 22px 48px rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
 .hero-sizzle.is-playing {
   border-color: var(--sand);
   box-shadow:
-    0 0 0 1px rgba(231, 195, 172, 0.45),
-    inset 0 0 0 1px rgba(231, 195, 172, 0.2),
+    0 0 0 1px rgba(215, 148, 78, 0.4),
+    inset 0 0 0 4px var(--ink),
+    inset 0 0 0 5px rgba(231, 195, 172, 0.5),
     0 22px 48px rgba(0, 0, 0, 0.42);
 }
 .sizzle-play {
