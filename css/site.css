@@ -149,6 +149,9 @@ body::before {
   align-items: center;
   gap: 2.1rem;
 }
+@media (max-width: 1100px) and (min-width: 721px) {
+  .site-nav { gap: 1.25rem; }
+}
 .site-nav a {
   font-size: 0.72rem;
   letter-spacing: 0.28em;
@@ -261,6 +264,120 @@ body::before {
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* Home hero: copy left, portrait sizzle right. Stacks on a phone. */
+.hero .chapter-inner.hero-split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+  text-align: center;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+}
+.hero-split .lede {
+  white-space: normal;
+}
+.hero-sizzle {
+  margin: 0;
+  position: relative;
+  width: min(17.25rem, 72vw);
+  aspect-ratio: 9 / 16;
+  flex: 0 0 auto;
+  background: var(--ink);
+  border: 1px solid rgba(231, 195, 172, 0.58);
+  box-shadow:
+    0 0 0 1px rgba(215, 148, 78, 0.28),
+    inset 0 0 0 4px var(--ink),
+    inset 0 0 0 5px rgba(231, 195, 172, 0.38),
+    0 22px 48px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+.hero-sizzle.is-playing {
+  border-color: var(--sand);
+  box-shadow:
+    0 0 0 1px rgba(215, 148, 78, 0.4),
+    inset 0 0 0 4px var(--ink),
+    inset 0 0 0 5px rgba(231, 195, 172, 0.5),
+    0 22px 48px rgba(0, 0, 0, 0.42);
+}
+.sizzle-play {
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: var(--sand);
+  font: inherit;
+}
+.sizzle-play:focus-visible {
+  outline: 1px solid var(--sand);
+  outline-offset: -3px;
+}
+.sizzle-poster,
+.sizzle-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.sizzle-video[hidden] { display: none !important; }
+.sizzle-play-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--sand);
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(7,10,10,0.08), rgba(7,10,10,0.28));
+}
+.sizzle-play-mark svg {
+  width: 3.1rem;
+  height: 3.1rem;
+  filter: drop-shadow(0 2px 10px rgba(7, 10, 10, 0.65));
+  opacity: 0.92;
+}
+.sizzle-play:hover .sizzle-play-mark svg,
+.sizzle-play:focus-visible .sizzle-play-mark svg {
+  opacity: 1;
+  color: var(--cream);
+}
+.hero-sizzle.is-playing .sizzle-play { display: none; }
+.hero-sizzle.is-playing .sizzle-video { z-index: 1; }
+
+@media (min-width: 900px) {
+  .hero .chapter-inner.hero-split {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2rem, 5vw, 4.5rem);
+  }
+  .hero-copy { flex: 1 1 0; }
+  .hero-sizzle {
+    width: min(20.5rem, 28vw);
+  }
+  .hero-split .lede {
+    white-space: normal;
+    max-width: 22rem;
+  }
+}
+@media (max-width: 899px) {
+  .hero-sizzle {
+    width: min(16.5rem, 78vw);
+  }
 }
 .hero-logo {
   display: block;
@@ -1903,3 +2020,63 @@ body.modal-open { overflow: hidden; }
 .page-contact .contact-direct p:last-child { margin-bottom: 0; }
 .page-contact .contact-direct a { color: var(--sand); }
 .page-contact .contact-direct a:hover { color: var(--cream); }
+
+/* Events: four NYC nights. Additive list only — hidden room/retreat stacks stay hidden. */
+.page-events .nights {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 3.25rem;
+  padding-bottom: 2.5rem;
+  max-width: 40rem;
+}
+.page-events .night {
+  width: 100%;
+  border-top: 1px solid var(--hair-dim);
+  padding: 2.15rem 0 2rem;
+}
+.page-events .night:last-child {
+  border-bottom: 1px solid var(--hair-dim);
+}
+.page-events .night .eyebrow {
+  margin-bottom: 0.45rem;
+}
+.page-events .night .meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin: 0 0 0.75rem;
+}
+.page-events .night h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+  color: var(--cream);
+}
+.page-events .night .place {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 0.7rem;
+}
+.page-events .night p:last-child {
+  margin: 0 auto;
+  max-width: 28rem;
+  color: var(--paper);
+  font-size: 0.95rem;
+}
+
+/* About bio: portrait removed — single centered column (additive). */
+.page-about .bio-band .prose {
+  max-width: 36rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

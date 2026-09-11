@@ -1,0 +1,339 @@
+/* XI members — private-club invitation, prototype only. */
+
+.xi-proto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: #40b0c0;
+  color: #070a0a;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 0.62rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  padding: 0.55rem 1rem;
+  min-height: 2.15rem;
+}
+
+body.has-proto { padding-top: 2.15rem; }
+body.has-proto .site-header { top: 2.15rem; }
+@media (max-width: 720px) {
+  body.has-proto .site-header.is-open .site-nav { top: calc(100% + 0px); }
+}
+
+.members-shell {
+  min-height: 100svh;
+  padding: 8.6rem var(--pad) 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.members-shell .display { max-width: 16ch; }
+.members-shell .lede { margin: 0 auto 2rem; }
+
+.gate {
+  min-height: 100svh;
+  padding: 8.6rem var(--pad) 4.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 78%, rgba(64, 176, 192, 0.14), transparent 52%),
+    var(--ink);
+}
+
+.gate .hero-logo {
+  width: min(18rem, 58vw);
+  margin: 0.4rem auto 1.4rem;
+}
+
+.gate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+.demo-key {
+  margin-top: 2.2rem;
+  max-width: 28rem;
+  color: var(--mute);
+  font-size: 0.86rem;
+}
+
+.demo-key code {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--sand);
+}
+
+.invite-card {
+  width: min(32rem, 100%);
+  margin: 0 auto;
+  text-align: left;
+  border: 1px solid var(--hair-dim);
+  padding: 2rem 1.6rem 1.8rem;
+  background:
+    linear-gradient(180deg, rgba(25, 65, 65, 0.18), transparent 55%),
+    var(--field);
+}
+
+.invite-card .eyebrow { margin-bottom: 0.7rem; }
+.invite-card .display {
+  font-size: clamp(2.1rem, 5vw, 3.2rem);
+  margin-bottom: 0.85rem;
+}
+.invite-card .lede { margin-bottom: 1.6rem; }
+.invite-card .form { margin-top: 0.4rem; }
+.invite-card .form-note[data-state="err"] { color: var(--gold); }
+.invite-card .form-note[data-state="ok"] { color: var(--sand); }
+
+.auth-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.4rem;
+  margin-top: 1.4rem;
+  font-size: 0.86rem;
+}
+
+.session-bar {
+  width: min(72rem, 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 auto 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hair-dim);
+  text-align: left;
+}
+
+.session-bar [data-session] {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.15rem 1.4rem;
+  margin: 0.15rem 0 0;
+}
+
+.session-bar .who {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  color: var(--sand);
+}
+
+.text-btn {
+  appearance: none;
+  background: none;
+  border: 0;
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.4rem 0;
+  min-height: 44px;
+}
+
+.text-btn:hover { color: var(--sand); }
+
+.cal-layout {
+  width: min(72rem, 100%);
+  display: grid;
+  gap: 2.4rem;
+  text-align: left;
+}
+
+@media (min-width: 960px) {
+  .cal-layout { grid-template-columns: minmax(20rem, 1.1fr) minmax(16rem, 0.9fr); align-items: start; }
+}
+
+.cal-board {
+  border: 1px solid var(--hair-dim);
+  background: var(--field);
+  padding: 1.4rem 1.2rem 1.5rem;
+}
+
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 1.1rem;
+}
+
+.cal-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  margin: 0;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+
+.cal-title em {
+  font-style: italic;
+  color: var(--sand);
+}
+
+.cal-nav {
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--hair);
+  background: transparent;
+  color: var(--sand);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.cal-nav:hover {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.cal-dow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 0.45rem;
+}
+
+.cal-dow span {
+  text-align: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 0.2rem 0;
+}
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.cal-cell {
+  appearance: none;
+  min-height: 3.4rem;
+  border: 1px solid transparent;
+  background: rgba(7, 10, 10, 0.35);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  cursor: pointer;
+  position: relative;
+  padding: 0.45rem 0.2rem 0.7rem;
+}
+
+.cal-cell.is-empty {
+  background: transparent;
+  cursor: default;
+  pointer-events: none;
+}
+
+.cal-cell .num { display: block; }
+.cal-cell .dot {
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--teal);
+  transform: translateX(-50%);
+}
+
+.cal-cell.has-event { border-color: var(--hair-dim); }
+.cal-cell.is-today { color: var(--sand); }
+.cal-cell.is-selected,
+.cal-cell:hover:not(.is-empty) {
+  border-color: var(--sand);
+  color: var(--cream);
+}
+
+.night-card {
+  border: 1px solid var(--hair-dim);
+  padding: 1.3rem 1.2rem 1.25rem;
+  margin: 0 0 1rem;
+  background:
+    linear-gradient(180deg, rgba(25, 65, 65, 0.16), transparent 55%),
+    var(--ink);
+}
+
+.night-card .meta {
+  font-size: 0.68rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 0.55rem;
+}
+
+.night-card h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.65rem;
+  margin: 0 0 0.4rem;
+  line-height: 1.15;
+}
+
+.night-card p { margin: 0 0 0.7rem; color: var(--paper); }
+.night-card .when {
+  font-family: var(--serif);
+  color: var(--sand);
+  font-size: 1.15rem;
+}
+
+.sms-phone {
+  width: min(22rem, 100%);
+  margin: 1.2rem auto 0;
+  background: #101616;
+  border: 1px solid var(--hair);
+  border-radius: 1.4rem;
+  padding: 1rem 0.9rem 1.1rem;
+  text-align: left;
+}
+
+.sms-phone .sms-from {
+  font-size: 0.62rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 0.7rem;
+  text-align: center;
+}
+
+.sms-bubble {
+  background: #1c3232;
+  color: var(--cream);
+  border-radius: 1rem 1rem 1rem 0.25rem;
+  padding: 0.75rem 0.9rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.sms-sent {
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--mute);
+}
+
+.members-footer { margin-top: auto; }
+
+@media (max-width: 560px) {
+  .cal-cell { min-height: 2.7rem; font-size: 1rem; }
+  .invite-card { padding: 1.5rem 1.1rem 1.4rem; }
+}
