@@ -240,6 +240,8 @@
     root.classList.add("is-playing");
     var join = embed.indexOf("?") === -1 ? "?" : "&";
     var frame = document.createElement("iframe");
+    var viewport = document.createElement("div");
+    viewport.className = "sizzle-viewport";
     frame.className = "sizzle-frame";
     frame.title = "XI sizzle reel";
     frame.width = "315";
@@ -248,7 +250,8 @@
     frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     frame.setAttribute("allowfullscreen", "");
     frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
-    root.appendChild(frame);
+    viewport.appendChild(frame);
+    root.appendChild(viewport);
     try { frame.focus(); } catch (e) {}
   }
 
