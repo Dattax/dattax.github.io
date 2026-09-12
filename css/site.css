@@ -281,28 +281,31 @@ body::before {
   text-align: center;
 }
 
-/* Eleven / belief: copy left, portrait sizzle right. Stacks on a phone. */
+/* Eleven / belief: real two columns — copy left, portrait sizzle right. No overlap. */
 .belief .chapter-inner.belief-split {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2.4rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  justify-items: start;
+  gap: 2rem;
   max-width: 88rem;
 }
 .belief-copy {
   min-width: 0;
   max-width: var(--measure);
+  width: 100%;
 }
 .sizzle {
+  --sizzle-inset: 5px;
+  --sizzle-h: min(calc(100svh - 13rem), 44rem);
   margin: 0;
   position: relative;
-  height: calc(100svh - 12rem);
-  width: calc((100svh - 12rem) * 9 / 16);
-  max-height: 52rem;
-  max-width: min(29.25rem, 92vw);
+  box-sizing: border-box;
+  width: min(22rem, 86vw, 100%);
+  height: auto;
   aspect-ratio: 9 / 16;
-  flex: 0 0 auto;
+  max-height: var(--sizzle-h);
+  justify-self: start;
   background: var(--ink);
   border: 1px solid rgba(231, 195, 172, 0.58);
   box-shadow:
@@ -323,7 +326,7 @@ body::before {
 .sizzle-play {
   appearance: none;
   position: absolute;
-  inset: 5px;
+  inset: var(--sizzle-inset);
   width: auto;
   height: auto;
   padding: 0;
@@ -332,6 +335,7 @@ body::before {
   cursor: pointer;
   color: var(--sand);
   font: inherit;
+  overflow: hidden;
 }
 .sizzle-play:focus-visible {
   outline: 1px solid var(--sand);
@@ -340,14 +344,41 @@ body::before {
 .sizzle-poster,
 .sizzle-frame {
   position: absolute;
+  display: block;
+  border: 0;
+  /* Replaced elements (img / iframe) keep intrinsic ~300×150 if width/height are auto. */
+  max-width: none;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 42%;
+}
+.sizzle-poster {
   inset: 0;
   width: 100%;
   height: 100%;
-  border: 0;
-  display: block;
 }
-.sizzle-poster { object-fit: cover; }
-.sizzle-frame { inset: 5px; width: auto; height: auto; }
+/* Same inner box as the poster (.sizzle-play is inset 5px). */
+.sizzle-viewport {
+  position: absolute;
+  inset: var(--sizzle-inset);
+  overflow: hidden;
+}
+.sizzle-frame {
+  /* Fill the poster box first (never width/height auto — iframes shrink to 300×150). */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.sizzle.is-playing .sizzle-frame {
+  /* YouTube paints a 16:9 player. Size the iframe as 16:9 covering this 9:16
+     box (width = height × 16/9 = 256/81 of the portrait box) and crop the overflow. */
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: calc(100% * 256 / 81);
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
 .sizzle-play-mark {
   position: absolute;
   inset: 0;
@@ -369,22 +400,25 @@ body::before {
   color: var(--cream);
 }
 .sizzle.is-playing .sizzle-play { display: none; }
+.sizzle.is-playing .sizzle-viewport,
 .sizzle.is-playing .sizzle-frame { z-index: 1; }
 
 @media (min-width: 900px) {
   .belief .chapter-inner.belief-split {
-    flex-direction: row;
+    grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
-    gap: clamp(2rem, 5vw, 4.5rem);
+    justify-items: stretch;
+    column-gap: clamp(1.75rem, 4vw, 3.5rem);
+    row-gap: 0;
   }
-  .belief-copy { flex: 1 1 0; }
-}
-@media (max-width: 899px) {
+  .belief-copy { justify-self: start; }
   .sizzle {
+    /* Width from section height (9:16), then cap so the column cannot cover the copy. */
+    width: min(26rem, 38vw, calc(var(--sizzle-h) * 9 / 16));
     height: auto;
-    width: min(22rem, 86vw);
     max-height: none;
+    aspect-ratio: 9 / 16;
+    justify-self: end;
   }
 }
 .hero-logo {
