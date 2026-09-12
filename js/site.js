@@ -242,6 +242,8 @@
     var frame = document.createElement("iframe");
     frame.className = "sizzle-frame";
     frame.title = "XI sizzle reel";
+    frame.width = "315";
+    frame.height = "560";
     frame.src = embed + join + "autoplay=1&rel=0&modestbranding=1&playsinline=1";
     frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     frame.setAttribute("allowfullscreen", "");
