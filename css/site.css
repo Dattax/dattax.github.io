@@ -402,7 +402,18 @@ body::before {
 .sizzle.is-playing:not(.is-muted) .sizzle-play { display: none; }
 .sizzle.is-playing .sizzle-viewport,
 .sizzle.is-playing .sizzle-frame { z-index: 1; }
-.sizzle.is-playing.is-muted .sizzle-play { z-index: 2; }
+.sizzle.is-playing.is-muted .sizzle-play {
+  z-index: 3;
+  cursor: pointer;
+}
+.sizzle.is-playing.is-muted .sizzle-viewport,
+.sizzle.is-playing.is-muted .sizzle-frame {
+  pointer-events: none;
+}
+.sizzle.is-playing:not(.is-muted) .sizzle-viewport,
+.sizzle.is-playing:not(.is-muted) .sizzle-frame {
+  pointer-events: auto;
+}
 .sizzle.is-playing.is-muted .sizzle-poster {
   opacity: 0;
   pointer-events: none;
