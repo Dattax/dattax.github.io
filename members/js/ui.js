@@ -152,7 +152,7 @@
         var res = NS.auth.reset(fd.get("email"), fd.get("password"));
         if (!res.ok) return note(reset, res.error, false);
         reset.reset();
-        note(reset, "If that address is on the list, a new key is waiting. Sign in.", true);
+        note(reset, "If that address is on the list, a new password is waiting. Sign in.", true);
       });
     }
   }
