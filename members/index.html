@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../css/site.css?v=members-teal-2">
   <link rel="stylesheet" href="css/members.css">
 </head>
-<body data-members="home">
+<body data-members="gate">
   <a class="skip" href="#main">Skip to members</a>
   <header class="site-header">
     <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
@@ -30,45 +30,22 @@
     </nav>
   </header>
 
-  <main id="main">
-    <div class="gate" data-gate-out>
-      <p class="eyebrow">Members</p>
-      <img class="hero-logo" src="assets/logo-hero.svg" width="776" height="558" alt="XI">
-      <p class="lede">A private calendar for people already on the list.</p>
+  <main id="main" class="gate">
+    <p class="eyebrow">Members</p>
+    <img class="hero-logo" src="assets/logo-hero.svg" width="776" height="558" alt="XI">
+    <p class="lede">A private calendar for people already on the list.</p>
+    <div data-gate-out>
       <div class="gate-actions">
         <a class="cta" href="login.html">Sign in</a>
         <a class="cta" href="request-access.html">Request access</a>
       </div>
     </div>
-
-    <div class="club-shell" data-gate-in hidden>
-      <div class="session-bar">
-        <div>
-          <p class="eyebrow">The house</p>
-          <p data-session></p>
-        </div>
-        <a href="propose.html">Propose a night</a>
+    <div data-gate-in hidden>
+      <p class="lede">Welcome back, <span data-gate-who>member</span>.</p>
+      <div class="gate-actions">
+        <a class="cta" href="calendar.html">Open the book</a>
+        <button type="button" class="cta" data-signout>Sign out</button>
       </div>
-
-      <p class="eyebrow">Home</p>
-      <h1 class="display">Welcome back,<br><em data-who>member</em>.</h1>
-      <p class="lede">Credits for the season. Nights the desk has published.</p>
-
-      <div class="balance-card" id="you">
-        <div>
-          <p class="meta">Balance</p>
-          <p class="num" data-home-balance data-credits>0</p>
-        </div>
-        <a class="cta" href="credits.html">Buy credits</a>
-      </div>
-
-      <div class="home-actions">
-        <a class="cta" href="events.html">All nights</a>
-        <a class="cta" href="propose.html">Propose</a>
-      </div>
-
-      <p class="eyebrow">Next nights</p>
-      <div class="night-grid" id="home-nights"></div>
     </div>
   </main>
 
@@ -77,7 +54,7 @@
     <div class="foot-row">
       <div>
         <p class="places">New York · Hamptons · Miami</p>
-        <p>Private events and experiences. Invitation only.</p>
+        <p>Private events. Invitation, not tickets.</p>
       </div>
       <p><a href="../contact.html">Contact</a></p>
     </div>
@@ -85,6 +62,5 @@
   <script src="js/store.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/ui.js"></script>
-  <script src="js/club.js"></script>
 </body>
 </html>
