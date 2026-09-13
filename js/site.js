@@ -254,7 +254,7 @@
     frame.title = "XI sizzle reel";
     frame.width = "315";
     frame.height = "560";
-    frame.src = embed + join + "autoplay=1&mute=" + (muted ? "1" : "0") + "&rel=0&modestbranding=1&playsinline=1";
+    frame.src = embed + join + "autoplay=1&mute=" + (muted ? "1" : "0") + "&rel=0&modestbranding=1&playsinline=1&enablejsapi=1";
     frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     frame.setAttribute("allowfullscreen", "");
     frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
@@ -272,6 +272,9 @@
 
   mount(true);
 
+  root.addEventListener("click", function () {
+    if (root.classList.contains("is-muted")) unmute();
+  });
   btn.addEventListener("click", unmute);
   btn.addEventListener("keydown", function (e) {
     if (e.key !== "Enter" && e.key !== " ") return;
