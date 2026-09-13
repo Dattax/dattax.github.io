@@ -399,9 +399,14 @@ body::before {
   opacity: 1;
   color: var(--cream);
 }
-.sizzle.is-playing .sizzle-play { display: none; }
+.sizzle.is-playing:not(.is-muted) .sizzle-play { display: none; }
 .sizzle.is-playing .sizzle-viewport,
 .sizzle.is-playing .sizzle-frame { z-index: 1; }
+.sizzle.is-playing.is-muted .sizzle-play { z-index: 2; }
+.sizzle.is-playing.is-muted .sizzle-poster {
+  opacity: 0;
+  pointer-events: none;
+}
 
 @media (min-width: 900px) {
   .belief .chapter-inner.belief-split {
