@@ -77,6 +77,9 @@
 
       // Server endpoint (GoDaddy PHP → Follow Up Boss)
       if (action && !/^mailto:/i.test(action)) {
+        if (/\.github\.io$/i.test(location.hostname)) {
+          action = "https://xipremierproductions.com/lead.php";
+        }
         if (btn) btn.disabled = true;
         var fd = new FormData(form);
         fetch(action, {
@@ -109,12 +112,12 @@
         return;
       }
 
-      // Legacy mailto fallback (Events / Sponsorship modals until wired)
+      // mailto path (Contact)
       var to = action.replace(/^mailto:/i, "").split("?")[0] || "shaun@xipremierproductions.com";
       var lines = [];
       form.querySelectorAll("input, select, textarea").forEach(function (el) {
         if (!el.name) return;
-        if (el.name === "company") return;
+        if (el.name === "company" || el.name === "form_tag") return;
         var label = "";
         if (el.id) {
           var lab = form.querySelector('label[for="' + el.id + '"]');

@@ -117,30 +117,19 @@
     }
 
     var req = document.getElementById("request-form");
-    if (req) {
+    if (req && !(req.getAttribute("action") || "").trim()) {
       req.addEventListener("submit", function (e) {
         e.preventDefault();
         var fd = new FormData(req);
-        var payload = {
+        var res = NS.auth.requestAccess({
           name: fd.get("name"),
           email: fd.get("email"),
           phone: fd.get("phone"),
           note: fd.get("note")
-        };
-        var res = NS.auth.requestAccess(payload);
+        });
         if (!res.ok) return note(req, res.error, false);
-        var body = [
-          "Name: " + String(payload.name || "").trim(),
-          "Email: " + String(payload.email || "").trim(),
-          "Phone: " + String(payload.phone || "").trim(),
-          "Note: " + String(payload.note || "").trim()
-        ].join("\n");
-        var mail = "mailto:deepdattax@gmail.com" +
-          "?subject=" + encodeURIComponent("XI Members — access request") +
-          "&body=" + encodeURIComponent(body);
         req.reset();
         note(req, "Received. The house will write back.", true);
-        window.location.href = mail;
       });
     }
 
