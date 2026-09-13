@@ -293,7 +293,8 @@
       <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
       <p class="eyebrow">The list</p>
       <h2 id="event-modal-title" class="display">Need help<br><em>curating an event?</em></h2>
-      <form class="form" id="event-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI event questionnaire">
+      <form class="form" id="event-form" action="lead.php" method="post" data-subject="XI event questionnaire">
+        <input type="hidden" name="form_tag" value="xi-event">
         <div class="field">
           <label for="ev-name">Event Name</label>
           <input id="ev-name" name="event-name" type="text" required>

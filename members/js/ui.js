@@ -117,7 +117,7 @@
     }
 
     var req = document.getElementById("request-form");
-    if (req) {
+    if (req && !(req.getAttribute("action") || "").trim()) {
       req.addEventListener("submit", function (e) {
         e.preventDefault();
         var fd = new FormData(req);
