@@ -121,15 +121,26 @@
       req.addEventListener("submit", function (e) {
         e.preventDefault();
         var fd = new FormData(req);
-        var res = NS.auth.requestAccess({
+        var payload = {
           name: fd.get("name"),
           email: fd.get("email"),
           phone: fd.get("phone"),
           note: fd.get("note")
-        });
+        };
+        var res = NS.auth.requestAccess(payload);
         if (!res.ok) return note(req, res.error, false);
+        var body = [
+          "Name: " + String(payload.name || "").trim(),
+          "Email: " + String(payload.email || "").trim(),
+          "Phone: " + String(payload.phone || "").trim(),
+          "Note: " + String(payload.note || "").trim()
+        ].join("\n");
+        var mail = "mailto:deepdattax@gmail.com" +
+          "?subject=" + encodeURIComponent("XI Members — access request") +
+          "&body=" + encodeURIComponent(body);
         req.reset();
         note(req, "Received. The house will write back.", true);
+        window.location.href = mail;
       });
     }
 
@@ -141,7 +152,7 @@
         var res = NS.auth.reset(fd.get("email"), fd.get("password"));
         if (!res.ok) return note(reset, res.error, false);
         reset.reset();
-        note(reset, "If that address is on the list, a new key is waiting. Sign in.", true);
+        note(reset, "If that address is on the list, a new password is waiting. Sign in.", true);
       });
     }
   }
