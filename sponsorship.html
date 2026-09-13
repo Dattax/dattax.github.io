@@ -64,7 +64,8 @@
       <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
       <p class="eyebrow">Partnerships</p>
       <h2 id="sponsor-modal-title" class="display">Looking to<br><em>sponsor?</em></h2>
-      <form class="form" id="sponsor-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking to sponsor">
+      <form class="form" id="sponsor-form" action="lead.php" method="post" data-subject="XI — looking to sponsor">
+        <input type="hidden" name="form_tag" value="xi-sponsor">
         <div class="field">
           <label for="sp-company">Company Name</label>
           <input id="sp-company" name="company-name" type="text" required>
@@ -108,7 +109,8 @@
       <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
       <p class="eyebrow">The list</p>
       <h2 id="seek-modal-title" class="display">Looking for<br><em>sponsorship?</em></h2>
-      <form class="form" id="seek-form" action="mailto:shaun@xipremierproductions.com" method="post" enctype="text/plain" data-subject="XI — looking for sponsorship">
+      <form class="form" id="seek-form" action="lead.php" method="post" data-subject="XI — looking for sponsorship">
+        <input type="hidden" name="form_tag" value="xi-sponsor">
         <div class="field">
           <label for="sk-event">Event Name</label>
           <input id="sk-event" name="event-name" type="text" required>

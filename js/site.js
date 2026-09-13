@@ -77,6 +77,9 @@
 
       // Server endpoint (GoDaddy PHP → Follow Up Boss)
       if (action && !/^mailto:/i.test(action)) {
+        if (/\.github\.io$/i.test(location.hostname)) {
+          action = "https://xipremierproductions.com/lead.php";
+        }
         if (btn) btn.disabled = true;
         var fd = new FormData(form);
         fetch(action, {
@@ -109,12 +112,12 @@
         return;
       }
 
-      // Legacy mailto fallback (Events / Sponsorship modals until wired)
+      // mailto path (Contact)
       var to = action.replace(/^mailto:/i, "").split("?")[0] || "shaun@xipremierproductions.com";
       var lines = [];
       form.querySelectorAll("input, select, textarea").forEach(function (el) {
         if (!el.name) return;
-        if (el.name === "company") return;
+        if (el.name === "company" || el.name === "form_tag") return;
         var label = "";
         if (el.id) {
           var lab = form.querySelector('label[for="' + el.id + '"]');
@@ -235,9 +238,14 @@
   if (!btn) return;
   var embed = root.getAttribute("data-embed") || "https://www.youtube.com/embed/g98kO672JeM";
 
-  function start() {
-    if (root.classList.contains("is-playing")) return;
+  function mount(muted) {
+    var existing = root.querySelector(".sizzle-viewport");
+    if (existing) existing.parentNode.removeChild(existing);
+
     root.classList.add("is-playing");
+    root.classList.toggle("is-muted", muted);
+    btn.setAttribute("aria-label", muted ? "Unmute XI sizzle reel" : "Play XI sizzle reel");
+
     var join = embed.indexOf("?") === -1 ? "?" : "&";
     var frame = document.createElement("iframe");
     var viewport = document.createElement("div");
@@ -246,19 +254,28 @@
     frame.title = "XI sizzle reel";
     frame.width = "315";
     frame.height = "560";
-    frame.src = embed + join + "autoplay=1&rel=0&modestbranding=1&playsinline=1";
+    frame.src = embed + join + "autoplay=1&mute=" + (muted ? "1" : "0") + "&rel=0&modestbranding=1&playsinline=1";
     frame.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
     frame.setAttribute("allowfullscreen", "");
     frame.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
     viewport.appendChild(frame);
     root.appendChild(viewport);
-    try { frame.focus(); } catch (e) {}
+    if (!muted) {
+      try { frame.focus(); } catch (e) {}
+    }
   }
 
-  btn.addEventListener("click", start);
+  function unmute() {
+    if (!root.classList.contains("is-muted")) return;
+    mount(false);
+  }
+
+  mount(true);
+
+  btn.addEventListener("click", unmute);
   btn.addEventListener("keydown", function (e) {
     if (e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
-    start();
+    unmute();
   });
 })();

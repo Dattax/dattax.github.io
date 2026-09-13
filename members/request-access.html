@@ -35,7 +35,8 @@
       <p class="eyebrow">The house</p>
       <h1 class="display">Ask to be<br><em>written in.</em></h1>
       <p class="lede">Leave a name. Someone who sat will usually be the reason we write back.</p>
-      <form class="form" id="request-form">
+      <form class="form" id="request-form" action="https://xipremierproductions.com/lead.php" method="post" data-subject="XI members request">
+        <input type="hidden" name="form_tag" value="xi-members-request">
         <div class="field">
           <label for="name">Full Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required>
@@ -49,7 +50,7 @@
           <input id="phone" name="phone" type="tel" autocomplete="tel">
         </div>
         <div class="field">
-          <label for="note">Who asked you to write</label>
+          <label for="note">Anything else you want to tell us</label>
           <textarea id="note" name="note" rows="3"></textarea>
         </div>
         <div class="form-actions">
@@ -74,6 +75,7 @@
       <p><a href="../contact.html">Contact</a></p>
     </div>
   </footer>
+  <script src="../js/site.js"></script>
   <script src="js/store.js"></script>
   <script src="js/auth.js"></script>
   <script src="js/ui.js"></script>
