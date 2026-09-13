@@ -276,6 +276,14 @@
       return "<li><span>" + esc(g.name) + "</span><em>+1 · " + esc(names[g.hostEmail] || "guest") + "</em></li>";
     }));
 
+    var actions =
+      '<div class="event-actions" id="event-actions">' +
+        (going
+          ? '<p class="form-note is-on" data-state="ok">You are on the list.</p>'
+          : '<button type="button" class="cta" data-rsvp>RSVP</button>') +
+        '<button type="button" class="cta" data-pay-night>Pay with card</button>' +
+      "</div>";
+
     root.innerHTML =
       '<figure class="event-cover">' +
         '<img src="' + esc(ev.cover) + '" alt="" width="1600" height="900">' +
@@ -288,12 +296,7 @@
       '<div class="event-body">' +
         '<p class="lede">' + esc(ev.blurb) + "</p>" +
         '<p class="event-cost">One credit. The house holds ' + esc(String(creditOf(user))) + " for you.</p>" +
-        '<div class="event-actions">' +
-          (going
-            ? '<p class="form-note is-on" data-state="ok">You’re on the list.</p>'
-            : '<button type="button" class="cta" data-rsvp>RSVP</button>') +
-          '<button type="button" class="cta" data-pay-night>Pay with card</button>' +
-        "</div>" +
+        actions +
         '<p class="form-note" id="event-note" role="status"></p>' +
         "<section>" +
           '<p class="eyebrow">The list</p>' +
@@ -331,9 +334,10 @@
       noteEl.setAttribute("data-state", ok ? "ok" : "err");
     }
 
-    var rsvpBtn = root.querySelector("[data-rsvp]");
-    if (rsvpBtn) {
-      rsvpBtn.addEventListener("click", function () {
+    root.querySelectorAll("[data-rsvp]").forEach(function (rsvpBtn) {
+      rsvpBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         var res = rsvp(NS.auth.current(), ev);
         if (!res.ok) {
           shout(res.error + " Buy credits, or pay the night.", false);
@@ -342,7 +346,7 @@
         renderEvent();
         refreshCredits();
       });
-    }
+    });
 
     var payBtn = root.querySelector("[data-pay-night]");
     if (payBtn) {

@@ -200,12 +200,17 @@
   ];
 
   var SEED_MEDIA = [
+    { id: "m-seed-0", eventId: "pickleball", email: "house", src: "assets/music.jpg", name: "The court after", at: 0 },
+    { id: "m-seed-0b", eventId: "pickleball", email: "house", src: "assets/night.jpg", name: "Drinks", at: 1 },
     { id: "m-seed-1", eventId: "high-floor", email: "house", src: "assets/rooftop.jpg", name: "The terrace", at: 1 },
     { id: "m-seed-2", eventId: "high-floor", email: "house", src: "assets/dining.jpg", name: "The table", at: 2 },
     { id: "m-seed-3", eventId: "harbor", email: "house", src: "assets/hamptons.jpg", name: "East End", at: 3 },
     { id: "m-seed-4", eventId: "warm-night", email: "house", src: "assets/miami.jpg", name: "The bay", at: 4 },
     { id: "m-seed-5", eventId: "ledger", email: "house", src: "assets/dining.jpg", name: "After the tape", at: 5 },
-    { id: "m-seed-6", eventId: "casino", email: "house", src: "assets/night.jpg", name: "Low light", at: 6 }
+    { id: "m-seed-6", eventId: "casino", email: "house", src: "assets/night.jpg", name: "Low light", at: 6 },
+    { id: "m-seed-7", eventId: "othership", email: "house", src: "assets/dining.jpg", name: "After the plunge", at: 7 },
+    { id: "m-seed-8", eventId: "holiday", email: "house", src: "assets/house.jpg", name: "The close", at: 8 },
+    { id: "m-seed-9", eventId: "bay-table", email: "house", src: "assets/miami.jpg", name: "The window", at: 9 }
   ];
 
   function read(key, fallback) {
