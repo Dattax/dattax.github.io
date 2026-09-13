@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Propose a night — XI Members</title>
+  <meta name="description" content="Members propose a night. The desk publishes.">
+  <link rel="canonical" href="https://dattax.github.io/members/propose.html">
+  <link rel="icon" href="../assets/favicon.png" type="image/png">
+  <meta name="theme-color" content="#070a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/site.css?v=members-teal-2">
+  <link rel="stylesheet" href="css/members.css">
+</head>
+<body data-members="propose">
+  <a class="skip" href="#main">Skip to propose</a>
+  <header class="site-header">
+    <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="site-nav" id="nav">
+      <a href="../about.html">About</a>
+      <a href="../events.html">Events</a>
+      <a href="../services.html">Services</a>
+      <a href="../sponsorship.html">Sponsorship</a>
+      <a class="cta" href="../contact.html">Contact</a>
+      <a class="cta cta-members is-here" href="./">Members</a>
+    </nav>
+  </header>
+
+  <main id="main" class="club-shell">
+    <div class="session-bar">
+      <div>
+        <p class="eyebrow">Propose</p>
+        <p data-session></p>
+      </div>
+      <a href="events.html">Nights</a>
+    </div>
+
+    <h1 class="display">A night<br><em>you would sit.</em></h1>
+    <p class="lede">Members propose. The desk designs and publishes. Nothing you send here goes live until an admin writes it onto the book.</p>
+
+    <form class="form" id="propose-form">
+      <div class="field">
+        <label for="title">Name of the night</label>
+        <input id="title" name="title" type="text" required>
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <select id="city" name="city" required>
+          <option value="New York">New York</option>
+          <option value="Hamptons">Hamptons</option>
+          <option value="Miami">Miami</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="date">Date</label>
+        <input id="date" name="date" type="date" required>
+      </div>
+      <div class="field">
+        <label for="time">Hour</label>
+        <input id="time" name="time" type="text" placeholder="9:00 PM">
+      </div>
+      <div class="field">
+        <label>Cover</label>
+        <div class="cover-row" id="propose-covers"></div>
+      </div>
+      <div class="field">
+        <label for="note">Why this room</label>
+        <textarea id="note" name="note" rows="3"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="cta" type="submit">Send to the desk</button>
+        <p class="form-note" role="status"></p>
+      </div>
+    </form>
+
+    <section style="margin-top:2.8rem">
+      <p class="eyebrow">Yours</p>
+      <div id="my-proposals"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer members-footer">
+    <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
+    <div class="foot-row">
+      <div>
+        <p class="places">New York · Hamptons · Miami</p>
+        <p>Private events and experiences. Invitation only.</p>
+      </div>
+      <p><a href="../contact.html">Contact</a></p>
+    </div>
+  </footer>
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/club.js"></script>
+</body>
+</html>

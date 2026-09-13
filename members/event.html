@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
-  <title>Members — XI</title>
-  <meta name="description" content="The XI members house. Credits, nights, and a list written for people already on it.">
-  <link rel="canonical" href="https://dattax.github.io/members/">
+  <title>Night — XI Members</title>
+  <meta name="description" content="An XI member night. Cover, RSVP, guest list, media, pay.">
+  <link rel="canonical" href="https://dattax.github.io/members/event.html">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <meta name="theme-color" content="#070a0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="../css/site.css?v=members-teal-2">
   <link rel="stylesheet" href="css/members.css">
 </head>
-<body data-members="home">
-  <a class="skip" href="#main">Skip to members</a>
+<body data-members="event">
+  <a class="skip" href="#main">Skip to the night</a>
   <header class="site-header">
     <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
@@ -30,48 +30,15 @@
     </nav>
   </header>
 
-  <main id="main">
-    <div class="gate" data-gate-out>
-      <p class="eyebrow">Members</p>
-      <img class="hero-logo" src="assets/logo-hero.svg" width="776" height="558" alt="XI">
-      <h1 class="display">Already<br><em>on the list.</em></h1>
-      <p class="lede">A private house for people written in. Request access, or sign in if the desk already holds your name.</p>
-      <div class="gate-actions">
-        <a class="cta" href="login.html">Sign in</a>
-        <a class="cta" href="request-access.html">Request access</a>
+  <main id="main" class="club-shell">
+    <div class="session-bar">
+      <div>
+        <p class="eyebrow">A night</p>
+        <p data-session></p>
       </div>
-      <p class="demo-key">Demo: <code>member@xi.demo</code> / <code>xi-demo-2026</code></p>
+      <a href="events.html">All nights</a>
     </div>
-
-    <div class="club-shell" data-gate-in hidden>
-      <div class="session-bar">
-        <div>
-          <p class="eyebrow">The house</p>
-          <p data-session></p>
-        </div>
-        <a href="propose.html">Propose a night</a>
-      </div>
-
-      <p class="eyebrow">Home</p>
-      <h1 class="display">Welcome back,<br><em data-who>member</em>.</h1>
-      <p class="lede">Credits for the season. Nights the desk has published.</p>
-
-      <div class="balance-card" id="you">
-        <div>
-          <p class="meta">Balance</p>
-          <p class="num" data-home-balance data-credits>0</p>
-        </div>
-        <a class="cta" href="credits.html">Buy credits</a>
-      </div>
-
-      <div class="home-actions">
-        <a class="cta" href="events.html">All nights</a>
-        <a class="cta" href="propose.html">Propose</a>
-      </div>
-
-      <p class="eyebrow">Next nights</p>
-      <div class="night-grid" id="home-nights"></div>
-    </div>
+    <div id="event-root"></div>
   </main>
 
   <footer class="site-footer members-footer">
