@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
   <title>Request access — XI Members</title>
-  <meta name="description" content="Ask the XI house to write you onto the members list. Prototype only.">
+  <meta name="description" content="Ask the XI house to write you onto the members list.">
   <link rel="canonical" href="https://dattax.github.io/members/request-access.html">
   <link rel="icon" href="../assets/favicon.png" type="image/png">
   <meta name="theme-color" content="#070a0a">
@@ -34,9 +34,8 @@
     <div class="invite-card">
       <p class="eyebrow">The house</p>
       <h1 class="display">Ask to be<br><em>written in.</em></h1>
-      <p class="lede">Leave a name. Someone who sat will usually be the reason we write back.</p>
-      <form class="form" id="request-form" action="https://xipremierproductions.com/lead.php" method="post" data-subject="XI members request">
-        <input type="hidden" name="form_tag" value="xi-members-request">
+      <p class="lede">Leave a name. Someone who sat will usually be the reason we write back. The desk approves; this page only holds the request.</p>
+      <form class="form" id="request-form">
         <div class="field">
           <label for="name">Full Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required>
@@ -50,7 +49,11 @@
           <input id="phone" name="phone" type="tel" autocomplete="tel">
         </div>
         <div class="field">
-          <label for="note">Anything else you want to tell us</label>
+          <label for="company">Company</label>
+          <input id="company" name="company" type="text" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="note">Who asked you to write</label>
           <textarea id="note" name="note" rows="3"></textarea>
         </div>
         <div class="form-actions">
@@ -70,7 +73,7 @@
     <div class="foot-row">
       <div>
         <p class="places">New York · Hamptons · Miami</p>
-        <p>Private events. Invitation, not tickets.</p>
+        <p>Private events and experiences. Invitation only.</p>
       </div>
       <p><a href="../contact.html">Contact</a></p>
     </div>
