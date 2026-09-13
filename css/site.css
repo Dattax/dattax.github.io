@@ -997,7 +997,23 @@ body::before {
   padding-bottom: 1.5rem;
 }
 
-.page-events .page-head {   align-items: center;   text-align: center; } .page-events .page-head .display, .page-events .page-head .eyebrow, .page-events .page-head .lede {   margin-left: auto;   margin-right: auto; }  .page-events [hidden] {   display: none !important; }
+.page-events .page-head {
+  align-items: center;
+  text-align: center;
+  min-height: 0;
+  justify-content: flex-start;
+  padding-top: 8.25rem;
+  padding-bottom: 0.75rem;
+}
+.page-events .page-head .display,
+.page-events .page-head .eyebrow,
+.page-events .page-head .lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+.page-events [hidden] {
+  display: none !important;
+}
 .chapter[hidden] {
   display: none !important;
 }  .page-about .chapter.close {
@@ -2104,20 +2120,20 @@ body.modal-open { overflow: hidden; }
   display: flex;
   flex-direction: column;
   padding: 1.7rem 1.6rem 1.55rem;
-  border: 1px solid rgba(64, 176, 192, 0.28);
+  border: 1px solid rgba(64, 176, 192, 0.42);
   border-radius: 4px;
   background:
-    linear-gradient(180deg, rgba(25, 65, 65, 0.34), rgba(12, 18, 18, 0.42) 46%),
+    linear-gradient(180deg, rgba(25, 65, 65, 0.42), rgba(12, 18, 18, 0.55) 46%),
     var(--field);
-  box-shadow: inset 0 1px 0 rgba(231, 195, 172, 0.08);
+  box-shadow: inset 0 1px 0 rgba(231, 195, 172, 0.1);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .page-events .night:hover,
 .page-events .night:focus-within {
-  border-color: rgba(64, 176, 192, 0.52);
+  border-color: rgba(64, 176, 192, 0.72);
   box-shadow:
-    inset 0 1px 0 rgba(231, 195, 172, 0.12),
-    0 0 0 1px rgba(64, 176, 192, 0.08);
+    inset 0 1px 0 rgba(231, 195, 172, 0.14),
+    0 0 0 1px rgba(64, 176, 192, 0.12);
 }
 .page-events .night .eyebrow {
   margin-bottom: 0.35rem;
