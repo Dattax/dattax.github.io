@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Admin — XI Members</title>
+  <meta name="description" content="XI Members admin. Headcounts and pending requests. Prototype only.">
+  <link rel="canonical" href="https://dattax.github.io/members/admin.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0A2E32">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page page-admin" data-page="admin">
+  <a class="skip" href="#main">Skip to admin</a>
+  <header class="club-header">
+    <a class="brand" href="app.html" aria-label="XI Members"><span class="x">X</span><span class="i">I</span></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="club-nav" id="nav">
+      <a href="../">House</a>
+      <a href="../about.html">About</a>
+      <a href="events.html" data-nav="events">Events</a>
+      <a href="../services.html">Services</a>
+      <a href="../sponsorship.html">Sponsorship</a>
+      <a href="../contact.html">Contact</a>
+      <a class="nav-cta" href="app.html" data-nav="members">Members</a>
+      <a href="admin.html" data-nav="admin" data-admin hidden>Admin</a>
+      <span data-session></span>
+    </nav>
+  </header>
+
+  <main id="main">
+    <header class="page-head">
+      <p class="eyebrow">The book</p>
+      <h1 class="display">House<br><em>admin.</em></h1>
+      <p class="lede">Headcounts for the season, and names still waiting on the door.</p>
+    </header>
+
+    <section class="section" style="padding-top:1rem">
+      <div class="wrap">
+        <p class="eyebrow">Season nights</p>
+        <div class="stack" id="admin-events"></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow">Pending requests</p>
+        <div class="stack" id="admin-requests"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="club-footer">
+    <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
+    <div class="foot-row">
+      <div>
+        <p class="places">New York · Hamptons · Miami</p>
+        <p>Private events and experiences. Invitation only.</p>
+      </div>
+      <p><a href="../contact.html">Contact</a></p>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

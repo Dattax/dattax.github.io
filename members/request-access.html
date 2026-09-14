@@ -7,36 +7,22 @@
   <title>Request access — XI Members</title>
   <meta name="description" content="Ask the XI house to write you onto the members list. Prototype only.">
   <link rel="canonical" href="https://dattax.github.io/members/request-access.html">
-  <link rel="icon" href="../assets/favicon.png" type="image/png">
-  <meta name="theme-color" content="#070a0a">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0A2E32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/site.css?v=members-teal-2">
-  <link rel="stylesheet" href="css/members.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body data-members="request">
+<body class="page-request" data-page="request">
   <a class="skip" href="#main">Skip to request</a>
-  <header class="site-header">
-    <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="site-nav" id="nav">
-      <a href="../about.html">About</a>
-      <a href="../events.html">Events</a>
-      <a href="../services.html">Services</a>
-      <a href="../sponsorship.html">Sponsorship</a>
-      <a class="cta" href="../contact.html">Contact</a>
-      <a class="cta cta-members is-here" href="./">Members</a>
-    </nav>
-  </header>
-
-  <main id="main" class="members-shell">
+  <a class="house-link" href="../">← House</a>
+  <main id="main" class="auth-shell">
     <div class="invite-card">
       <p class="eyebrow">The house</p>
       <h1 class="display">Ask to be<br><em>written in.</em></h1>
       <p class="lede">Leave a name. Someone who sat will usually be the reason we write back.</p>
-      <form class="form" id="request-form" action="https://xipremierproductions.com/lead.php" method="post" data-subject="XI members request">
-        <input type="hidden" name="form_tag" value="xi-members-request">
+      <form class="form" id="request-form">
         <div class="field">
           <label for="name">Full Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required>
@@ -60,24 +46,10 @@
       </form>
       <div class="auth-links">
         <a href="login.html">Already on the list</a>
-        <a href="signup.html">I was given a key</a>
+        <a href="./">Members</a>
       </div>
     </div>
   </main>
-
-  <footer class="site-footer">
-    <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
-    <div class="foot-row">
-      <div>
-        <p class="places">New York · Hamptons · Miami</p>
-        <p>Private events. Invitation, not tickets.</p>
-      </div>
-      <p><a href="../contact.html">Contact</a></p>
-    </div>
-  </footer>
-  <script src="../js/site.js"></script>
-  <script src="js/store.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/ui.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

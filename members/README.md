@@ -1,37 +1,27 @@
-# XI Members (prototype)
+# XI Members Club (prototype)
 
-Client-side members area for the GitHub Pages house. **Not live.** No server, no real SMS, no real mail.
+Invitation-only teal members web app for the GitHub Pages house. **Front-end only.** Auth, RSVPs, and access requests live in `localStorage` on this browser — no real accounts, mail, or SMS. Pending a real auth backend.
 
 Live path: `/members/`
 
-## Banner
-
-Every members page injects a sticky bar: **Members Only**.
-
 ## Pages
 
-- `index.html` — gate. Signed-in visitors go to the calendar.
-- `request-access.html` — ask to be written in (POST to `lead.php`, `form_tag=xi-members-request`).
-- `signup.html` — join if you were asked (local account).
-- `login.html` — sign in.
-- `reset.html` — set a new password for an address already on this browser’s list.
-- `calendar.html` — month book + **Text me a reminder** (mock SMS). Requires a session.
+- `index.html` — coming soon. Request access / Member login, or Enter club if a session is open.
+- `request-access.html` — ask to be written in (stores a pending request).
+- `login.html` — member login.
+- `app.html` — member home.
+- `events.html` / `event.html?id=` — season list and detail with RSVP.
+- `profile.html` — name, phone, SMS opt-in stub.
+- `admin.html` — admin only. Headcounts and pending requests.
 
-## Demo key
+← House returns to the marketing site (`/`).
 
-`member@xi.demo` / `xi-demo-2026`
+## Demo
 
-Seeded into `localStorage` on first visit. Signing up creates another local account on this device only.
+- Member: `member@xi.test` / `member`
+- Admin: `admin@xi.test` / `admin`
 
 ## Stack
 
-- `css/members.css` — members chrome on top of the house styles
-- `js/store.js` — `localStorage` users, session, requests, reminders
-- `js/auth.js` — sign in, join, request, reset
-- `js/ui.js` — banner, nav, session, forms
-- `js/calendar.js` — month grid and mock SMS
-- `assets/logo-hero.svg` — copy of the house mark
-
-## Brand
-
-Black `#070a0a`, teal `#40b0c0`, sand `#e7c3ac`. Cormorant Garamond + Jost. Invitation, not a product page.
+- `styles.css` — teal world (Cormorant Garamond + Jost)
+- `app.js` — mock auth, events, RSVPs, requests

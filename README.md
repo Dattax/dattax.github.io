@@ -9,7 +9,7 @@ Private evenings in New York and the Hamptons. Invitation, not tickets.
 - `events.html` — Events
 - `about.html` — About
 - `inquire.html` — Inquire (`mailto:deepdattax@gmail.com`, or a front-end thanks)
-- `members/` — Members gate (prototype; see `members/README.md`)
+- `members/` — XI Members Club (teal prototype; see `members/README.md`)
 
 ## Local
 http://127.0.0.1:8765/

@@ -4,63 +4,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, follow">
-  <title>Members — XI</title>
-  <meta name="description" content="The XI members gate. A private calendar for people already on the list.">
+  <title>XI Members Club</title>
+  <meta name="description" content="XI Members Club. Invitation only. Coming soon.">
   <link rel="canonical" href="https://dattax.github.io/members/">
-  <link rel="icon" href="../assets/favicon.png" type="image/png">
-  <meta name="theme-color" content="#070a0a">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#0A2E32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/site.css?v=members-teal-2">
-  <link rel="stylesheet" href="css/members.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body data-members="gate">
+<body data-page="soon">
   <a class="skip" href="#main">Skip to members</a>
-  <header class="site-header">
-    <a class="mark" href="../index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
-    <nav class="site-nav" id="nav">
-      <a href="../about.html">About</a>
-      <a href="../events.html">Events</a>
-      <a href="../services.html">Services</a>
-      <a href="../sponsorship.html">Sponsorship</a>
-      <a class="cta" href="../contact.html">Contact</a>
-      <a class="cta cta-members is-here" href="./">Members</a>
-    </nav>
-  </header>
-
-  <main id="main" class="gate">
-    <p class="eyebrow">Members</p>
-    <img class="hero-logo" src="assets/logo-hero.svg" width="776" height="558" alt="XI">
-    <p class="lede">A private calendar for people already on the list.</p>
-    <div data-gate-out>
-      <div class="gate-actions">
-        <a class="cta" href="login.html">Sign in</a>
-        <a class="cta" href="request-access.html">Request access</a>
-      </div>
+  <a class="house-link" href="../">← House</a>
+  <main id="main" class="soon">
+    <p class="soon-mark">XI</p>
+    <p class="label">Members</p>
+    <h1 class="soon-title">Coming soon.</h1>
+    <hr class="rule">
+    <p class="label soon-foot">Invitation only</p>
+    <div class="soon-actions" data-gate-out>
+      <a href="request-access.html">Request access</a>
+      <a href="login.html">Member login</a>
     </div>
-    <div data-gate-in hidden>
-      <p class="lede">Welcome back, <span data-gate-who>member</span>.</p>
-      <div class="gate-actions">
-        <a class="cta" href="calendar.html">Open the book</a>
-        <button type="button" class="cta" data-signout>Sign out</button>
-      </div>
+    <div class="soon-actions" data-gate-in hidden>
+      <a href="app.html">Enter club</a>
     </div>
   </main>
-
-  <footer class="site-footer members-footer">
-    <p class="word" aria-label="XI"><span class="wm-x">X</span><span class="wm-i">I</span></p>
-    <div class="foot-row">
-      <div>
-        <p class="places">New York · Hamptons · Miami</p>
-        <p>Private events. Invitation, not tickets.</p>
-      </div>
-      <p><a href="../contact.html">Contact</a></p>
-    </div>
-  </footer>
-  <script src="js/store.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/ui.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
