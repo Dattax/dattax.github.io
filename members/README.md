@@ -16,11 +16,6 @@ Live path: `/members/`
 
 ← House returns to the marketing site (`/`).
 
-## Demo
-
-- Member: `member@xi.test` / `member`
-- Admin: `admin@xi.test` / `admin`
-
 ## Stack
 
 - `styles.css` — teal world (Cormorant Garamond + Jost)

@@ -634,17 +634,6 @@ button.cta:hover {
   margin-top: 1.4rem;
   font-size: 0.86rem;
 }
-.demo-key {
-  margin-top: 1.8rem;
-  color: var(--mute);
-  font-size: 0.86rem;
-}
-.demo-key code {
-  font-family: var(--sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  color: var(--sand);
-}
 
 /* ----- event detail / profile / admin ----- */
 .detail {
