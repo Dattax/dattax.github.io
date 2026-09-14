@@ -9,7 +9,7 @@
   var DEMO_USERS = [
     {
       id: "u-member",
-      name: "Guest of the House",
+      name: "Guest of XI Premier",
       email: "member@xi.test",
       password: "member",
       role: "member",
@@ -18,7 +18,7 @@
     },
     {
       id: "u-admin",
-      name: "House Admin",
+      name: "XI Premier Admin",
       email: "admin@xi.test",
       password: "admin",
       role: "admin",
@@ -41,7 +41,7 @@
     },
     {
       id: "hamptons-house-weekend",
-      title: "Hamptons House Weekend",
+      title: "Hamptons XI Premier Weekend",
       city: "Hamptons",
       date: "2026-10-09",
       time: "Friday arrival",
@@ -119,8 +119,14 @@
   function seedUsers() {
     var users = read(KEYS.users, []);
     DEMO_USERS.forEach(function (demo) {
-      var exists = users.some(function (u) { return u.email === demo.email; });
-      if (!exists) users.push(Object.assign({}, demo));
+      var existing = users.find(function (u) { return u.email === demo.email; });
+      if (!existing) {
+        users.push(Object.assign({}, demo));
+        return;
+      }
+      if (existing.name === "Guest of the House" || existing.name === "House Admin") {
+        existing.name = demo.name;
+      }
     });
     write(KEYS.users, users);
     return users;
