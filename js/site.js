@@ -75,7 +75,7 @@
         note.setAttribute("data-state", ok ? "ok" : "err");
       }
 
-      // Server endpoint (GoDaddy PHP → Follow Up Boss)
+      // Server endpoint (unused by marketing forms — they use mailto:info@)
       if (action && !/^mailto:/i.test(action)) {
         if (/\.github\.io$/i.test(location.hostname)) {
           action = "https://xipremierproductions.com/lead.php";
@@ -112,8 +112,8 @@
         return;
       }
 
-      // mailto path (Contact)
-      var to = action.replace(/^mailto:/i, "").split("?")[0] || "shaun@xipremierproductions.com";
+      // mailto path (Contact, Events, Sponsorship)
+      var to = action.replace(/^mailto:/i, "").split("?")[0] || "info@xipremierproductions.com";
       var lines = [];
       form.querySelectorAll("input, select, textarea").forEach(function (el) {
         if (!el.name) return;
