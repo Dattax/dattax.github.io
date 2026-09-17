@@ -350,6 +350,28 @@
     });
   }
 
+  function requestMailtoHref(form) {
+    var action = form.getAttribute("action") || "";
+    var to = action.replace(/^mailto:/i, "").split("?")[0] || "info@xipremierproductions.com";
+    var lines = [];
+    form.querySelectorAll("input, select, textarea").forEach(function (el) {
+      if (!el.name) return;
+      if (el.name === "company" || el.name === "form_tag") return;
+      var label = "";
+      if (el.id) {
+        var lab = form.querySelector('label[for="' + el.id + '"]');
+        if (lab) label = lab.textContent.replace(/\s+/g, " ").trim();
+      }
+      lines.push((label || el.name) + ": " + (el.value || ""));
+    });
+    var subject = form.getAttribute("data-subject") || "XI members — request access";
+    return (
+      "mailto:" + to +
+      "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(lines.join("\n"))
+    );
+  }
+
   function bindRequest() {
     var form = document.getElementById("request-form");
     if (!form) return;
@@ -363,8 +385,12 @@
         note: fd.get("note")
       });
       if (!res.ok) return note(form, res.error, false);
+      var href = requestMailtoHref(form);
       form.reset();
       note(form, "Received. The house will write back.", true);
+      window.setTimeout(function () {
+        window.location.href = href;
+      }, 400);
     });
   }
 
