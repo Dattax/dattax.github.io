@@ -386,10 +386,11 @@
       });
       if (!res.ok) return note(form, res.error, false);
       var href = requestMailtoHref(form);
+      form.setAttribute("data-mailto", href);
       form.reset();
       note(form, "Received. The house will write back.", true);
       window.setTimeout(function () {
-        window.location.href = href;
+        window.location.assign(href);
       }, 400);
     });
   }
