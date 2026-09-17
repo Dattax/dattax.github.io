@@ -1,9 +1,9 @@
 <?php
 /**
- * XI forms → Follow Up Boss lead parser
+ * XI forms → info@ inbox (temporary).
  * Drop this at the site root on GoDaddy (Linux / PHP hosting).
- * Event / sponsorship / members-request forms POST here; we email FUB in Full Format.
- * Contact uses mailto and must not post here.
+ * Marketing forms now use mailto:info@ on GitHub Pages; this stays as a
+ * fallback if anything still POSTs here. Follow Up Boss is off for now.
  *
  * Requires: PHP mail() enabled (standard on GoDaddy cPanel hosting).
  */
@@ -36,11 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 // --- config (edit on GoDaddy if needed) ---
-$FUB_TO      = 'shaun.moamem@followupboss.me';
+$FUB_TO      = 'info@xipremierproductions.com';
 $FROM_EMAIL  = 'info@xipremierproductions.com';
-$FROM_NAME   = 'XI Premier Productions';
+$FROM_NAME   = 'XI Premier Experiences';
 $SOURCE      = 'XI Website';
-$NOTIFY_COPY = 'shaun@xipremierproductions.com'; // human inbox copy; set '' to disable
+$NOTIFY_COPY = ''; // FUB and shaun@ copy off for now; marketing mail is info@
 
 function field($key) {
   $v = isset($_POST[$key]) ? $_POST[$key] : '';
@@ -108,7 +108,7 @@ foreach ($_POST as $key => $val) {
 
 if ($email === '' && $formTag === 'xi-event') {
   $email = $FROM_EMAIL;
-  $extraLines[] = 'email: (not provided — using house address so Follow Up Boss still files the lead)';
+  $extraLines[] = 'email: (not provided — using house address so the inbox still receives the form)';
 }
 
 if ($name === '' || $email === '') {
@@ -165,7 +165,7 @@ $ok = @mail($FUB_TO, '=?UTF-8?B?' . base64_encode($subject) . '?=', $body, implo
 
 if ($NOTIFY_COPY !== '') {
   $copySubject = 'XI ' . $tagLabel . ' copy — ' . $name;
-  $copyBody = "Form copy (also sent to Follow Up Boss)\n\n"
+  $copyBody = "Form copy\n\n"
     . "Form: {$formTag}\n"
     . "Name: {$name}\n"
     . "Email: {$email}\n"
