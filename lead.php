@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // --- config (edit on GoDaddy if needed) ---
 $FUB_TO      = 'shaun.moamem@followupboss.me';
 $FROM_EMAIL  = 'info@xipremierproductions.com';
-$FROM_NAME   = 'XI Premier Productions';
+$FROM_NAME   = 'XI Premier Experiences';
 $SOURCE      = 'XI Website';
 $NOTIFY_COPY = 'shaun@xipremierproductions.com'; // human inbox copy; set '' to disable
 
