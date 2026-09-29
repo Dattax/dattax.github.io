@@ -1,13 +1,13 @@
 # XI Members Club (prototype)
 
-Invitation-only teal members web app for the GitHub Pages house. **Front-end only.** Auth, RSVPs, and access requests live in `localStorage` on this browser — no real accounts, mail, or SMS. Pending a real auth backend.
+Invitation-only teal members web app for the GitHub Pages house. **Front-end only.** Auth, RSVPs, and access requests live in `localStorage` on this browser — no real accounts or SMS. Request-access also opens a `mailto:` to `info@xipremierproductions.com` (same Contact pattern). Pending a real auth backend.
 
 Live path: `/members/`
 
 ## Pages
 
 - `index.html` — coming soon. Request access / Member login, or Enter club if a session is open.
-- `request-access.html` — ask to be written in (stores a pending request).
+- `request-access.html` — ask to be written in (stores a pending request, then mails `info@`).
 - `login.html` — member login.
 - `app.html` — member home.
 - `events.html` / `event.html?id=` — season list and detail with RSVP.
