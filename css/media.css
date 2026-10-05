@@ -1,0 +1,127 @@
+/* XI — Media page (media.html only). Loaded after css/site.css.
+   Same design language as drivers-security.html: it reuses .page-head, .display, .lede, .eyebrow,
+   .cta, .section, .ds-list/.ds-item, .chapter.close/.ds-close and the shared modal from site.css.
+   Only the Media hero image, headline sizing and a few spacing tweaks live here. */
+
+/* ----- hero (mirrors .page-ds .page-head.ds-hero) ----- */
+.page-media .page-head.media-hero {
+  min-height: 86svh;
+  align-items: center;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgba(7,10,10,0.7) 0%, rgba(7,10,10,0.34) 26%, rgba(7,10,10,0.5) 50%, rgba(7,10,10,0.82) 74%, var(--ink) 100%),
+    url("../assets/media-hero-nyc.jpg") center 36% / cover no-repeat;
+}
+.page-media .media-hero .eyebrow {
+  color: var(--sand);
+  text-shadow: 0 1px 12px rgba(7, 10, 10, 0.8);
+}
+.page-media .media-hero .eyebrow a { color: inherit; }
+.page-media .media-hero .eyebrow a:hover { color: var(--sand); }
+.page-media .media-hero .display {
+  max-width: none;
+  font-size: clamp(2.3rem, 6.4vw, 5.4rem);
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 28px rgba(7, 10, 10, 0.55);
+}
+.page-media .media-hero .lede {
+  margin: 0 auto;
+  max-width: 36rem;
+  color: var(--cream);
+  text-shadow: 0 1px 18px rgba(7, 10, 10, 0.6);
+}
+.media-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 2.1rem;
+}
+.media-actions .cta {
+  min-width: 11rem;
+  background: rgba(7, 10, 10, 0.35);
+}
+.media-actions .cta:hover,
+.media-actions .cta:focus-visible {
+  background: var(--sand);
+  color: var(--ink);
+}
+.media-actions .cta:focus-visible,
+.ds-close .cta:focus-visible {
+  outline: 1px solid var(--cream);
+  outline-offset: 3px;
+}
+
+/* ----- story (one .ds-item, same two-column row as Drivers & Security) ----- */
+.page-media .media-story {
+  padding-top: 4.5rem;
+  padding-bottom: 5.5rem;
+}
+.page-media .media-story .ds-item h2 {
+  font-size: clamp(1.6rem, 2.9vw, 2.25rem);
+  letter-spacing: 0.04em;
+  line-height: 1.12;
+}
+
+/* ----- small screens ----- */
+@media (max-width: 720px) {
+  .page-media .page-head.media-hero {
+    min-height: 88svh;
+    background:
+      linear-gradient(180deg, rgba(7,10,10,0.62) 0%, rgba(7,10,10,0.22) 24%, rgba(7,10,10,0.45) 48%, rgba(7,10,10,0.86) 70%, var(--ink) 100%),
+      url("../assets/media-hero-nyc-1080.jpg") center 40% / cover no-repeat;
+  }
+  .page-media .media-hero .display { letter-spacing: 0.02em; }
+  .media-actions .cta { flex: 1 1 9rem; min-width: 0; }
+  .page-media .media-story { padding-top: 3rem; padding-bottom: 4rem; }
+}
+
+/* Layout and form rules this page uses from the live site stylesheet.
+   main's css/site.css does not include the Drivers & Security block yet,
+   so they live here instead of a site-wide stylesheet change. */
+.ds-list {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+.ds-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.6rem;
+  padding: 1.9rem 0;
+  border-top: 1px solid var(--hair-dim);
+}
+.ds-item:first-child { border-top: 0; }
+.ds-item h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
+  line-height: 1.15;
+  color: var(--cream);
+}
+.ds-item p {
+  margin: 0;
+  max-width: 38rem;
+  color: var(--paper);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+@media (min-width: 800px) {
+  .ds-item {
+    grid-template-columns: minmax(14rem, 0.85fr) minmax(0, 1.5fr);
+    gap: 3rem;
+    align-items: baseline;
+  }
+}
+.ds-close { min-height: 60svh; }
+.ds-close .eyebrow { color: var(--sand); }
+.page-media .modal .field.hp {
+  position: absolute !important;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
