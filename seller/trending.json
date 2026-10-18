@@ -1,0 +1,145 @@
+{
+  "asOf": "October 18, 2026",
+  "sources": [
+    {
+      "name": "Amazon Best Sellers: Best Sports & Outdoors",
+      "url": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "checked": "October 18, 2026"
+    },
+    {
+      "name": "Amazon Best Sellers: Best Pickle-Ball Equipment",
+      "url": "https://www.amazon.com/Best-Sellers-Pickle-Ball-Equipment/zgbs/sporting-goods/13287931",
+      "checked": "October 18, 2026"
+    },
+    {
+      "name": "Amazon Best Sellers: Best Tennis Rackets",
+      "url": "https://www.amazon.com/Best-Sellers-Tennis-Rackets/zgbs/sporting-goods/3420071",
+      "checked": "October 18, 2026"
+    },
+    {
+      "name": "Amazon Best Sellers: Best Basketballs",
+      "url": "https://www.amazon.com/Best-Sellers-Basketballs/zgbs/sporting-goods/3396751",
+      "checked": "October 18, 2026"
+    }
+  ],
+  "notes": [
+    "Ranks and prices are copied from the Amazon Best Sellers pages linked here. Amazon says those lists are updated frequently.",
+    "Each rank is the position on that named list only. Ranks are not combined into one chart.",
+    "Sales counts are omitted because these lists do not publish them.",
+    "A rank-change arrow is omitted because these lists do not show whether a rank moved up or down.",
+    "The price is the price printed on the bestseller list that day, not an average. Live listing prices can differ by size or color and can change after this date.",
+    "Walmart, Dick's Sporting Goods, and eBay were reviewed on the same day and not used for these figures. Those pages did not show a numbered rank and a price together for a single sports-gear listing."
+  ],
+  "items": [
+    {
+      "rank": 1,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "Owala FreeSip Stainless Steel Water Bottle 24 oz Black Cherry",
+      "category": "Fitness",
+      "price": "$29.99",
+      "marketplace": "Amazon",
+      "whyHot": "No. 1 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/Owala-FreeSip-Insulated-Stainless-BPA-Free/dp/B0FJN3BTPV"
+    },
+    {
+      "rank": 4,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "HotHands Hand Warmers Bulk Pack, 40 Pairs",
+      "category": "Outdoor",
+      "price": "$24.25",
+      "marketplace": "Amazon",
+      "whyHot": "No. 4 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/HotHands-Hand-Warmers-Odorless-Activated/dp/B0007ZF4OA"
+    },
+    {
+      "rank": 7,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "Gaiam Thick Yoga Mat, Exercise & Fitness Mat with Easy-Cinch Carrying Strap",
+      "category": "Fitness",
+      "price": "$20.93",
+      "marketplace": "Amazon",
+      "whyHot": "No. 7 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/Gaiam-Exercise-Easy-Cinch-Carrying-Workouts/dp/B07H9PDL2Y"
+    },
+    {
+      "rank": 9,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "Fit Simplify Resistance Loop Exercise Bands with Instruction Guide and Carry Bag, Set of 5",
+      "category": "Fitness",
+      "price": "$9.98",
+      "marketplace": "Amazon",
+      "whyHot": "No. 9 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/Fit-Simplify-Resistance-Exercise-Instruction/dp/B01AVDVHTI"
+    },
+    {
+      "rank": 10,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "Cool Coolers by Fit & Fresh 4 Pack XL Slim Ice Packs",
+      "category": "Outdoor",
+      "price": "$9.99",
+      "marketplace": "Amazon",
+      "whyHot": "No. 10 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/Coolers-Fit-Fresh-Freeze-Reusable/dp/B08QDWMMW5"
+    },
+    {
+      "rank": 15,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "Callaway Golf Supersoft Golf Balls",
+      "category": "Golf",
+      "price": "$26.97",
+      "marketplace": "Amazon",
+      "whyHot": "No. 15 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/Callaway-Golf-Supersoft-Balls/dp/B0DHT5XZR1"
+    },
+    {
+      "rank": 19,
+      "listName": "Sports & Outdoors",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods",
+      "name": "ZELUS Weighted Vest, 6lb/8lb/12lb/16lb/20lb/25lb/30lb, with Reflective Stripe",
+      "category": "Fitness",
+      "price": "$27.89",
+      "marketplace": "Amazon",
+      "whyHot": "No. 19 on Amazon Best Sellers in Sports & Outdoors.",
+      "listingUrl": "https://www.amazon.com/dp/B07RPSJT7Q"
+    },
+    {
+      "rank": 1,
+      "listName": "Pickle-Ball Equipment",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Pickle-Ball-Equipment/zgbs/sporting-goods/13287931",
+      "name": "Franklin Sports X-40 Outdoor Pickleballs",
+      "category": "Racquet",
+      "price": "$9.97",
+      "marketplace": "Amazon",
+      "whyHot": "No. 1 on Amazon Best Sellers in Pickle-Ball Equipment.",
+      "listingUrl": "https://www.amazon.com/Franklin-Sports-X-40-Outdoor-Pickleballs/dp/B06XTW1BND"
+    },
+    {
+      "rank": 2,
+      "listName": "Tennis Rackets",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Tennis-Rackets/zgbs/sporting-goods/3420071",
+      "name": "Wilson Federer Adult Recreational Tennis Racket",
+      "category": "Racquet",
+      "price": "$32.30",
+      "marketplace": "Amazon",
+      "whyHot": "No. 2 on Amazon Best Sellers in Tennis Rackets.",
+      "listingUrl": "https://www.amazon.com/Wilson-WRT30400U3-Federer-Tennis-Racquet/dp/B01AWLHRSO"
+    },
+    {
+      "rank": 1,
+      "listName": "Basketballs",
+      "sourceUrl": "https://www.amazon.com/Best-Sellers-Basketballs/zgbs/sporting-goods/3396751",
+      "name": "WILSON NBA DRV Series Outdoor Basketballs",
+      "category": "Team sports",
+      "price": "$9.54",
+      "marketplace": "Amazon",
+      "whyHot": "No. 1 on Amazon Best Sellers in Basketballs.",
+      "listingUrl": "https://www.amazon.com/WILSON-NBA-DRV-Series-Basketball/dp/B091MMRXCK"
+    }
+  ]
+}
