@@ -1,0 +1,187 @@
+/* XI — À la carte layer for services.html only. Loaded after css/site.css.
+   Reuses the site tokens (--sand, --cream, --paper, --hair*, --serif, --sans, --pad) and the
+   .eyebrow / .lede / .cta language. Nothing here changes other pages. */
+
+/* ----- 1. Lede under the "Services" page heading ----- */
+.page-services .page-head .alc-lede {
+  margin: 0.15rem auto 0;
+  max-width: 40rem;
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  color: var(--cream);
+  text-wrap: balance;
+}
+
+/* ----- 3. "À la carte" chip on each service card ----- */
+.service-cols .alc-tag {
+  display: inline-block;
+  margin: 0 0 0.6rem;
+  padding: 0.28rem 0.55rem 0.24rem;
+  border: 1px solid var(--hair);
+  background: rgba(7, 10, 10, 0.35);
+  font-family: var(--sans);
+  font-size: 0.58rem;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand);
+  white-space: nowrap;
+}
+@media (max-width: 800px) {
+  .service-cols .alc-tag { margin-bottom: 0.5rem; }
+}
+
+/* Longer button labels ("Book This Service") on cards squeezed by a hovered or open card:
+   let the label wrap to two short lines instead of being cut off with an ellipsis. */
+.service-cols:hover .col:not(:hover):not(.is-menu-open) .svc-menu-label,
+.service-cols.has-open-menu .col:not(.is-menu-open) .svc-menu-label {
+  white-space: normal;
+  line-height: 1.35;
+  text-overflow: clip;
+}
+@media (min-width: 801px) and (max-width: 1180px) {
+  /* Five columns on a narrow desktop/tablet: same wrap so the full label always shows. */
+  .service-cols .svc-menu--link .svc-menu-label {
+    white-space: normal;
+    line-height: 1.35;
+    text-overflow: clip;
+  }
+}
+
+/* Cards are reachable from the example links (#svc-…). Keep the card clear of the fixed header,
+   and on desktop let the full card fit under the header when jumped to. */
+.service-cols .col { scroll-margin-top: 5.75rem; }
+@media (min-width: 801px) {
+  .page-services .service-cols { height: calc(100svh - 5.75rem); }
+}
+.service-cols:not(:hover) .col:target img {
+  transform: scale(1.03);
+  filter: brightness(0.8) saturate(1);
+}
+.service-cols:not(:hover) .col:target .copy p:not(.meta) { max-height: 6.5rem; opacity: 1; }
+
+/* ----- 4 + 5. How it works + examples ----- */
+.alc {
+  padding: clamp(3.5rem, 7vw, 6rem) var(--pad);
+  border-bottom: 1px solid var(--hair-dim);
+  background:
+    radial-gradient(ellipse at 80% 0%, rgba(62, 204, 176, 0.08), transparent 55%),
+    var(--ink);
+}
+.alc-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+.alc-head { text-align: center; margin: 0 0 clamp(2.2rem, 4vw, 3.2rem); }
+.alc-head .eyebrow { color: var(--sand); margin-bottom: 0.8rem; }
+.alc-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+.alc-title em { font-style: italic; font-weight: 400; color: var(--sand); }
+
+.alc-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  counter-reset: none;
+}
+.alc-step {
+  min-width: 0;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--hair-dim);
+}
+.alc-step:last-child { border-bottom: 1px solid var(--hair-dim); }
+.alc-num {
+  display: block;
+  margin: 0 0 0.6rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--sand);
+}
+.alc-step h3 {
+  margin: 0 0 0.45rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.35rem, 2vw, 1.6rem);
+  line-height: 1.15;
+  color: var(--cream);
+}
+.alc-step p {
+  margin: 0;
+  max-width: 22rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--paper);
+}
+@media (min-width: 800px) {
+  .alc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .alc-step,
+  .alc-step:last-child {
+    padding: 0.4rem 2.2rem 0.6rem;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 1px solid var(--hair-dim);
+  }
+  .alc-step:first-child { border-left: 0; padding-left: 0; }
+  .alc-step:last-child { padding-right: 0; }
+}
+
+.alc-uses { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.alc-uses .eyebrow { text-align: center; color: var(--sand); margin-bottom: 1.2rem; }
+.alc-examples {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+@media (min-width: 720px) {
+  .alc-examples { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+}
+.alc-examples a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.9rem;
+  height: 100%;
+  padding: 1.15rem 1.25rem 1.05rem;
+  border: 1px solid var(--hair-dim);
+  background: var(--field);
+  color: var(--cream);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.alc-examples a:hover { border-color: var(--hair); background: rgba(231, 195, 172, 0.04); color: var(--cream); }
+.alc-examples a:focus-visible { outline: 1px solid var(--cream); outline-offset: 3px; }
+.alc-q {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.alc-to {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--sand);
+}
+.alc-examples a:hover .alc-to { color: var(--cream); }
+
+@media (prefers-reduced-motion: reduce) {
+  .alc-examples a { transition: none; }
+}

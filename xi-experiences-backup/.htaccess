@@ -1,0 +1,11 @@
+# --- XI events admin: added rules --------------------------------------------
+# If the live docroot already has a .htaccess (e.g. the ximembersclub.com -> /members/
+# redirect, https or cache rules), MERGE these lines into it. Do not overwrite it.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # events.html moved to events.php (server-rendered from data/events.json).
+  RewriteRule ^events\.html$ /events.php [R=301,L]
+  # Belt and braces: block data/ and inc/ even if their own .htaccess is lost.
+  RewriteRule ^(data|inc)(/|$) - [F,L]
+</IfModule>
+# ---------------------------------------------------------------------------

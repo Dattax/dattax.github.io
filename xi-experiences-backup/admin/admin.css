@@ -1,0 +1,105 @@
+/* XI events admin. Sits on top of ../css/site.css (same fonts, palette, .field/.cta styles). */
+.xi-admin { color-scheme: dark; min-height: 100vh; }
+.xi-admin code { font-size: 0.9em; color: var(--sand); }
+
+.adm-bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 0.8rem var(--pad);
+  background: rgba(7, 10, 10, 0.92);
+  border-bottom: 1px solid var(--hair-dim);
+  backdrop-filter: blur(6px);
+}
+.adm-mark img { width: 54px; height: auto; }
+.adm-title { margin: 0; }
+.adm-nav { margin-left: auto; display: flex; align-items: center; gap: 1.2rem; }
+.adm-nav a { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; }
+.adm-nav form { margin: 0; }
+
+.adm-main { width: min(60rem, calc(100% - 2.5rem)); margin: 0 auto; padding: 2.5rem 0 5rem; position: relative; z-index: 2; }
+.adm-head { margin: 1rem 0 2rem; }
+.adm-head .display { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 0; }
+.adm-head .eyebrow a { color: var(--teal); }
+.adm-head-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+
+.cta.cta-solid,
+.xi-admin .form button.cta.cta-solid { background: var(--sand); color: var(--ink); border-color: var(--sand); }
+.cta.cta-solid:hover,
+.xi-admin .form button.cta.cta-solid:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+
+.adm-flash { border: 1px solid var(--hair); padding: 0.8rem 1rem; margin: 0 0 1.5rem; font-size: 0.95rem; }
+.adm-flash.is-ok { border-color: rgba(64, 176, 192, 0.55); background: rgba(64, 176, 192, 0.08); color: var(--cream); }
+.adm-flash.is-err { border-color: rgba(215, 148, 78, 0.7); background: rgba(215, 148, 78, 0.1); color: var(--sand); }
+.adm-flash p, .adm-flash ul { margin: 0; }
+.adm-flash ul { padding-left: 1.2rem; }
+
+/* list */
+.adm-group { margin-bottom: 2.5rem; }
+.adm-group > h2 { border-bottom: 1px solid var(--hair-dim); padding-bottom: 0.6rem; }
+.adm-empty { color: var(--mute); }
+.adm-row {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr) auto auto;
+  align-items: center; gap: 1rem 1.25rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--hair-dim);
+  background: linear-gradient(180deg, rgba(25, 65, 65, 0.16), transparent 70%), var(--ink);
+  margin-bottom: 0.75rem;
+}
+.adm-row.is-draft { opacity: 0.62; }
+.adm-when { display: grid; gap: 0.2rem; }
+.adm-when .eyebrow { margin: 0; }
+.adm-date { font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; }
+.adm-what h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; line-height: 1.15; margin: 0; color: var(--cream); }
+.adm-what p { margin: 0.15rem 0 0; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); }
+.adm-pill { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 0.25rem 0.6rem; border: 1px solid; white-space: nowrap; }
+.adm-pill.is-on { color: var(--teal); border-color: rgba(64, 176, 192, 0.6); }
+.adm-pill.is-off { color: var(--mute); border-color: var(--hair-dim); }
+.adm-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; }
+.adm-actions form { margin: 0; }
+.adm-btn {
+  display: inline-flex; align-items: center; min-height: 38px; padding: 0.35rem 0.8rem;
+  border: 1px solid var(--hair); background: transparent; color: var(--sand);
+  font: 300 0.66rem/1 var(--sans); letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+}
+.adm-btn:hover { background: var(--sand); color: var(--ink); border-color: var(--sand); }
+.adm-btn.is-danger { color: var(--gold); border-color: rgba(215, 148, 78, 0.5); }
+.adm-btn.is-danger:hover { background: var(--gold); color: var(--ink); }
+
+/* form */
+.adm-form { grid-template-columns: 1fr 1fr; gap: 1.4rem 1.6rem; max-width: none; }
+.adm-span { grid-column: 1 / -1; }
+.adm-form .field input[type="file"] { font-family: var(--sans); font-size: 0.9rem; padding: 0.8rem 0; color: var(--paper); }
+.adm-form .field input[type="file"]::file-selector-button {
+  margin-right: 1rem; padding: 0.55rem 1rem; border: 1px solid var(--sand); background: transparent; color: var(--sand);
+  font: 300 0.68rem var(--sans); letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer;
+}
+.adm-image { border: 1px solid var(--hair-dim); padding: 1.1rem 1.2rem 1.3rem; margin: 0; display: grid; gap: 1rem; min-width: 0; }
+.adm-image legend { padding: 0 0.4rem; margin: 0; }
+.adm-preview { margin: 0; display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; align-items: center; }
+.adm-preview img { width: 9rem; aspect-ratio: 16 / 10; object-fit: cover; border: 1px solid var(--hair-dim); }
+.adm-preview figcaption { font-size: 0.8rem; color: var(--mute); word-break: break-all; }
+.adm-check { display: flex; align-items: center; gap: 0.7rem; font-size: 0.95rem; color: var(--cream); cursor: pointer; }
+.adm-check input { appearance: auto; width: 1.2rem; height: 1.2rem; min-height: 0; margin: 0; accent-color: var(--teal); }
+.adm-pub { padding: 0.9rem 1rem; border: 1px solid rgba(64, 176, 192, 0.35); }
+.adm-link { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; }
+
+/* login */
+.is-login .adm-main { min-height: 100vh; display: grid; place-items: center; padding: 2rem 0; }
+.adm-login { width: min(24rem, 100%); }
+.adm-login-mark { width: 72px; height: auto; margin-bottom: 2rem; }
+.adm-login .display { font-size: clamp(2.6rem, 9vw, 3.6rem); }
+.adm-foot { margin-top: 2.5rem; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; }
+
+@media (max-width: 720px) {
+  .adm-title { display: none; }
+  .adm-nav { gap: 0.9rem; }
+  .adm-row { grid-template-columns: 1fr auto; }
+  .adm-when { grid-column: 1 / -1; grid-auto-flow: column; justify-content: start; gap: 0.8rem; align-items: baseline; }
+  .adm-what { grid-column: 1; }
+  .adm-pill { grid-column: 2; grid-row: 2; align-self: start; }
+  .adm-actions { grid-column: 1 / -1; justify-content: flex-start; }
+  .adm-form { grid-template-columns: 1fr; }
+  .adm-preview { grid-template-columns: 6.5rem 1fr; }
+  .adm-preview img { width: 6.5rem; }
+}

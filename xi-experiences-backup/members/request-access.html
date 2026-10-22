@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apply to Join — Become a Member — XI Members</title>
+  <link rel="stylesheet" href="styles.css?v=members-apply-3" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <nav class="site-nav" id="site-nav"></nav>
+
+  <main class="center-page" style="min-height: calc(100vh - 60px); justify-content: flex-start; padding-top: 3rem;">
+    <div class="wrap wrap-narrow apply-wrap" id="apply-wrap">
+      <div class="text-center mb-3">
+        <div class="brand-xi" style="font-size: 2.75rem;">XI</div>
+        <div class="brand-members">Members</div>
+        <h1 class="display display-md mt-3">Apply to Join</h1>
+      </div>
+
+      <!-- Step 1: choose a membership tier (placeholder copy — no pricing/benefits confirmed yet) -->
+      <section class="tier-step" id="tier-step" aria-label="Membership tiers">
+        <p class="label label-muted text-center mb-2">Choose a membership</p>
+        <div class="tier-grid">
+          <a class="card tier-card" href="#access" data-tier="Access">
+            <span class="tier-kicker">Tier I</span>
+            <span class="tier-name">Access</span>
+            <span class="tier-copy">Our introductory membership to the XI calendar.</span>
+            <span class="tier-cta">Apply <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="card tier-card" href="#premier" data-tier="Premier">
+            <span class="tier-kicker">Tier II</span>
+            <span class="tier-name">Premier</span>
+            <span class="tier-copy">An elevated membership with wider access across XI.</span>
+            <span class="tier-cta">Apply <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="card tier-card" href="#eleven" data-tier="Eleven">
+            <span class="tier-kicker">Tier III</span>
+            <span class="tier-name">Eleven</span>
+            <span class="tier-copy">Our highest tier: the complete XI experience.</span>
+            <span class="tier-cta">Apply <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+        <p class="text-center text-xs text-muted mt-3">
+          Already a member? <a href="https://ximembersclub.com/">Sign in</a>
+        </p>
+      </section>
+
+      <!-- Step 2: application form for the selected tier -->
+      <form id="access-form" class="form apply-form" novalidate
+        action="mailto:shaun@xiexperiences.com"
+        method="post" enctype="text/plain">
+        <p class="text-xs"><a href="#" id="back-to-tiers">← All membership tiers</a></p>
+        <div class="field">
+          <label for="tier">Membership tier</label>
+          <select id="tier" name="tier" required>
+            <option value="Access">Access</option>
+            <option value="Premier">Premier</option>
+            <option value="Eleven">Eleven</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@email.com" />
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="+1 (555) 000-0000" />
+        </div>
+        <div class="field">
+          <label for="referrer">Referrer <span class="field-optional">(optional)</span></label>
+          <input id="referrer" name="referrer" type="text" placeholder="Who referred you?" />
+        </div>
+        <div class="field">
+          <label for="message">Message <span class="field-optional">(optional)</span></label>
+          <textarea id="message" name="message" rows="2" style="min-height:0;height:4.5rem" placeholder="Anything you’d like us to know"></textarea>
+        </div>
+        <p class="error-msg" id="form-error"></p>
+        <button type="submit" class="btn btn-primary btn-block">Submit request</button>
+        <p class="text-center text-xs text-muted mt-1">
+          Already a member? <a href="https://ximembersclub.com/">Sign in</a>
+        </p>
+      </form>
+
+      <div id="success-panel" class="success-panel panel">
+        <p class="label mb-2">Received</p>
+        <h2 class="display display-md">Thank you.</h2>
+        <p class="text-muted mt-2 text-sm">We’ve received your request. If a place opens, we’ll be in touch.</p>
+        <hr class="hairline" />
+        <a class="btn btn-ghost" href="../index.html">Back home</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js?v=members-apply-3"></script>
+  <script>
+    XI.renderNav('request');
+    var form = document.getElementById('access-form');
+    var success = document.getElementById('success-panel');
+    var err = document.getElementById('form-error');
+    var wrap = document.getElementById('apply-wrap');
+    var tierSelect = document.getElementById('tier');
+    var TIERS = { access: 'Access', premier: 'Premier', eleven: 'Eleven' };
+
+    // Hash drives the step: request-access.html → tiers; #access / #premier / #eleven → form.
+    function showStep() {
+      if (success.classList.contains('show')) return;
+      var key = (location.hash || '').replace('#', '').toLowerCase();
+      var tier = TIERS[key];
+      if (tier) {
+        tierSelect.value = tier;
+        wrap.classList.add('is-form');
+        window.scrollTo(0, 0);
+      } else {
+        wrap.classList.remove('is-form');
+      }
+    }
+    window.addEventListener('hashchange', showStep);
+    showStep();
+
+    tierSelect.addEventListener('change', function () {
+      var key = tierSelect.value.toLowerCase();
+      if (history.replaceState) history.replaceState(null, '', '#' + key);
+    });
+
+    document.getElementById('back-to-tiers').addEventListener('click', function (e) {
+      e.preventDefault();
+      if (history.pushState) {
+        history.pushState(null, '', location.pathname + location.search);
+        showStep();
+      } else {
+        location.hash = '';
+      }
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.classList.remove('show');
+      var tier = tierSelect.value;
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var referrer = document.getElementById('referrer').value.trim();
+      var message = document.getElementById('message').value.trim();
+      if (!tier || !name || !email || !phone) {
+        err.textContent = 'Please complete all required fields.';
+        err.classList.add('show');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        err.textContent = 'Please enter a valid email.';
+        err.classList.add('show');
+        return;
+      }
+      XI.addAccessRequest({ name: name, email: email, phone: phone, tier: tier, referrer: referrer, message: message });
+
+      var subject = encodeURIComponent('XI members — request access');
+      var body = encodeURIComponent(
+        'Full Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Phone: ' + phone + '\n' +
+        'Membership Tier: ' + tier + '\n' +
+        (referrer ? 'Referrer: ' + referrer + '\n' : '') +
+        (message ? 'Message: ' + message + '\n' : '')
+      );
+      setTimeout(function () {
+        location.assign('mailto:shaun@xiexperiences.com?subject=' + subject + '&body=' + body);
+      }, 400);
+
+      form.classList.add('hide');
+      wrap.classList.add('is-done');
+      success.classList.add('show');
+    });
+  </script>
+</body>
+</html>

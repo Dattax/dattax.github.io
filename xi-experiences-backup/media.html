@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XI Media — Concept, direction, production &amp; post</title>
+  <meta name="description" content="We’re a full-service media company that does it all: concept, direction, shot design, post-production, sound, color, targeting, copy, chaos.">
+  <link rel="canonical" href="https://dattax.github.io/media.html">
+  <meta property="og:title" content="XI Media — Concept, direction, production &amp; post">
+  <meta property="og:description" content="We’re a full-service media company that does it all: concept, direction, shot design, post-production, sound, color, targeting, copy, chaos.">
+  <meta property="og:url" content="https://dattax.github.io/media.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://dattax.github.io/assets/media-hero-nyc-1080.jpg">
+  <meta property="og:image:alt" content="Media — two glass towers in New York at blue hour.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <meta name="theme-color" content="#070a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css?v=xi-logo-1">
+  <link rel="stylesheet" href="css/media.css?v=media-2">
+</head>
+<body class="page-media">
+  <a class="skip" href="#main">Skip to media</a>
+  <header class="site-header">
+    <a class="mark" href="index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><span></span></button>
+    <nav class="site-nav" id="nav">
+      <a href="about.html">About</a>
+      <a href="events.php">Events</a>
+      <a href="services.html" class="is-here">Services</a>
+      <a href="sponsorship.html">Sponsorship</a>
+      <a class="cta" href="contact.html">Contact</a>
+      <a class="cta cta-members" href="https://ximembersclub.com/">Members</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <header class="page-head media-hero">
+      <p class="eyebrow"><a href="services.html">Services</a></p>
+      <h1 class="display">WE ARE NOT <br><em>VIDEOGRAPHERS.</em></h1>
+      <p class="lede">We’re a full-service media company that does it all: concept, direction, shot design, post-production, sound, color, targeting, copy, chaos.</p>
+      <div class="media-actions">
+        <a class="cta" href="https://sai.direct/real-estate-media/#work" target="_blank" rel="noopener">View Work</a>
+      </div>
+    </header>
+
+    <section class="chapter close ds-close">
+      <div class="chapter-inner">
+        <p class="eyebrow">Media</p>
+        <p class="lede">STORY FIRST</p>
+        <button class="cta" type="button" data-modal="media-inquire-modal">Inquire</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="media-inquire-modal" hidden>
+    <div class="modal-backdrop" data-close tabindex="-1"></div>
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="media-inquire-title">
+      <button class="modal-close" type="button" data-close aria-label="Close">Close</button>
+      <p class="eyebrow">Media</p>
+      <h2 id="media-inquire-title" class="display">Inquire</h2>
+      <form class="form" id="media-inquire-form" action="mailto:exec-assistant@xiexperiences.com" method="post" enctype="text/plain" data-subject="XI contact — Media">
+        <div class="field hp" aria-hidden="true">
+          <label for="mi-company">Company</label>
+          <input id="mi-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="mi-name">Full Name</label>
+          <input id="mi-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="mi-email">Email</label>
+          <input id="mi-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="mi-phone">Cell Phone</label>
+          <input id="mi-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="mi-service">Service wanted</label>
+          <input id="mi-service" name="service" type="text" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="mi-when">Date and time</label>
+          <input id="mi-when" name="datetime" type="datetime-local">
+        </div>
+        <div class="field">
+          <label for="mi-message">Additional details</label>
+          <textarea id="mi-message" name="message" rows="4"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="cta" type="submit">Send</button>
+          <p class="form-note" role="status">We’ll write back.</p>
+        </div>
+        <p class="mail-fallback">Or write directly: <a href="mailto:exec-assistant@xiexperiences.com">exec-assistant@xiexperiences.com</a></p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <a class="mark" href="index.html"><img src="assets/logo-hero.svg" width="86" height="64" alt="XI"></a>
+    <div class="foot-row">
+      <div>
+        <p class="places">New York · Hamptons · Miami</p>
+        <p>Private events and experiences. Invitation only.</p>
+      </div>
+      <p><a href="contact.html">Contact</a></p>
+    </div>
+  </footer>
+  <script src="js/site.js?v=xi-forms-1"></script>
+</body>
+</html>

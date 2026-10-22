@@ -1,0 +1,17 @@
+# Never serve the config file (it holds the password hash) or dotfiles.
+<FilesMatch "^(config\.php|config\.sample\.php|\..*)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+# Admin pages must never be cached by the CDN or browser.
+<IfModule mod_headers.c>
+  Header always set Cache-Control "no-store, private"
+  Header always set X-Robots-Tag "noindex, nofollow"
+  Header always set X-Frame-Options "DENY"
+</IfModule>
+DirectoryIndex index.php
