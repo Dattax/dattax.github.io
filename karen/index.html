@@ -244,14 +244,63 @@
       color: var(--navy);
       margin: 1.25em 0 1.15em;
     }
-    .sessions-note {
-      background: var(--bg-elev);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 36px 34px;
-      max-width: 640px;
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 64px;
+      align-items: center;
     }
-    .sessions-note p { color: var(--ink-soft); margin-bottom: 22px; }
+    .sessions-copy .eyebrow { margin-bottom: 14px; }
+    .sessions-copy p.lead-body {
+      color: var(--ink-soft);
+      margin: 18px 0 28px;
+      max-width: 38ch;
+    }
+    .intro-video { margin: 0; }
+    .intro-video-frame {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #7a6a5e;
+      box-shadow: 0 16px 40px rgba(28, 36, 30, 0.10);
+    }
+    .intro-video-frame video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 8px 28px rgba(28, 36, 30, 0.22);
+      display: grid;
+      place-items: center;
+      color: var(--sage-dk);
+      pointer-events: none;
+    }
+    .play-btn svg {
+      width: 26px;
+      height: 26px;
+      margin-left: 3px;
+      fill: currentColor;
+    }
+    .intro-video figcaption {
+      margin-top: 12px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      text-align: center;
+    }
 
     /* Specialties */
     .cards {
@@ -460,7 +509,7 @@
     @media (max-width: 900px) {
       :root { --nav-h: 68px; }
       .hero { padding: 40px 0 56px; }
-      .hero-grid, .approach-grid, .contact-grid, .fee-grid, .fee-notes, .cards {
+      .hero-grid, .approach-grid, .contact-grid, .sessions-grid, .fee-grid, .fee-notes, .cards {
         grid-template-columns: 1fr;
         gap: 36px;
       }
@@ -616,15 +665,22 @@
     </section>
 
     <section id="sessions">
-      <div class="wrap">
-        <div class="section-head">
+      <div class="wrap sessions-grid">
+        <div class="sessions-copy">
           <p class="eyebrow">Sessions</p>
           <h2>In person and online.</h2>
-        </div>
-        <div class="sessions-note">
-          <p>I meet with adults and couples at my Brooklyn office and by telehealth. Contact for session availability and rates.</p>
+          <p class="lead-body">I meet with adults and couples at my Brooklyn office and by telehealth. Contact for session availability and rates.</p>
           <a class="btn" href="tel:+18583429287">Call to schedule</a>
         </div>
+        <figure class="intro-video">
+          <div class="intro-video-frame">
+            <video poster="intro-poster.jpg" preload="none" playsinline muted tabindex="-1" aria-hidden="true"></video>
+            <span class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false"><path d="M8 5.5v13l11-6.5L8 5.5z"/></svg>
+            </span>
+          </div>
+          <figcaption>A short introduction from Karen</figcaption>
+        </figure>
       </div>
     </section>
 
