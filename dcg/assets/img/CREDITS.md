@@ -180,11 +180,12 @@ License links go to the license text.
 ### `svc-training.webp` / `.jpg`
 
 - **Used:** Services and homepage carousel — education and training
-- **Title:** Clinical skills training session
-- **Author:** Duy Tân Đại học
+- **Title:** People having a Meeting
+- **Author:** Pavel Danilyuk
+- **Credit line:** Published on Pexels by Pavel Danilyuk. The file’s EXIF Artist field names MAZKO VADIM (mazkovadim.com); the photograph is released under the Pexels License.
 - **License:** [Pexels License](https://www.pexels.com/license/)
-- **Source:** https://www.pexels.com/photo/medical-students-learning-with-training-mannequin-30902100/
-- **Original dimensions:** 6720×4480; resized to 1600×1067 px for the site.
+- **Source:** https://www.pexels.com/photo/people-having-a-meeting-7869066/
+- **Original dimensions:** 6016×4016; cropped and resized to 1600×1067 px for the site.
 
 ### `prod-frc.webp` / `.jpg`
 
@@ -260,3 +261,7 @@ replaced. The previous credits, kept here for the record:
   Sayles, Pexels License,
   https://www.pexels.com/photo/black-hardwares-on-data-server-room-4597280/
   (5568×3712). The filename was reused for the new photograph.
+- **svc-training (previous):** Clinical skills training session, Duy Tân Đại học,
+  Pexels License, https://www.pexels.com/photo/medical-students-learning-with-training-mannequin-30902100/
+  (6720×4480). The filename was reused for a professional-workshop photograph
+  (staged locally, not yet live).
