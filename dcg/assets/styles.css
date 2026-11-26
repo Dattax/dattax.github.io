@@ -28,7 +28,7 @@ h3{font-size:1.2rem;margin-bottom:8px}
 header.site{position:sticky;top:0;background:rgba(255,255,255,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:50}
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:20px}
 .logo{display:flex;align-items:center;flex:none}
-.logo img{width:auto;height:40px;max-width:220px}
+.logo img{width:auto;height:40px;max-width:191px}
 #site-nav{display:flex;gap:26px;align-items:center;font-weight:500;font-size:.94rem}
 #site-nav a:not(.btn){padding:6px 0;border-bottom:2px solid transparent}
 #site-nav a:not(.btn):hover,#site-nav a[aria-current="page"]{color:var(--teal);border-color:var(--teal)}
@@ -159,7 +159,7 @@ footer.site h2{font:700 .78rem 'Plus Jakarta Sans';letter-spacing:.14em;text-tra
 footer.site ul{list-style:none;display:grid;gap:8px}
 footer.site a:hover{color:#fff}
 footer.site .logo{margin-bottom:16px}
-footer.site .logo img{height:36px;max-width:240px;width:auto}
+footer.site .logo img{height:36px;max-width:172px;width:auto}
 footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.84rem}
 
 @media(max-width:900px){
@@ -174,7 +174,7 @@ footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;d
   .tq{padding:30px}.letter{padding:30px 22px}.detail{padding:52px 0}
   .chips{top:74px}.page-hero{padding:44px 0 40px}
   footer.site .cols{grid-template-columns:1fr;gap:30px}
-  header.site .logo img{height:32px;max-width:200px}
+  header.site .logo img{height:32px;max-width:153px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{header.site,.chips,footer.site .cols{display:none}}
@@ -324,7 +324,7 @@ h2{font-size:clamp(1.9rem,3.8vw,3rem);letter-spacing:-.03em;line-height:1.08}
 }
 .feat .fig:before,.feat .fig:after{display:none}
 .feat .fig .cube-fig{max-width:520px;margin:0 auto}
-.hero .wrap.plain{display:block}
+.hero .wrap.plain{display:block;padding-top:0}
 .tq .tagbox{background:transparent;color:#BFEAEE}
 .cube-fig .ntxt{font-size:14px}
 .feat .cube-fig .ntxt{font-size:13px}
@@ -483,7 +483,227 @@ h2{font-size:clamp(1.9rem,3.8vw,3rem);letter-spacing:-.03em;line-height:1.08}
 .detail aside{overflow:hidden;padding-top:0}
 .feat .vis{position:relative;min-height:340px}
 .slide-btn[data-dir="prev"],.slide-prev{transform:scaleX(-1)}
+.slide-btn[data-dir="next"],.slide-next{background:var(--teal);color:#fff}
 .offices.stack{grid-template-columns:1fr}
 @media(min-width:701px){.offices.stack{grid-template-columns:1fr}}
 .founder-photo img{background:var(--mist)}
 .hero-copy .lead + .lead{margin-top:-8px}
+
+/* ============================================================
+   Scroll-driven page background + upgraded sliders (BusyBox-inspired)
+   ============================================================ */
+#page-bg{position:fixed;inset:0;z-index:-1;background:#fff;pointer-events:none}
+html,body{background:transparent}
+.logo-on-dark{display:none}
+.logo{position:relative}
+
+/* Theme: typography, lines, header, buttons flip with the page background */
+html[data-theme="dark"],
+html[data-theme="teal"]{--line:rgba(255,255,255,.18);--mute:#C9D6E0;--ink:#E8EEF2}
+html[data-theme="dark"] body,
+html[data-theme="teal"] body{color:var(--ink)}
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="teal"] h1,
+html[data-theme="teal"] h2,
+html[data-theme="teal"] h3,
+html[data-theme="teal"] h4{color:#fff}
+html[data-theme="dark"] .lead,
+html[data-theme="teal"] .lead,
+html[data-theme="dark"] .src,
+html[data-theme="teal"] .src{color:var(--mute)}
+html[data-theme="dark"] .dim{color:#7FD1D8}
+html[data-theme="teal"] .dim{color:#D4F3F5}
+html[data-theme="dark"] .tagbox,
+html[data-theme="teal"] .tagbox{color:#BFEAEE;background:transparent}
+html[data-theme="dark"] .btn-o,
+html[data-theme="teal"] .btn-o{border-color:#fff;color:#fff}
+html[data-theme="dark"] .btn-o:hover,
+html[data-theme="teal"] .btn-o:hover{background:#fff;color:var(--navy)}
+html[data-theme="dark"] .txt-link,
+html[data-theme="teal"] .txt-link{color:#7FD1D8}
+html[data-theme="dark"] .gridbg:before,
+html[data-theme="teal"] .gridbg:before{background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px)}
+
+html[data-theme="dark"] header.site,
+html[data-theme="teal"] header.site{background:rgba(7,26,51,.96);border-bottom-color:rgba(255,255,255,.12);color:#fff}
+html[data-theme="dark"] .logo-on-light,
+html[data-theme="teal"] .logo-on-light{display:none}
+html[data-theme="dark"] .logo-on-dark,
+html[data-theme="teal"] .logo-on-dark{display:block}
+html[data-theme="dark"] #site-nav a:not(.btn),
+html[data-theme="teal"] #site-nav a:not(.btn){color:#fff}
+html[data-theme="dark"] #site-nav a:not(.btn):hover,
+html[data-theme="dark"] #site-nav a[aria-current="page"],
+html[data-theme="teal"] #site-nav a:not(.btn):hover,
+html[data-theme="teal"] #site-nav a[aria-current="page"]{color:#7FD1D8;border-color:#7FD1D8}
+html[data-theme="dark"] .nav-toggle,
+html[data-theme="teal"] .nav-toggle{color:#fff;border-color:rgba(255,255,255,.28)}
+@media(max-width:900px){
+  html[data-theme="dark"] #site-nav,
+  html[data-theme="teal"] #site-nav{background:#071A33;border-bottom-color:rgba(255,255,255,.12)}
+  html[data-theme="dark"] #site-nav a:not(.btn),
+  html[data-theme="teal"] #site-nav a:not(.btn){border-bottom-color:rgba(255,255,255,.12)}
+}
+
+/* When JS is driving the page background, section skins go transparent so the shift is visible */
+.js body[data-bg-on] .hero,
+.js body[data-bg-on] .page-hero,
+.js body[data-bg-on] .bg-mist,
+.js body[data-bg-on] .statement,
+.js body[data-bg-on] .dark,
+.js body[data-bg-on] .contact-band,
+.js body[data-bg-on] .detail,
+.js body[data-bg-on] .detail:nth-of-type(even){background-color:transparent;background-image:none}
+.js body[data-bg-on] .dark,
+.js body[data-bg-on] .dark h2,
+.js body[data-bg-on] .dark h3,
+.js body[data-bg-on] .dark .lead,
+.js body[data-bg-on] .contact-band,
+.js body[data-bg-on] .contact-band h2,
+.js body[data-bg-on] .contact-band .lead{color:inherit}
+.js body[data-bg-on] .dark .list-cards li,
+.js body[data-bg-on] .dark .list-cards{/* keep card contrast: list cards stay slightly lifted */
+}
+
+/* Cards, forms, letter, quote boxes keep their own surfaces */
+.card,.step,.letter,.office,.feat,.form.f,form.f,.prod,.stat,.ph,.facts{/* no change; they stay opaque */}
+
+/* Hero: copy + cube, then a peeking photo-card slider */
+.hero{overflow:visible}
+.hero .wrap{display:block}
+.hero .hero-top{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;padding-top:0}
+.hero .hero-copy,.hero .fig{background:rgba(255,255,255,.92);border:1px solid var(--line);padding:32px 32px 28px;backdrop-filter:blur(8px)}
+.hero .fig{padding:10px 10px 0;background:rgba(255,255,255,.94)}
+.hero .wrap.plain{display:block;padding-top:0}
+.hero .facts{background:rgba(255,255,255,.94);margin-top:36px}
+.hero-card{margin:0;border-radius:16px;overflow:hidden;background:var(--navy)}
+.hero-card .photo{aspect-ratio:16/9;width:100%}
+@media(max-width:900px){
+  .hero .hero-top{grid-template-columns:1fr;padding-top:48px}
+  .hero .hero-copy{padding:24px 20px}
+}
+
+/* Peeking, draggable carousels */
+.carousel.peek{position:relative}
+.carousel.peek .carousel-track{display:flex;gap:22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:0;padding-right:14%;scrollbar-width:none;touch-action:pan-y;cursor:grab}
+.carousel.peek .carousel-track::-webkit-scrollbar{display:none}
+.carousel.peek .carousel-track:active{cursor:grabbing}
+.carousel.peek .carousel-track > *{flex:0 0 82%;width:82%;max-width:82%;min-width:0;scroll-snap-align:start;box-sizing:border-box}
+@media(min-width:901px){
+  .carousel.peek[data-slider="hero"] .carousel-track > *,
+  .carousel.peek[data-slider="products"] .carousel-track > *{flex-basis:62%;width:62%;max-width:62%}
+  .carousel.peek[data-slider="services"] .carousel-track > *{flex-basis:70%;width:70%;max-width:70%}
+}
+
+/* 01 / 09 fraction + progress bar */
+.slide-meter{display:flex;align-items:center;gap:16px;flex:1;min-width:0}
+.slide-frac{font:700 .92rem/1 'Plus Jakarta Sans',Inter,sans-serif;letter-spacing:.1em;font-variant-numeric:tabular-nums;color:var(--navy);white-space:nowrap}
+.slide-frac .frac-sep{opacity:.4;margin:0 .35em}
+html[data-theme="dark"] .slide-frac,
+html[data-theme="teal"] .slide-frac{color:#fff}
+.slide-progress{flex:1;height:2px;background:var(--line);border-radius:2px;overflow:hidden;min-width:48px}
+.slide-progress .bar{display:block;height:100%;width:100%;background:var(--teal);transform:scaleX(0);transform-origin:left center;transition:transform .2s ease}
+.carousel-ui{display:none;justify-content:space-between;align-items:center;margin-top:22px;gap:16px}
+.carousel.is-on .carousel-ui{display:flex}
+
+/* Desktop: services as a pinned horizontal scroll */
+@media(min-width:901px){
+  .js body.pin-ok .pin-services .pin-stage{position:sticky;top:74px;height:calc(100vh - 74px);display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;padding-top:4px;box-sizing:border-box}
+  .js body.pin-ok .pin-services .carousel-track{overflow:visible;scroll-snap-type:none;padding-right:0;cursor:default;will-change:transform}
+  .js body.pin-ok .pin-services .carousel-track > *{scroll-snap-align:unset;flex-basis:420px;width:420px;max-width:420px}
+  .js body.pin-ok .pin-services .photo{max-height:260px}
+  .js body.pin-ok .pin-services .carousel-ui{margin-top:16px}
+}
+
+/* Reduced motion: no pin, no peeking slider — stay a stacked or 3-col grid */
+@media (prefers-reduced-motion:reduce){
+  .carousel.peek .carousel-track{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;padding-right:0;cursor:default;gap:22px}
+  .carousel.peek .carousel-track > *{flex:none;width:auto;max-width:none}
+  .carousel-ui{display:none !important}
+  .pin-services .pin-stage{position:static;height:auto;overflow:visible}
+  #page-bg{transition:none}
+}
+@media (prefers-reduced-motion:reduce) and (max-width:900px){
+  .carousel.peek .carousel-track{grid-template-columns:1fr}
+}
+
+/* Contrast helpers for chips on a shifting page */
+html[data-theme="dark"] .chips,
+html[data-theme="teal"] .chips{background:rgba(7,26,51,.92);border-bottom-color:rgba(255,255,255,.12)}
+html[data-theme="dark"] .chips a,
+html[data-theme="teal"] .chips a{background:transparent;color:#fff;border-color:rgba(255,255,255,.28)}
+html[data-theme="dark"] .chips a.on,
+html[data-theme="dark"] .chips a:hover,
+html[data-theme="teal"] .chips a.on,
+html[data-theme="teal"] .chips a:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* Keep opaque component surfaces readable even when the page is dark */
+html[data-theme="dark"] .card,
+html[data-theme="teal"] .card,
+html[data-theme="dark"] .step,
+html[data-theme="teal"] .step,
+html[data-theme="dark"] form.f,
+html[data-theme="teal"] form.f,
+html[data-theme="dark"] .letter,
+html[data-theme="teal"] .letter,
+html[data-theme="dark"] .facts,
+html[data-theme="teal"] .facts,
+html[data-theme="dark"] .hero-copy,
+html[data-theme="teal"] .hero-copy,
+html[data-theme="dark"] .fig,
+html[data-theme="teal"] .fig{color:var(--ink,#1D2B3A)}
+html[data-theme="dark"] .card h3,
+html[data-theme="teal"] .card h3,
+html[data-theme="dark"] .hero-copy h1,
+html[data-theme="teal"] .hero-copy h1,
+html[data-theme="dark"] .letter,
+html[data-theme="teal"] .letter{color:#0B2545}
+html[data-theme="dark"] .hero-copy .lead,
+html[data-theme="teal"] .hero-copy .lead,
+html[data-theme="dark"] .card p,
+html[data-theme="teal"] .card p{color:#5A6B7B}
+html[data-theme="dark"] .hero-copy .dim,
+html[data-theme="teal"] .hero-copy .dim{color:var(--teal)}
+html[data-theme="dark"] .hero-copy .tagbox,
+html[data-theme="teal"] .hero-copy .tagbox{color:var(--teal)}
+html[data-theme="dark"] .facts .fact b,
+html[data-theme="teal"] .facts .fact b{color:#0B2545}
+html[data-theme="dark"] .facts .fact span,
+html[data-theme="teal"] .facts .fact span{color:#5A6B7B}
+
+/* Slider cards enter from the side, so they skip the scroll-reveal gate */
+.js .carousel .rv,.js .pin-services .carousel .rv{opacity:1;transform:none}
+
+html[data-theme="dark"] .prod,
+html[data-theme="teal"] .prod{background:#fff;border-color:rgba(11,37,69,.12);color:#1D2B3A}
+html[data-theme="dark"] .prod b,
+html[data-theme="teal"] .prod b{color:#0B2545}
+html[data-theme="dark"] .prod span,
+html[data-theme="teal"] .prod span{color:#5A6B7B}
+html[data-theme="dark"] .tq,
+html[data-theme="teal"] .tq,
+html[data-theme="dark"] blockquote.letter,
+html[data-theme="teal"] blockquote.letter{background:#0B2545;color:#E8EEF2}
+html[data-theme="teal"] .contact-band h2,
+html[data-theme="dark"] .contact-band h2{color:#fff}
+html[data-theme="teal"] .contact-band .lead,
+html[data-theme="dark"] .contact-band .lead{color:#D5F0F2}
+html[data-theme="teal"] .contact-band .ci,
+html[data-theme="dark"] .contact-band .ci,
+html[data-theme="teal"] .contact-band a:not(.btn),
+html[data-theme="dark"] .contact-band a:not(.btn){color:#EAF9FA}
+html[data-theme="teal"] .contact-band .btn-w,
+html[data-theme="dark"] .contact-band .btn-w{background:#fff;color:#0B2545}
+html[data-theme="teal"] .contact-band .btn-w:hover,
+html[data-theme="dark"] .contact-band .btn-w:hover{background:#F1F7F8;color:#0B2545}
+html[data-theme="teal"] header.site .btn-p,
+html[data-theme="dark"] header.site .btn-p{background:var(--teal);color:#fff}
+
+/* Contact offices: city and ZIP only, three clean cards */
+.offices-block{padding-top:8px;padding-bottom:8px}
+.offices-block h3{margin:0 0 18px}
+.office.has-photo .body{display:flex;align-items:center;min-height:56px}
+.office.has-photo .body b{margin:0}

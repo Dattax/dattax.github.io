@@ -25,13 +25,14 @@ Source host: https://dattaconsultinggroup.com/
 | `prod-chois-screen.webp` / `.jpg` | `assets/images/vykij1.jpg` (testimonials page) | Products page — CHOIS | Screenshot of the myCHOIS / School Health portal as published on the current site. |
 | `prod-ship-screen.webp` / `.jpg` | `assets/images/vykij2.jpg` (testimonials page) | Products page — SHIP | Screenshot of the School Health Program system as published on the current site. |
 | `prod-mabellela-work.webp` / `.jpg` | `assets/images/mabellela3.jpg` (Ma Belle La page) | Products page — Ma Belle La | Fan of design work from the current Ma Belle La page. Original is 600×350; used as-is, recompressed. |
-| `archive/logo.png` | `assets/images/logo.png` | Archived only (not used on the draft pages) | Original live-site logo, kept so the Echo D mark can be reverted. |
+| `archive/logo.png` | `assets/images/logo.png` | Archived only (not used on the draft pages) | Original live-site logo. |
+| `archive/concept-9/` | — | Archived only | Concept 9 “Echo D” (made by Dev Buddy), used briefly on the draft site before the switch to concept 15. |
 
 
 
-## Brand mark (concept 9, “Echo D”)
+## Brand mark (concept 15, “Cube in D”)
 
-Deep selected this concept, made by Dev Buddy, for use on the draft site for now. Source files live in `assets/img/brand/` (SVG plus @2x PNG; text is outlined). The header uses the color lockup; navy surfaces such as the footer use a reversed lockup with the official navy rectangle removed so it sits on the footer colour. Favicons and the Apple touch icon are generated from the icon. `og-image.png` and the Organization structured-data logo (`logo.png`) use the new lockup. The previous live-site logo is in `assets/img/archive/`.
+Deep selected this concept, made by Dev Buddy, for use on the draft site for now. Source files live in `assets/img/brand/` (SVG plus @2x PNG; text is outlined). The header uses the color lockup; navy surfaces such as the footer use a reversed lockup without the official navy plate so it sits on the footer colour. Favicons and the Apple touch icon are generated from the icon. `og-image.png` and the Organization structured-data logo (`logo.png`) use the new lockup. Earlier marks (the original live-site logo, and concept 9 “Echo D”) are in `assets/img/archive/`.
 
 Current-site images that were **not** reused, and why:
 

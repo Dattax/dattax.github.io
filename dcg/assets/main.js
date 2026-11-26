@@ -94,6 +94,20 @@
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); ro.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     items.forEach(function (el) { ro.observe(el); });
+    function revealVisible() {
+      for (var i = 0; i < items.length; i++) {
+        var el = items[i];
+        if (el.classList.contains('in')) continue;
+        var r = el.getBoundingClientRect();
+        if (r.bottom > 60 && r.top < window.innerHeight - 24 && r.height > 0) {
+          el.classList.add('in');
+          ro.unobserve(el);
+        }
+      }
+    }
+    window.addEventListener('scroll', revealVisible, { passive: true });
+    window.addEventListener('resize', revealVisible);
+    revealVisible();
   }
 
   /* Spotlight follows the pointer on cards (skipped for reduced motion). */
@@ -117,218 +131,440 @@
   }
 })();
 
-/* ================= Sliders, marquee, parallax, rotator, count-up ================= */
+/* ================= Page background, sliders, marquee, parallax, rotator, count-up ================= */
 (function () {
   'use strict';
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var motionOK = !reduce;
+  var motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var staticShots = !!window.DCG_STATIC_SHOTS;
+  var lerpOn = motionOK && !staticShots;
+  var mqDesk = window.matchMedia('(min-width: 901px)');
 
-  function kids(el, sel) { return Array.prototype.slice.call(el.querySelectorAll(sel)); }
+  /* ---------- Scroll-driven page background ---------- */
+  var BG = {
+    white: [255, 255, 255],
+    mist:  [241, 247, 248],
+    navy:  [11, 37, 69],
+    ink:   [7, 26, 51],
+    teal:  [14, 124, 134]
+  };
+  var pageBg = document.getElementById('page-bg');
+  var bgSections = Array.prototype.slice.call(document.querySelectorAll('[data-bg]'));
 
-  /* Generic slider: used for the hero, services, products. Pauses on hover, focus, hidden tab. */
-  function dcgSlider(root, opts) {
-    opts = opts || {};
-    var slides = kids(root, opts.slide || ':scope > .slides > .slide, :scope > .carousel-track > *');
-    if (!slides.length) return;
-    var btns = root.querySelector('.slide-dots');
-    var prev = root.querySelector('.slide-prev, [data-dir="prev"]');
-    var next = root.querySelector('.slide-next, [data-dir="next"]');
-    var i = 0, timer = null, interval = opts.interval || 5500;
-    var autoplay = motionOK && opts.autoplay !== false && slides.length > 1 && !window.DCG_STATIC_SHOTS;
-    var frozen = false;
+  function rgb(c) { return 'rgb(' + Math.round(c[0]) + ',' + Math.round(c[1]) + ',' + Math.round(c[2]) + ')'; }
+  function mix(a, b, t) {
+    t = t < 0 ? 0 : t > 1 ? 1 : t;
+    return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  }
+  function lum(c) { return (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255; }
+  function nameOf(el) { return (el && el.getAttribute('data-bg')) || 'white'; }
+  function colorOf(el) { return BG[nameOf(el)] || BG.white; }
 
-    if (btns && !btns.children.length) {
-      slides.forEach(function (_, n) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.setAttribute('aria-label', 'Go to slide ' + (n + 1));
-        btns.appendChild(b);
-      });
+  function applyTheme(c, nameHint) {
+    var L = lum(c);
+    var theme = 'light';
+    if (nameHint === 'teal' && L < 0.45) theme = 'teal';
+    else if (L < 0.45) theme = 'dark';
+    if (document.documentElement.getAttribute('data-theme') !== theme) {
+      document.documentElement.setAttribute('data-theme', theme);
     }
-    var dots = btns ? kids(btns, 'button') : [];
-
-    function perView() {
-      if (!opts.scroll) return 1;
-      var track = root.querySelector('.carousel-track');
-      if (!track || !slides[0]) return 1;
-      var tw = track.clientWidth, sw = slides[0].getBoundingClientRect().width;
-      if (!tw || !sw) return 1;
-      return Math.max(1, Math.round(tw / sw));
-    }
-    function scrollToSlide(idx, user) {
-      var track = root.querySelector('.carousel-track');
-      if (!track || !slides[idx]) return;
-      var first = slides[0];
-      var left = slides[idx].offsetLeft - first.offsetLeft;
-      track.scrollTo({ left: left, behavior: user && motionOK ? 'smooth' : 'auto' });
-    }
-    function go(n, user) {
-      if (!slides.length) return;
-      var pv = perView();
-      var maxStart = Math.max(0, slides.length - pv);
-      i = (n + slides.length) % slides.length;
-      var startAt = Math.min(i, maxStart);
-      slides.forEach(function (s, k) {
-        s.classList.toggle('is-on', k === i);
-        s.setAttribute('aria-hidden', (k >= startAt && k < startAt + pv) ? 'false' : 'true');
-      });
-      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
-      if (opts.scroll) scrollToSlide(startAt, user);
-      if (user) restart();
-    }
-    function restart() {
-      if (!autoplay || frozen) return;
-      clearInterval(timer);
-      timer = setInterval(function () { go(i + 1); }, interval);
-    }
-    function stop() { clearInterval(timer); timer = null; }
-    function freeze() { frozen = true; autoplay = false; stop(); go(0); }
-
-    if (!root.hasAttribute('tabindex')) root.setAttribute('tabindex', '0');
-    root.classList.add('is-on');
-    go(0);
-    if (prev) prev.addEventListener('click', function () { go(i - 1, true); });
-    if (next) next.addEventListener('click', function () { go(i + 1, true); });
-    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k, true); }); });
-    root.addEventListener('keydown', function (e) {
-      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1, true); }
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1, true); }
-    });
-    var x0 = null;
-    root.addEventListener('pointerdown', function (e) { x0 = e.clientX; });
-    root.addEventListener('pointerup', function (e) {
-      if (x0 == null) return;
-      var dx = e.clientX - x0; x0 = null;
-      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1), true);
-    });
-    root.addEventListener('mouseenter', stop);
-    root.addEventListener('mouseleave', restart);
-    root.addEventListener('focusin', stop);
-    root.addEventListener('focusout', function (e) {
-      if (!root.contains(e.relatedTarget)) restart();
-    });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) stop(); else restart();
-    });
-    if ('IntersectionObserver' in window) {
-      var vis = new IntersectionObserver(function (entries) {
-        entries.forEach(function (en) {
-          if (en.isIntersecting) restart();
-          else stop();
-        });
-      }, { threshold: 0.15 });
-      vis.observe(root);
-    }
-    if (autoplay) restart();
-    var api = { go: go, stop: stop, freeze: freeze, root: root };
-    window.DCGMotion.sliders.push(api);
-    return api;
   }
 
-  window.DCGMotion = window.DCGMotion || { sliders: [] };
-  window.DCGMotion.reset = function () {
-    this.sliders.forEach(function (s) { s.freeze(); });
+  function currentBg() {
+    if (!bgSections.length) return { color: BG.white, name: 'white' };
+    var viewH = window.innerHeight;
+    var visible = [];
+    var i, r, vis, a, b, tot, t, c, name;
+    for (i = 0; i < bgSections.length; i++) {
+      r = bgSections[i].getBoundingClientRect();
+      vis = Math.min(r.bottom, viewH) - Math.max(r.top, 0);
+      if (vis > 0) visible.push({ el: bgSections[i], vis: vis });
+    }
+    if (!visible.length) {
+      // Fall back to the last section whose top has crossed mid-viewport
+      var mid = viewH * 0.45;
+      var active = bgSections[0];
+      for (i = 0; i < bgSections.length; i++) {
+        if (bgSections[i].getBoundingClientRect().top <= mid) active = bgSections[i];
+      }
+      return { color: colorOf(active), name: nameOf(active) };
+    }
+    visible.sort(function (x, y) { return y.vis - x.vis; });
+    a = visible[0];
+    b = visible[1];
+    name = nameOf(a.el);
+    c = colorOf(a.el);
+    if (lerpOn && b) {
+      tot = a.vis + b.vis;
+      t = tot ? b.vis / tot : 0;
+      c = mix(c, colorOf(b.el), t);
+      if (t > 0.5) name = nameOf(b.el);
+    }
+    return { color: c, name: name };
+  }
+
+  function paintBg() {
+    if (!pageBg || !bgSections.length) return;
+    var state = currentBg();
+    pageBg.style.backgroundColor = rgb(state.color);
+    applyTheme(state.color, state.name);
+  }
+
+  if (pageBg && bgSections.length) {
+    document.body.setAttribute('data-bg-on', '');
+    paintBg();
+    window.addEventListener('scroll', paintBg, { passive: true });
+    window.addEventListener('resize', paintBg);
+  }
+
+  /* ---------- Peeking / pinned sliders ---------- */
+  var sliders = [];
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function enhanceSlider(root) {
+    var track = root.querySelector('.carousel-track');
+    if (!track) return;
+    var slides = Array.prototype.filter.call(track.children, function (el) {
+      return el.nodeType === 1 && el.tagName !== 'BUTTON';
+    });
+    if (slides.length < 2) return;
+
+    var index = 0;
+    var auto = 0;
+    var hovered = false;
+    var inView = true;
+    var dragging = false;
+    var moved = false;
+    var startX = 0, startScroll = 0, startY = 0;
+    var pinActive = false;
+    var pinWrap = root.closest('.pin-services');
+    var canPin = root.getAttribute('data-pin') === 'desktop' && !!pinWrap;
+    var fracCur = root.querySelector('.frac-now');
+    var fracTot = root.querySelector('.frac-total');
+    var bar = root.querySelector('.slide-progress .bar');
+    var autoplay = !staticShots && motionOK && root.getAttribute('data-slider') === 'hero';
+    var interval = 6500;
+
+    root.querySelectorAll('img[loading="lazy"]').forEach(function (img) { img.loading = 'eager'; });
+    if (fracTot) fracTot.textContent = pad2(slides.length);
+    root.classList.add('is-on');
+    track.setAttribute('tabindex', '0');
+    track.setAttribute('role', 'list');
+
+    function gap() {
+      var s = window.getComputedStyle(track);
+      return parseFloat(s.columnGap || s.gap) || 0;
+    }
+    function slideSpan() {
+      return slides[0].getBoundingClientRect().width + gap();
+    }
+    function maxScroll() {
+      if (pinActive) return Math.max(0, track.scrollWidth - track.parentElement.clientWidth);
+      return Math.max(0, track.scrollWidth - track.clientWidth);
+    }
+    function pinRange() {
+      if (!pinWrap) return { start: 0, end: 0, height: 0 };
+      var stage = pinWrap.querySelector('.pin-stage') || pinWrap;
+      var extra = Math.max(maxScroll(), 1);
+      return {
+        start: pinWrap.getBoundingClientRect().top + window.scrollY,
+        extra: extra,
+        height: stage.offsetHeight
+      };
+    }
+
+    function setIndex(i, fromScroll) {
+      index = Math.max(0, Math.min(slides.length - 1, i));
+      if (fracCur) fracCur.textContent = pad2(index + 1);
+      var max = maxScroll();
+      var progress = max ? (pinActive ? getPinX() : track.scrollLeft) / max : (index / (slides.length - 1));
+      if (progress < 0) progress = 0;
+      if (progress > 1) progress = 1;
+      if (bar) bar.style.transform = 'scaleX(' + (progress || (index + 1) / slides.length) + ')';
+    }
+
+    function getPinX() {
+      var r = pinRange();
+      var y = window.scrollY - r.start;
+      var travel = r.extra;
+      var t = travel ? y / travel : 0;
+      if (t < 0) t = 0;
+      if (t > 1) t = 1;
+      return t * travel;
+    }
+
+    function applyPin() {
+      if (!pinActive) return;
+      var x = getPinX();
+      track.style.transform = 'translateX(' + (-x) + 'px)';
+      var span = slideSpan() || 1;
+      setIndex(Math.round(x / span), true);
+    }
+
+    function go(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      if (pinActive) {
+        var r = pinRange();
+        var x = i * slideSpan();
+        var t = r.extra ? x / r.extra : 0;
+        window.scrollTo({ top: r.start + t * r.extra, behavior: motionOK ? 'smooth' : 'auto' });
+      } else {
+        var left = slides[i].offsetLeft;
+        track.scrollTo({ left: left, behavior: motionOK ? 'smooth' : 'auto' });
+      }
+      setIndex(i);
+    }
+
+    function syncFromScroll() {
+      if (pinActive) return;
+      var span = slideSpan() || 1;
+      setIndex(Math.round(track.scrollLeft / span), true);
+    }
+
+    function updatePinMode() {
+      var want = canPin && mqDesk.matches && motionOK && !staticShots;
+      if (want === pinActive) {
+        if (pinActive) {
+          // Keep spacer in sync with current card width
+          var extra = maxScroll();
+          pinWrap.style.height = (pinWrap.querySelector('.pin-stage').offsetHeight + extra) + 'px';
+          applyPin();
+        }
+        return;
+      }
+      pinActive = want;
+      if (want) {
+        document.body.classList.add('pin-ok');
+        pinWrap.style.height = (pinWrap.querySelector('.pin-stage').offsetHeight + maxScroll()) + 'px';
+        track.style.transform = '';
+        track.scrollLeft = 0;
+        applyPin();
+      } else {
+        document.body.classList.remove('pin-ok');
+        pinWrap.style.height = '';
+        track.style.transform = '';
+        go(index);
+      }
+    }
+
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-dir]');
+      if (!btn || !root.contains(btn)) return;
+      go(index + (btn.getAttribute('data-dir') === 'next' ? 1 : -1));
+      stopAuto();
+    });
+
+    track.addEventListener('scroll', function () { syncFromScroll(); }, { passive: true });
+
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        go(index + (e.key === 'ArrowRight' ? 1 : -1));
+        stopAuto();
+      } else if (e.key === 'Home') { e.preventDefault(); go(0); }
+      else if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    });
+
+    function onPointerDown(e) {
+      if (e.pointerType === 'touch' && !pinActive) return; // native swipe
+      if (e.button && e.button !== 0) return;
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      startY = window.scrollY;
+      startScroll = pinActive ? getPinX() : track.scrollLeft;
+      try { track.setPointerCapture(e.pointerId); } catch (err) {}
+      stopAuto();
+    }
+    function onPointerMove(e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      if (pinActive) {
+        var r = pinRange();
+        var x = startScroll - dx;
+        if (x < 0) x = 0;
+        if (x > r.extra) x = r.extra;
+        window.scrollTo(0, r.start + x);
+      } else {
+        track.scrollLeft = startScroll - dx;
+      }
+    }
+    function onPointerUp() {
+      if (!dragging) return;
+      dragging = false;
+      if (!pinActive) {
+        var span = slideSpan() || 1;
+        go(Math.round(track.scrollLeft / span));
+      }
+    }
+    track.addEventListener('pointerdown', onPointerDown);
+    track.addEventListener('pointermove', onPointerMove);
+    track.addEventListener('pointerup', onPointerUp);
+    track.addEventListener('pointercancel', onPointerUp);
+    track.addEventListener('click', function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
+
+    root.addEventListener('mouseenter', function () { hovered = true; });
+    root.addEventListener('mouseleave', function () { hovered = false; });
+    root.addEventListener('focusin', function () { hovered = true; });
+    root.addEventListener('focusout', function () { hovered = false; });
+
+    function tick() {
+      if (hovered || document.hidden || !inView || !autoplay) return;
+      go(index >= slides.length - 1 ? 0 : index + 1);
+    }
+    function startAuto() {
+      if (!autoplay) return;
+      stopAuto();
+      auto = window.setInterval(tick, interval);
+    }
+    function stopAuto() {
+      if (auto) { window.clearInterval(auto); auto = 0; }
+    }
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        inView = entries[0] && entries[0].isIntersecting;
+      }, { threshold: 0.2 }).observe(root);
+    }
+
+    if (canPin) {
+      window.addEventListener('scroll', function () { if (pinActive) applyPin(); }, { passive: true });
+    }
+    window.addEventListener('resize', function () {
+      updatePinMode();
+      if (!pinActive) syncFromScroll();
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAuto();
+      else startAuto();
+    });
+
+    function reset() {
+      stopAuto();
+      if (pinActive) {
+        var r = pinRange();
+        window.scrollTo(0, r.start);
+        applyPin();
+      } else {
+        track.scrollTo({ left: 0, behavior: 'auto' });
+      }
+      setIndex(0);
+    }
+    function freeze() { stopAuto(); }
+
+    updatePinMode();
+    setIndex(0);
+    startAuto();
+
+    sliders.push({ root: root, go: go, reset: reset, freeze: freeze, count: slides.length });
+  }
+
+  if (motionOK) {
+    document.querySelectorAll('[data-slider]').forEach(enhanceSlider);
+  } else {
+    // Still paint theme, but leave carousels as grids; fill any visible totals just in case
+    document.querySelectorAll('[data-slider]').forEach(function (root) {
+      var track = root.querySelector('.carousel-track');
+      var n = track ? track.children.length : 0;
+      var tot = root.querySelector('.frac-total');
+      if (tot && n) tot.textContent = pad2(n);
+    });
+  }
+
+  window.DCGMotion = {
+    reset: function () { sliders.forEach(function (s) { s.reset(); }); paintBg(); },
+    freeze: function () { sliders.forEach(function (s) { s.freeze(); }); }
   };
 
-  kids(document, '[data-slider]').forEach(function (el) {
-    /* Reduced motion: leave carousels as stacked grids and the hero on its first photo. */
-    if (!motionOK) return;
-    var type = el.getAttribute('data-slider');
-    dcgSlider(el, {
-      autoplay: true,
-      interval: type === 'hero' ? 6000 : 5500,
-      scroll: type !== 'hero',
-      slide: type === 'hero' ? ':scope .slide' : ':scope .carousel-track > *'
-    });
+  /* ---------- Marquee: pause on hover / focus (CSS does the scrolling) ---------- */
+  document.querySelectorAll('.marquee').forEach(function (el) {
+    var inner = el.querySelector('.mq-inner');
+    if (!inner) return;
+    el.addEventListener('mouseenter', function () { inner.style.animationPlayState = 'paused'; });
+    el.addEventListener('mouseleave', function () { if (motionOK) inner.style.animationPlayState = ''; });
+    el.addEventListener('focusin', function () { inner.style.animationPlayState = 'paused'; });
+    el.addEventListener('focusout', function () { if (motionOK) inner.style.animationPlayState = ''; });
   });
 
-  /* Rotating phrases */
-  kids(document, '[data-rotator]').forEach(function (el) {
-    var spans = kids(el, 'span');
-    if (!spans.length) return;
-    spans[0].classList.add('is-on');
-    if (!motionOK || spans.length < 2) return;
-    var i = 0, t;
-    function tick() {
-      spans[i].classList.remove('is-on');
-      i = (i + 1) % spans.length;
-      spans[i].classList.add('is-on');
-    }
-    function start() { t = setInterval(tick, 4000); }
-    function stop() { clearInterval(t); }
-    el.addEventListener('mouseenter', stop);
-    el.addEventListener('mouseleave', start);
-    el.addEventListener('focusin', stop);
-    el.addEventListener('focusout', start);
-    start();
+  /* ---------- Hero line rotator ---------- */
+  document.querySelectorAll('.rotator').forEach(function (el) {
+    var words = el.querySelectorAll('.rw');
+    if (words.length < 2 || !motionOK) return;
+    var i = 0;
+    el.setAttribute('aria-live', 'polite');
+    window.setInterval(function () {
+      words[i].classList.remove('on');
+      i = (i + 1) % words.length;
+      words[i].classList.add('on');
+    }, 3200);
   });
 
-  /* Count-up for letter figures */
-  kids(document, '[data-count]').forEach(function (el) {
-    var target = el.getAttribute('data-count');
-    var prefix = el.getAttribute('data-prefix') || '';
-    var suffix = el.getAttribute('data-suffix') || '';
-    var num = parseFloat(String(target).replace(/[^\d.]/g, ''));
-    if (isNaN(num)) return;
-    var startVal = 0;
-    function render(v) {
-      var shown = (num >= 1000) ? Math.round(v).toLocaleString('en-US') : String(Math.round(v));
-      el.textContent = prefix + shown + suffix;
+  /* ---------- Count-up ---------- */
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (!target) return;
+    if (!motionOK) { el.textContent = String(target); return; }
+    var start = 0, t0 = null, dur = 1100;
+    function step(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(Math.round(start + (target - start) * eased));
+      if (p < 1) requestAnimationFrame(step);
     }
-    if (!motionOK || !('IntersectionObserver' in window)) { render(num); return; }
-    el.textContent = prefix + '0' + suffix;
-    var io = new IntersectionObserver(function (entries) {
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var ioCount = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        io.unobserve(el);
-        var t0 = performance.now(), dur = 900;
-        function frame(now) {
-          var p = Math.min(1, (now - t0) / dur);
-          var eased = 1 - Math.pow(1 - p, 3);
-          render(startVal + (num - startVal) * eased);
-          if (p < 1) requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
+        if (en.isIntersecting) { animateCount(en.target); ioCount.unobserve(en.target); }
       });
-    }, { threshold: 0.4 });
-    io.observe(el.closest('.stat') || el);
-  });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count]').forEach(function (el) { ioCount.observe(el); });
+  } else {
+    document.querySelectorAll('[data-count]').forEach(animateCount);
+  }
 
-  /* Subtle parallax on photos (desktop only) */
-  if (motionOK && window.innerWidth > 900) {
-    var photos = kids(document, '.parallax-img');
-    if (photos.length) {
+  /* ---------- Light parallax on desktop photographs ---------- */
+  if (motionOK && window.matchMedia('(pointer:fine) and (min-width:901px)').matches && !staticShots) {
+    var layers = document.querySelectorAll('.has-media .media img, .photo-full img, .svc-media img, .hero-card .photo img');
+    if (layers.length) {
       var ticking = false;
-      function update() {
+      function shift() {
         ticking = false;
-        photos.forEach(function (img) {
+        var mid = window.innerHeight / 2;
+        layers.forEach(function (img) {
           var r = img.getBoundingClientRect();
           if (r.bottom < 0 || r.top > window.innerHeight) return;
-          var mid = r.top + r.height / 2 - window.innerHeight / 2;
-          var y = Math.max(-24, Math.min(24, mid * -0.06));
-          img.style.transform = 'scale(1.08) translateY(' + y + 'px)';
+          var d = (r.top + r.height / 2 - mid) / window.innerHeight;
+          img.style.transform = 'translate3d(0,' + (d * -16) + 'px,0) scale(1.06)';
         });
       }
       window.addEventListener('scroll', function () {
-        if (!ticking) { requestAnimationFrame(update); ticking = true; }
+        if (!ticking) { ticking = true; requestAnimationFrame(shift); }
       }, { passive: true });
-      update();
     }
   }
 
-  /* Process section: update the sticky large number from data-step */
+  /* ---------- Process: the sticky numeral already works in CSS.
+      Nudge the visible number to the step nearest the pin. ---------- */
   var pin = document.querySelector('.process-pin');
-  if (pin && 'IntersectionObserver' in window) {
-    var label = pin.querySelector('.pin-num');
-    var steps = kids(pin, '[data-step]');
-    if (label && steps.length) {
-      var io = new IntersectionObserver(function (entries) {
+  if (pin && motionOK) {
+    var num = pin.querySelector('.process-num');
+    var steps = pin.querySelectorAll('.step');
+    if (num && steps.length && 'IntersectionObserver' in window) {
+      var ioPin = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting) label.textContent = en.target.getAttribute('data-step');
+          if (!en.isIntersecting) return;
+          var i = Array.prototype.indexOf.call(steps, en.target);
+          if (i >= 0) num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1);
         });
-      }, { rootMargin: '-40% 0px -40% 0px', threshold: 0.2 });
-      steps.forEach(function (s) { io.observe(s); });
+      }, { rootMargin: '-30% 0px -50% 0px', threshold: 0.2 });
+      steps.forEach(function (s) { ioPin.observe(s); });
     }
   }
 })();
