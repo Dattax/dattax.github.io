@@ -58,7 +58,7 @@
       var status = form.querySelector('.form-status');
       if (!wired && status) {
         status.hidden = false;
-        status.textContent = 'Preview only: this form is not connected yet, so nothing was sent. Please call (001) 858 395 3287 or email contact@dattaconsultinggroup.com.';
+        status.textContent = 'Preview only: this form is not connected yet, so nothing was sent. Please call (858) 395-3287 or email contact@dattaconsultinggroup.com.';
       }
     });
   });
