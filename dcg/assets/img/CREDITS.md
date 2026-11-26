@@ -106,13 +106,12 @@ License links go to the license text.
 
 ### `who-sequencer.webp` / `.jpg`
 
-- **Used:** Services — biomedical informatics
-- **Title:** File:Revolocity DNA sequencer.jpg
-- **Author:** Scotted400
-- **Credit line:** Own work
-- **License:** CC BY 4.0 ([license text](https://creativecommons.org/licenses/by/4.0))
-- **Source:** https://commons.wikimedia.org/wiki/File%3ARevolocity_DNA_sequencer.jpg
-- **Original dimensions:** 4032×3024; resized to a maximum width of 1,600–1,800 px for the site.
+- **Used:** Services and homepage carousel — biomedical informatics
+- **Title:** Scientists Looking at Chemical Formula on Laptop
+- **Author:** Artem Podrez
+- **License:** [Pexels License](https://www.pexels.com/license/)
+- **Source:** https://www.pexels.com/photo/scientists-looking-at-chemical-formula-on-laptop-8533088/
+- **Original dimensions:** 6144×3456; cropped and resized to 1800×1350 px for the site.
 
 ### `svc-genomics.webp` / `.jpg`
 
@@ -123,15 +122,23 @@ License links go to the license text.
 - **Source:** https://commons.wikimedia.org/wiki/File:DNA-microarray_analysis.jpg
 - **Original dimensions:** 1914×1398; resized to 1600×1169 px for the site.
 
+### `svc-genai.webp` / `.jpg`
+
+- **Used:** Services and homepage carousel — generative AI & LLMs
+- **Title:** A Female Doctor in White Coat Using a Laptop
+- **Author:** Tima Miroshnichenko
+- **License:** [Pexels License](https://www.pexels.com/license/)
+- **Source:** https://www.pexels.com/photo/a-female-doctor-in-white-coat-using-a-laptop-8376187/
+- **Original dimensions:** 3870×5805; cropped and resized to 1600×1200 px for the site.
+
 ### `svc-data.webp` / `.jpg`
 
-- **Used:** Services and homepage carousel — generative AI & LLMs; data analysis & reports
-- **Title:** File:Virginia Tech - data center.jpg
-- **Author:** Christopher Bowns
-- **Credit line:** https://www.flickr.com/photos/cipherswarm/2414578731/
-- **License:** CC BY-SA 2.0 ([license text](https://creativecommons.org/licenses/by-sa/2.0))
-- **Source:** https://commons.wikimedia.org/wiki/File%3AVirginia_Tech_-_data_center.jpg
-- **Original dimensions:** 3264×2448; resized to a maximum width of 1,600–1,800 px for the site.
+- **Used:** Services and homepage carousel — data analysis & reports
+- **Title:** People Discuss About Graphs and Rates
+- **Author:** fauxels
+- **License:** [Pexels License](https://www.pexels.com/license/)
+- **Source:** https://www.pexels.com/photo/people-discuss-about-graphs-and-rates-3184292/
+- **Original dimensions:** 6000×3374; cropped and resized to 1600×1200 px for the site.
 
 ### `svc-analytics.webp` / `.jpg`
 
@@ -145,11 +152,12 @@ License links go to the license text.
 ### `svc-database.webp` / `.jpg`
 
 - **Used:** Services and homepage carousel — database development
-- **Title:** Server room with a rolling workstation
-- **Author:** Brett Sayles
+- **Title:** Woman Sitting in Front Laptop
+- **Author:** Christina Morillo / #WOCinTech Chat
+- **Credit line:** Published on Pexels by Christina Morillo. The file’s EXIF copyright tag names Mike Ngo Photography; these #WOCinTech Chat photographs are released under the Pexels License.
 - **License:** [Pexels License](https://www.pexels.com/license/)
-- **Source:** https://www.pexels.com/photo/black-hardwares-on-data-server-room-4597280/
-- **Original dimensions:** 5568×3712; resized to 1600×1067 px for the site.
+- **Source:** https://www.pexels.com/photo/woman-sitting-in-front-laptop-1181677/
+- **Original dimensions:** 4948×3303; cropped and resized to 1600×1067 px for the site.
 
 ### `svc-appdev.webp` / `.jpg`
 
@@ -232,3 +240,23 @@ The following files were retired to `archive/photos-retired/` when the health an
 informatics candidates were wired in, and their credits have been dropped from
 the active list above: `hero-hospital`, `hero-glass`, `who-clinic`, `who-campus`,
 `svc-office`, `svc-lecture`, `prod-community`, and `prod-track`.
+
+On 26 November 2026 the Biomedical Informatics, Generative AI & LLMs,
+Data Analysis & Reports, and Database Development photographs were
+replaced. The previous credits, kept here for the record:
+
+- **who-sequencer (previous):** File:Revolocity DNA sequencer.jpg, Scotted400,
+  CC BY 4.0, https://commons.wikimedia.org/wiki/File%3ARevolocity_DNA_sequencer.jpg
+  (4032×3024). The filename was reused for the new photograph.
+- **Generative AI & LLMs (previous):** used the same Virginia Tech data-center
+  photograph as Data Analysis & Reports (`svc-data`). That file was later also
+  replaced for Data Analysis & Reports (see `svc-data` previous). Generative
+  AI & LLMs now uses `svc-genai`.
+- **svc-data (previous):** File:Virginia Tech - data center.jpg, Christopher
+  Bowns, CC BY-SA 2.0,
+  https://commons.wikimedia.org/wiki/File%3AVirginia_Tech_-_data_center.jpg
+  (3264×2448). The filename was reused for the new photograph.
+- **svc-database (previous):** Server room with a rolling workstation, Brett
+  Sayles, Pexels License,
+  https://www.pexels.com/photo/black-hardwares-on-data-server-room-4597280/
+  (5568×3712). The filename was reused for the new photograph.
