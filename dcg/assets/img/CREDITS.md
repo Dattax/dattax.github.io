@@ -21,7 +21,7 @@ Source host: https://dattaconsultinggroup.com/
 | File | Original on the current site | Used on the new site | Notes |
 |---|---|---|---|
 | `founder-datta.webp` / `.jpg` | `assets/images/akdpic3.jpg` | About page (founder portrait) and the homepage about teaser | Cropped to 4:5 from the left of the original 1024×500 photo of Dr. Arun K. Datta at a whiteboard. This is a real photograph of the founder, not a stock stand-in. |
-| `founder-whiteboard.webp` / `.jpg` | `assets/images/akdpic3.jpg` | About page, teaching photograph | The full original frame, resized. Dr. Datta at a whiteboard with a Hospital–Patient–Doctor diagram. |
+| `founder-whiteboard.webp` / `.jpg` | `assets/images/akdpic3.jpg` | Not currently used on the pages (kept in the photo folder) | The full original frame of the same founder photograph, resized. Previously shown on the about page as an uncropped companion to the portrait. |
 | `prod-chois-screen.webp` / `.jpg` | `assets/images/vykij1.jpg` (testimonials page) | Products page — CHOIS | Screenshot of the myCHOIS / School Health portal as published on the current site. |
 | `prod-ship-screen.webp` / `.jpg` | `assets/images/vykij2.jpg` (testimonials page) | Products page — SHIP | Screenshot of the School Health Program system as published on the current site. |
 | `prod-mabellela-work.webp` / `.jpg` | `assets/images/mabellela3.jpg` (Ma Belle La page) | Products page — Ma Belle La | Fan of design work from the current Ma Belle La page. Original is 600×350; used as-is, recompressed. |
